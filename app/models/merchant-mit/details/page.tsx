@@ -35,6 +35,17 @@ export default function MerchantMITDetailsPage() {
           <p className="text-lg text-gray-600">
             Complete system architecture and payment flow from Test Airlines business perspective
           </p>
+          <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+            <h3 className="font-semibold text-blue-900 mb-2">Applicability: Guest & Account Customers</h3>
+            <p className="text-sm text-blue-800">
+              <strong>MIT instalments work for BOTH scenarios:</strong>
+            </p>
+            <ul className="mt-2 space-y-1 text-sm text-blue-800">
+              <li>• <strong>Guest Customers (One-off Booking):</strong> No account required. Card tokens saved against booking reference (PNR). Customer provides MIT consent during checkout.</li>
+              <li>• <strong>Account Customers (Saved Card):</strong> Logged-in customers with saved payment methods. Tokens linked to customer profile + booking reference.</li>
+              <li>• <strong>Key Requirement:</strong> MIT always requires card tokenization and storage (via PCI-Proxy) - guest status only means "no customer account", NOT "no stored tokens".</li>
+            </ul>
+          </div>
         </div>
 
         {/* Flow Controls */}
@@ -79,21 +90,58 @@ export default function MerchantMITDetailsPage() {
             title="Test Airlines Payment Page"
             color="blue"
             icon="💳"
-            description="Customer-facing payment interface"
+            description="Customer-facing payment interface for both guest and account customers"
             responsibilities={[
               'Display available instalment plans based on booking amount',
               'Show monthly payment breakdown and schedule',
               'Present terms and conditions for MIT agreement',
-              'Collect payment method details',
+              'Collect payment method details (works for guest/one-off bookings)',
               'Display message: "Your payment will be debited according to the selected instalment schedule"',
-              'Initiate 3DS2 authentication flow'
+              'Initiate 3DS2 authentication flow',
+              'Securely transmit card data to PCI-Proxy for tokenization'
             ]}
             technicalDetails={[
               'Built with Next.js/React',
               'Integrated with NPP via REST API',
-              'CyberSource SDK for tokenization',
+              'PCI-Proxy SDK for secure card data handling',
               'Real-time plan calculation',
-              'SCA compliance built-in'
+              'SCA compliance built-in',
+              'Supports guest checkout (no account required)'
+            ]}
+          />
+
+          <SystemComponentDetail
+            title="PCI-Proxy - Token Service Provider"
+            color="green"
+            icon="🔐"
+            description="Secure tokenization platform within Test Airlines estate"
+            responsibilities={[
+              'Tokenize raw card data into PCI-Proxy proprietary tokens',
+              'Provision network tokens (Visa/Mastercard) via card schemes',
+              'Secure token vault storage within airline infrastructure',
+              'Token lifecycle management (expiry, updates, deletion)',
+              'Provide tokens to NPP/XPP for payment processing',
+              'PCI DSS Level 1 compliance for card data security',
+              'Handle Token Requestor ID for network tokenization',
+              'Support both CIT and MIT token operations'
+            ]}
+            technicalDetails={[
+              'PCI-Proxy REST API v3',
+              'Proprietary tokenization engine',
+              'Network Token Service integration',
+              'AES-256 encrypted token vault',
+              'HSM (Hardware Security Module) storage',
+              'Token mapping: PCI-Proxy token ↔ Network token',
+              'Webhook notifications for token updates',
+              'API endpoints for token CRUD operations'
+            ]}
+            businessRules={[
+              'All card data flows through PCI-Proxy (never stored by airline)',
+              'Proprietary tokens used within Test Airlines systems',
+              'Network tokens used for payment authorization',
+              'Tokens valid for duration of instalment plan + 90 days',
+              'Automatic token updates from card schemes',
+              'Token deletion on plan completion or cancellation'
             ]}
           />
 
@@ -106,20 +154,22 @@ export default function MerchantMITDetailsPage() {
               'Business Rules Engine: Determine eligible instalment options',
               'Calculate deposit amount (10-25% of total)',
               'Generate payment schedule (monthly instalments)',
-              'Store instalment plan configuration',
+              'Store instalment plan configuration (linked to PCI-Proxy tokens)',
               'Trigger MIT on due dates via scheduler',
+              'Retrieve tokens from PCI-Proxy vault for MIT processing',
               'Manage payment state machine (Pending → Active → Completed)',
               'Handle failed payment retries and notifications',
               'Revenue recognition and accounting integration'
             ]}
             technicalDetails={[
               'Node.js/Java microservices',
-              'PostgreSQL for plan storage',
+              'PostgreSQL for plan storage (stores token references, NOT card data)',
               'Redis for caching and distributed locks',
               'Cron scheduler for MIT triggering',
-              'Token vault integration',
+              'PCI-Proxy API integration for token operations',
               'Event-driven architecture',
-              'API endpoints for XPP integration'
+              'API endpoints for XPP integration',
+              'Webhook handlers for PCI-Proxy token updates'
             ]}
             businessRules={[
               'Minimum booking: £500',
@@ -127,7 +177,9 @@ export default function MerchantMITDetailsPage() {
               'Deposit: 10-25% of total',
               'Instalments: 2-12 months',
               'Final payment: 7 days before departure',
-              'Retry logic: 3 attempts over 5 days'
+              'Retry logic: 3 attempts over 5 days',
+              'Guest customers: tokens linked to booking reference',
+              'Account customers: tokens linked to customer ID'
             ]}
           />
 
@@ -163,23 +215,23 @@ export default function MerchantMITDetailsPage() {
             icon="🏦"
             description="Payment Service Provider for transaction processing"
             responsibilities={[
-              'Network tokenization (Visa/Mastercard tokens)',
               'Process CIT with 3DS2 authentication',
-              'Execute MIT transactions using stored tokens',
+              'Execute MIT transactions using network tokens from PCI-Proxy',
               'Fraud screening via Decision Manager',
               'Authorization and capture processing',
-              'Token lifecycle management (expiry, updates)',
               'Send payment status webhooks to XPP',
-              'PCI DSS compliance and security'
+              'Transaction reporting and reconciliation',
+              'Chargeback and dispute management',
+              'PCI DSS Level 1 compliance'
             ]}
             technicalDetails={[
               'CyberSource REST API v2',
-              'Network Token Service',
+              'Accepts network tokens for payment processing',
               '3DS2 authentication server',
               'Decision Manager for fraud',
               'Secure Acceptance integration',
-              'Token Management Service',
-              'Webhook notifications'
+              'Webhook notifications',
+              'Real-time transaction status updates'
             ]}
             apiExamples={[
               {
@@ -260,12 +312,13 @@ export default function MerchantMITDetailsPage() {
               badge="Initial Payment"
               color="green"
               items={[
-                { label: 'Trigger', value: 'Customer action on payment page' },
+                { label: 'Trigger', value: 'Customer action on payment page (guest or account)' },
                 { label: 'Authentication', value: 'SCA Required (3DS2)' },
                 { label: 'Customer Message', value: '"Future payments will be debited automatically"' },
-                { label: 'Flow', value: 'Payment Page → NPP → XPP → CyberSource → Card Network' },
-                { label: 'Purpose', value: 'Initial deposit + create network token' },
-                { label: 'Consent', value: 'Explicit MIT agreement required' }
+                { label: 'Flow', value: 'Payment Page → PCI-Proxy (tokenize) → NPP → XPP → CyberSource' },
+                { label: 'Purpose', value: 'Initial deposit + create PCI-Proxy & network tokens' },
+                { label: 'Consent', value: 'Explicit MIT agreement required' },
+                { label: 'Token Storage', value: 'PCI-Proxy vault (linked to booking ref or customer ID)' }
               ]}
             />
 
@@ -277,9 +330,10 @@ export default function MerchantMITDetailsPage() {
                 { label: 'Trigger', value: 'NPP scheduler on due date' },
                 { label: 'Authentication', value: 'No SCA Required' },
                 { label: 'Customer Message', value: 'Email: "Payment processed successfully"' },
-                { label: 'Flow', value: 'NPP Scheduler → XPP → CyberSource → Card Network' },
-                { label: 'Purpose', value: 'Monthly instalment collection' },
-                { label: 'Consent', value: 'Uses existing MIT agreement from CIT' }
+                { label: 'Flow', value: 'NPP → PCI-Proxy (retrieve token) → XPP → CyberSource' },
+                { label: 'Purpose', value: 'Monthly instalment collection using stored token' },
+                { label: 'Consent', value: 'Uses existing MIT agreement from CIT' },
+                { label: 'Token Usage', value: 'Network token retrieved from PCI-Proxy vault' }
               ]}
             />
           </div>
@@ -290,11 +344,13 @@ export default function MerchantMITDetailsPage() {
           <h3 className="text-lg font-semibold text-amber-900 mb-4">Critical Implementation Notes</h3>
           <ul className="space-y-2 text-sm text-amber-800">
             <li>• <strong>Idempotency:</strong> All payment requests must include unique transaction IDs to prevent duplicate charges</li>
-            <li>• <strong>Token Security:</strong> Network tokens stored in encrypted vault, never in application database</li>
+            <li>• <strong>Token Security:</strong> All card data flows through PCI-Proxy (PCI DSS Level 1). Proprietary and network tokens stored in PCI-Proxy encrypted vault with HSM. Never store raw card data or tokens in application database.</li>
+            <li>• <strong>Guest Customers:</strong> MIT works for both guest and account customers. Tokens linked to booking reference (PNR) for guests, customer ID for account holders.</li>
             <li>• <strong>State Management:</strong> Use distributed locks (Redis) when processing instalments to avoid race conditions</li>
             <li>• <strong>Retry Logic:</strong> Exponential backoff with maximum 3 attempts over 5 days</li>
-            <li>• <strong>Reconciliation:</strong> Daily reconciliation between NPP, XPP, and CyberSource transaction logs</li>
-            <li>• <strong>Monitoring:</strong> Real-time alerts for failed MITs, token expiry, and system errors</li>
+            <li>• <strong>Reconciliation:</strong> Daily reconciliation between NPP, XPP, CyberSource, and PCI-Proxy transaction logs</li>
+            <li>• <strong>Monitoring:</strong> Real-time alerts for failed MITs, token expiry, token updates, and system errors</li>
+            <li>• <strong>Token Lifecycle:</strong> PCI-Proxy automatically handles network token updates from card schemes (expiry, card replacement)</li>
           </ul>
         </div>
 
@@ -356,10 +412,29 @@ function CITFlowDiagram() {
             'Customer enters card details: 4242 4242 4242 4242',
             'Accept MIT agreement checkbox',
             'Terms: "I authorize Test Airlines to charge my card according to the instalment schedule"',
+            'Guest customer: No account login required',
             'Click "Pay Deposit" button',
-            'Initiate 3DS2 authentication flow'
+            'Card data securely transmitted to PCI-Proxy'
           ]}
-          dataFlow="Card data tokenized by CyberSource SDK (browser-side)"
+          dataFlow="POST /pci-proxy/tokenize → Secure card data transmission"
+        />
+
+        {/* Step 3.5: PCI-Proxy Tokenization */}
+        <FlowStep
+          number="3.5"
+          system="PCI-Proxy"
+          color="green"
+          title="Card Tokenization & Network Token Provisioning"
+          details={[
+            'Receive raw card data (PCI-Proxy is PCI DSS Level 1)',
+            'Create proprietary PCI-Proxy token: pci_tok_abc123',
+            'Request network token from Visa via Token Requestor ID',
+            'Visa provisions network token: tok_visa_xxxx1234',
+            'Store token mapping in encrypted vault',
+            'Return both tokens to NPP',
+            'Link tokens to booking reference (for guest) or customer ID'
+          ]}
+          dataFlow="PCI-Proxy Token: pci_tok_abc123 | Network Token: tok_visa_xxxx1234"
         />
 
         {/* Step 4: 3DS2 Authentication */}
@@ -373,9 +448,9 @@ function CITFlowDiagram() {
             'Enter OTP or biometric authentication',
             '3DS2 authentication successful',
             'Authentication result returned to payment page',
-            'Network token created by CyberSource'
+            'Network token (from PCI-Proxy) validated for use'
           ]}
-          dataFlow="3DS2 auth → Token: tok_visa_xxxx1234"
+          dataFlow="3DS2 auth → ECI: 05 (fully authenticated) → Ready for CIT"
         />
 
         {/* Step 5: CIT Authorization */}
@@ -385,12 +460,13 @@ function CITFlowDiagram() {
           color="purple"
           title="Process CIT Authorization"
           details={[
-            'NPP sends payment request to XPP',
+            'NPP retrieves network token from PCI-Proxy: tok_visa_xxxx1234',
+            'NPP sends payment request to XPP with network token',
             'XPP routes to CyberSource with CIT parameters',
-            'CyberSource processes authorization (£120)',
-            'CyberSource creates network token for future MITs',
-            'Authorization approved',
-            'Token stored in NPP Token Vault'
+            'CyberSource processes authorization using network token (£120)',
+            'Authorization approved by Visa',
+            'Transaction linked to PCI-Proxy tokens in NPP database',
+            'Booking reference linked to token for future MIT retrieval'
           ]}
           dataFlow="POST /xpp/api/authorize → Transaction ID: TXN-CIT-001 → Status: APPROVED"
         />
@@ -431,16 +507,17 @@ function MITFlowDiagram() {
           number="1"
           system="NPP - MIT Scheduler"
           color="purple"
-          title="Identify Due Instalments"
+          title="Identify Due Instalments & Retrieve Tokens"
           details={[
             'Cron job runs daily at 02:00 UTC',
             'Query database for instalments due today',
             'Find plan INS-2024-001: £60 due on 2024-02-15',
             'Verify booking still active in Amadeus',
-            'Retrieve stored network token from vault',
-            'Prepare MIT payment request'
+            'Retrieve tokens from PCI-Proxy vault using booking reference (PNR: ABC123)',
+            'PCI-Proxy returns: pci_tok_abc123 and tok_visa_xxxx1234',
+            'Prepare MIT payment request with network token'
           ]}
-          dataFlow="SELECT * FROM instalments WHERE due_date = CURRENT_DATE AND status = 'PENDING'"
+          dataFlow="SELECT * FROM instalments WHERE due_date = CURRENT_DATE AND status = 'PENDING' → GET /pci-proxy/vault/tokens/{booking_ref}"
         />
 
         {/* Step 2: Pre-notification */}
@@ -465,13 +542,14 @@ function MITFlowDiagram() {
           color="indigo"
           title="Execute MIT Transaction"
           details={[
-            'NPP sends MIT request to XPP',
+            'NPP sends MIT request to XPP with network token: tok_visa_xxxx1234',
             'XPP adds routing logic and idempotency key',
             'XPP forwards to CyberSource with MIT parameters',
             'commerceIndicator: "recurring"',
             'initiator: "merchant"',
             'reason: "instalment"',
-            'previousTransactionId: TXN-CIT-001 (original CIT)'
+            'previousTransactionId: TXN-CIT-001 (original CIT)',
+            'Token source: PCI-Proxy vault (retrieved in Step 1)'
           ]}
           dataFlow="POST /xpp/api/charge → MIT Transaction ID: TXN-MIT-002"
         />

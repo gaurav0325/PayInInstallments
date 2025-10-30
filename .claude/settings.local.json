@@ -32,7 +32,10 @@
       "Bash(git remote set-url:*)",
       "Bash(start https://github.com/gaurav0325/PayInInstallments/settings)",
       "Bash(git fetch:*)",
-      "Bash(xargs sed:*)"
+      "Bash(xargs sed:*)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)",
+      "Bash(taskkill:*)"
     ],
     "deny": [],
     "ask": []
