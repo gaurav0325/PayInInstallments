@@ -2,16 +2,18 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, ChevronDown, ChevronRight } from 'lucide-react';
+import { ArrowLeft, Play, Pause, RotateCcw } from 'lucide-react';
 
 export default function MerchantMITDetailsPage() {
-  const [activeSection, setActiveSection] = useState<string | null>('overview');
+  const [activeFlow, setActiveFlow] = useState<'cit' | 'mit' | null>('cit');
+  const [animationStep, setAnimationStep] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   return (
     <div className="min-h-screen bg-white">
       {/* Clean Header */}
       <div className="border-b border-gray-200 sticky top-0 z-40 bg-white/95 backdrop-blur">
-        <div className="max-w-4xl mx-auto px-6 py-4">
+        <div className="max-w-7xl mx-auto px-6 py-4">
           <Link
             href="/models/merchant-mit"
             className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition text-sm"
@@ -22,8 +24,8 @@ export default function MerchantMITDetailsPage() {
         </div>
       </div>
 
-      {/* Main Content - ChatGPT Style */}
-      <div className="max-w-3xl mx-auto px-6 py-12">
+      {/* Main Content */}
+      <div className="max-w-7xl mx-auto px-6 py-12">
 
         {/* Title Section */}
         <div className="mb-12">
@@ -31,165 +33,158 @@ export default function MerchantMITDetailsPage() {
             Merchant Financed MIT Instalments
           </h1>
           <p className="text-lg text-gray-600">
-            Technical documentation for implementing instalment payments with MIT (Merchant-Initiated Transactions)
+            Complete system architecture and payment flow from Test Airlines business perspective
           </p>
         </div>
 
-        {/* Conversational Sections */}
-        <div className="space-y-8">
-
-          <ConversationBlock
-            title="What is Merchant-Financed MIT?"
-            isActive={activeSection === 'overview'}
-            onToggle={() => setActiveSection(activeSection === 'overview' ? null : 'overview')}
+        {/* Flow Controls */}
+        <div className="mb-8 flex items-center gap-4">
+          <button
+            onClick={() => setActiveFlow('cit')}
+            className={`px-4 py-2 rounded-lg font-medium transition ${
+              activeFlow === 'cit'
+                ? 'bg-green-600 text-white'
+                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+            }`}
           >
-            <p className="text-gray-700 leading-relaxed mb-4">
-              Merchant-financed instalments using Merchant-Initiated Transactions (MIT) is a payment model where Test Airlines owns and manages the entire instalment lifecycle. Unlike BNPL partners, Test Airlines directly finances the customer and collects payments over time.
-            </p>
-
-            <div className="bg-blue-50 rounded-lg p-4 mb-4">
-              <h4 className="font-semibold text-gray-900 mb-2">Key Concept</h4>
-              <p className="text-sm text-gray-700">
-                The first payment requires <strong>Customer-Initiated Transaction (CIT)</strong> with Strong Customer Authentication (SCA/3DS2). Subsequent payments use <strong>Merchant-Initiated Transactions (MIT)</strong> - automated charges that don't require customer interaction.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-3 gap-3 mt-4">
-              <FeaturePill icon="💰" label="Revenue Control" />
-              <FeaturePill icon="🔒" label="MIT Compliance" />
-              <FeaturePill icon="📊" label="Full Visibility" />
-            </div>
-          </ConversationBlock>
-
-          <ConversationBlock
-            title="System Architecture"
-            isActive={activeSection === 'architecture'}
-            onToggle={() => setActiveSection(activeSection === 'architecture' ? null : 'architecture')}
+            Initial Payment (CIT)
+          </button>
+          <button
+            onClick={() => setActiveFlow('mit')}
+            className={`px-4 py-2 rounded-lg font-medium transition ${
+              activeFlow === 'mit'
+                ? 'bg-blue-600 text-white'
+                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+            }`}
           >
-            <p className="text-gray-700 leading-relaxed mb-6">
-              The solution involves four main systems working together:
-            </p>
+            Recurring Payment (MIT)
+          </button>
+        </div>
 
-            <div className="space-y-3">
-              <SystemCard
-                emoji="🎨"
-                title="Test Airlines Frontend"
-                description="Customer-facing web application"
-                details={[
-                  'Instalment plan selection UI',
-                  'Payment method tokenization',
-                  'SCA/3DS2 authentication flow',
-                  'Booking confirmation display'
-                ]}
-              />
+        {/* Interactive System Architecture Diagram */}
+        <div className="bg-gray-50 rounded-2xl p-8 mb-12 border border-gray-200">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-8 text-center">
+            System Architecture & Payment Flow
+          </h2>
 
-              <SystemCard
-                emoji="⚙️"
-                title="Test Airlines Backend"
-                description="Core instalment engine and orchestration"
-                details={[
-                  'Payment schedule calculation',
-                  'MIT transaction triggering',
-                  'Token vault management',
-                  'Retry logic and fallback handling'
-                ]}
-              />
+          {activeFlow === 'cit' && <CITFlowDiagram />}
+          {activeFlow === 'mit' && <MITFlowDiagram />}
+        </div>
 
-              <SystemCard
-                emoji="💳"
-                title="CyberSource PSP"
-                description="Payment gateway and tokenization"
-                details={[
-                  'Network tokenization',
-                  'CIT authorization (initial)',
-                  'MIT transactions (recurring)',
-                  'Fraud screening and 3DS2'
-                ]}
-              />
+        {/* System Components Detail */}
+        <div className="space-y-8 mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900">System Components</h2>
 
-              <SystemCard
-                emoji="✈️"
-                title="Amadeus GDS"
-                description="Reservation and ticketing system"
-                details={[
-                  'PNR creation with instalment flag',
-                  'Payment timeline validation',
-                  'Ticket issuance timing',
-                  'Queue management'
-                ]}
-              />
-            </div>
-          </ConversationBlock>
+          <SystemComponentDetail
+            title="Test Airlines Payment Page"
+            color="blue"
+            icon="💳"
+            description="Customer-facing payment interface"
+            responsibilities={[
+              'Display available instalment plans based on booking amount',
+              'Show monthly payment breakdown and schedule',
+              'Present terms and conditions for MIT agreement',
+              'Collect payment method details',
+              'Display message: "Your payment will be debited according to the selected instalment schedule"',
+              'Initiate 3DS2 authentication flow'
+            ]}
+            technicalDetails={[
+              'Built with Next.js/React',
+              'Integrated with NPP via REST API',
+              'CyberSource SDK for tokenization',
+              'Real-time plan calculation',
+              'SCA compliance built-in'
+            ]}
+          />
 
-          <ConversationBlock
-            title="Payment Flow"
-            isActive={activeSection === 'flow'}
-            onToggle={() => setActiveSection(activeSection === 'flow' ? null : 'flow')}
-          >
-            <p className="text-gray-700 leading-relaxed mb-6">
-              Here's how the payment journey works from start to finish:
-            </p>
+          <SystemComponentDetail
+            title="NPP (New Payment Platform) - Instalment Engine"
+            color="purple"
+            icon="⚙️"
+            description="Core instalment management system within Test Airlines"
+            responsibilities={[
+              'Business Rules Engine: Determine eligible instalment options',
+              'Calculate deposit amount (10-25% of total)',
+              'Generate payment schedule (monthly instalments)',
+              'Store instalment plan configuration',
+              'Trigger MIT on due dates via scheduler',
+              'Manage payment state machine (Pending → Active → Completed)',
+              'Handle failed payment retries and notifications',
+              'Revenue recognition and accounting integration'
+            ]}
+            technicalDetails={[
+              'Node.js/Java microservices',
+              'PostgreSQL for plan storage',
+              'Redis for caching and distributed locks',
+              'Cron scheduler for MIT triggering',
+              'Token vault integration',
+              'Event-driven architecture',
+              'API endpoints for XPP integration'
+            ]}
+            businessRules={[
+              'Minimum booking: £500',
+              'Maximum booking: £10,000',
+              'Deposit: 10-25% of total',
+              'Instalments: 2-12 months',
+              'Final payment: 7 days before departure',
+              'Retry logic: 3 attempts over 5 days'
+            ]}
+          />
 
-            <div className="space-y-6">
-              <FlowPhase
-                phase="Initial Payment (CIT)"
-                steps={[
-                  { num: 1, title: 'Customer Checkout', desc: 'Customer selects instalment plan and enters payment details' },
-                  { num: 2, title: 'Schedule Calculation', desc: 'Backend calculates deposit and monthly instalments' },
-                  { num: 3, title: '3DS2 Authentication', desc: 'Customer completes Strong Customer Authentication' },
-                  { num: 4, title: 'Tokenization', desc: 'CyberSource creates network token for future payments' },
-                  { num: 5, title: 'First Charge', desc: 'Deposit payment authorized and captured' },
-                  { num: 6, title: 'Booking Created', desc: 'PNR created in Amadeus with instalment flag' }
-                ]}
-              />
+          <SystemComponentDetail
+            title="XPP (Payment Orchestrator)"
+            color="indigo"
+            icon="🔄"
+            description="Intelligent payment routing and orchestration layer"
+            responsibilities={[
+              'Route payment requests to appropriate PSP (CyberSource)',
+              'Abstract PSP-specific logic from NPP',
+              'Handle PSP failover and redundancy',
+              'Normalize payment responses across PSPs',
+              'Manage payment method routing rules',
+              'Transaction logging and monitoring',
+              'Retry orchestration for failed payments',
+              'Webhook management from PSPs'
+            ]}
+            technicalDetails={[
+              'API Gateway pattern',
+              'Multi-PSP support',
+              'Circuit breaker implementation',
+              'Real-time monitoring dashboard',
+              'Webhook receiver and router',
+              'Transaction reconciliation',
+              'Idempotency key management'
+            ]}
+          />
 
-              <FlowPhase
-                phase="Recurring Payments (MIT)"
-                steps={[
-                  { num: 7, title: 'Schedule Trigger', desc: 'Cron job identifies instalments due for payment' },
-                  { num: 8, title: 'MIT Execution', desc: 'Automated charge using stored token (no customer action)' },
-                  { num: 9, title: 'PNR Update', desc: 'Amadeus PNR updated with payment status' },
-                  { num: 10, title: 'Customer Notification', desc: 'Email/SMS sent confirming successful payment' }
-                ]}
-              />
-            </div>
-          </ConversationBlock>
-
-          <ConversationBlock
-            title="CIT vs MIT Configuration"
-            isActive={activeSection === 'citMit'}
-            onToggle={() => setActiveSection(activeSection === 'citMit' ? null : 'citMit')}
-          >
-            <p className="text-gray-700 leading-relaxed mb-6">
-              Understanding the difference between CIT and MIT is crucial for implementation:
-            </p>
-
-            <ComparisonTable
-              leftTitle="CIT (Customer-Initiated)"
-              leftBadge="Initial Payment"
-              leftItems={[
-                { label: 'Authentication', value: 'SCA Required (3DS2)' },
-                { label: 'Customer Action', value: 'Active participation needed' },
-                { label: 'Use Case', value: 'First deposit payment' },
-                { label: 'Tokenization', value: 'Network token created' },
-                { label: 'CyberSource Field', value: 'commerceIndicator: internet' }
-              ]}
-              rightTitle="MIT (Merchant-Initiated)"
-              rightBadge="Recurring Payments"
-              rightItems={[
-                { label: 'Authentication', value: 'No SCA Required' },
-                { label: 'Customer Action', value: 'Fully automated' },
-                { label: 'Use Case', value: 'Monthly instalments' },
-                { label: 'Tokenization', value: 'Uses existing token' },
-                { label: 'CyberSource Field', value: 'commerceIndicator: recurring' }
-              ]}
-            />
-
-            <div className="bg-gray-50 rounded-lg p-5 mt-6">
-              <h4 className="font-semibold text-gray-900 mb-3">CyberSource API Example</h4>
-              <pre className="text-xs font-mono text-gray-700 overflow-x-auto">
-{`// CIT (Initial Payment)
-{
+          <SystemComponentDetail
+            title="CyberSource PSP"
+            color="orange"
+            icon="🏦"
+            description="Payment Service Provider for transaction processing"
+            responsibilities={[
+              'Network tokenization (Visa/Mastercard tokens)',
+              'Process CIT with 3DS2 authentication',
+              'Execute MIT transactions using stored tokens',
+              'Fraud screening via Decision Manager',
+              'Authorization and capture processing',
+              'Token lifecycle management (expiry, updates)',
+              'Send payment status webhooks to XPP',
+              'PCI DSS compliance and security'
+            ]}
+            technicalDetails={[
+              'CyberSource REST API v2',
+              'Network Token Service',
+              '3DS2 authentication server',
+              'Decision Manager for fraud',
+              'Secure Acceptance integration',
+              'Token Management Service',
+              'Webhook notifications'
+            ]}
+            apiExamples={[
+              {
+                type: 'CIT Request',
+                code: `{
   "processingInformation": {
     "commerceIndicator": "internet",
     "authorizationOptions": {
@@ -198,11 +193,18 @@ export default function MerchantMITDetailsPage() {
         "credentialStoredOnFile": "true"
       }
     }
+  },
+  "orderInformation": {
+    "amountDetails": {
+      "totalAmount": "120.00",
+      "currency": "GBP"
+    }
   }
-}
-
-// MIT (Recurring Payment)
-{
+}`
+              },
+              {
+                type: 'MIT Request',
+                code: `{
   "processingInformation": {
     "commerceIndicator": "recurring",
     "authorizationOptions": {
@@ -213,223 +215,87 @@ export default function MerchantMITDetailsPage() {
         }
       }
     }
+  },
+  "paymentInformation": {
+    "customer": {
+      "customerId": "network_token_id"
+    }
   }
-}`}
-              </pre>
-            </div>
-          </ConversationBlock>
+}`
+              }
+            ]}
+          />
 
-          <ConversationBlock
-            title="Instalment Engine"
-            isActive={activeSection === 'engine'}
-            onToggle={() => setActiveSection(activeSection === 'engine' ? null : 'engine')}
-          >
-            <p className="text-gray-700 leading-relaxed mb-6">
-              The instalment engine is the heart of the system. Here are the core components:
-            </p>
-
-            <div className="grid gap-4">
-              <EngineComponent
-                title="Schedule Calculator"
-                description="Calculates payment splits based on business rules"
-                items={[
-                  'Deposit amount (10-25% of total)',
-                  'Monthly instalment distribution',
-                  'Interest calculation if applicable',
-                  'Due date computation',
-                ]}
-              />
-
-              <EngineComponent
-                title="Payment Orchestrator"
-                description="Manages the payment execution lifecycle"
-                items={[
-                  'Identifies due payments via cron',
-                  'Triggers MIT transactions',
-                  'Handles retry logic on failures',
-                  'Sends customer notifications',
-                ]}
-              />
-
-              <EngineComponent
-                title="Token Vault"
-                description="Securely stores payment tokens"
-                items={[
-                  'Network token storage (PCI compliant)',
-                  'Token-to-booking association',
-                  'Expiry and update handling',
-                  'Encryption at rest',
-                ]}
-              />
-
-              <EngineComponent
-                title="State Machine"
-                description="Tracks instalment lifecycle"
-                items={[
-                  'States: Pending → Active → Completed',
-                  'Failed payment workflows',
-                  'Cancellation handling',
-                  'Refund processing',
-                ]}
-              />
-            </div>
-
-            <div className="bg-gray-50 rounded-lg p-5 mt-6">
-              <h4 className="font-semibold text-gray-900 mb-3">Database Schema</h4>
-              <pre className="text-xs font-mono text-gray-700 overflow-x-auto">
-{`CREATE TABLE instalment_plans (
-  id UUID PRIMARY KEY,
-  booking_id VARCHAR(10) NOT NULL,
-  total_amount DECIMAL(10,2) NOT NULL,
-  number_of_instalments INT NOT NULL,
-  payment_token_id VARCHAR(255) NOT NULL,
-  status VARCHAR(20) NOT NULL
-);
-
-CREATE TABLE instalments (
-  id UUID PRIMARY KEY,
-  plan_id UUID REFERENCES instalment_plans(id),
-  amount DECIMAL(10,2) NOT NULL,
-  due_date DATE NOT NULL,
-  status VARCHAR(20) NOT NULL,
-  retry_count INT DEFAULT 0
-);`}
-              </pre>
-            </div>
-          </ConversationBlock>
-
-          <ConversationBlock
-            title="Business Rules"
-            isActive={activeSection === 'rules'}
-            onToggle={() => setActiveSection(activeSection === 'rules' ? null : 'rules')}
-          >
-            <p className="text-gray-700 leading-relaxed mb-6">
-              Configure these rules to control how instalments work:
-            </p>
-
-            <div className="space-y-4">
-              <RuleCategory
-                title="Eligibility"
-                rules={[
-                  { name: 'Minimum Amount', value: '£500', configurable: true },
-                  { name: 'Maximum Amount', value: '£10,000', configurable: true },
-                  { name: 'Advance Booking', value: '30 days before departure', configurable: true },
-                  { name: 'Card Types', value: 'Visa, Mastercard', configurable: true }
-                ]}
-              />
-
-              <RuleCategory
-                title="Payments"
-                rules={[
-                  { name: 'Deposit', value: '10-25% of total', configurable: true },
-                  { name: 'Instalments', value: '2-12 months', configurable: true },
-                  { name: 'Final Payment', value: '7 days before departure', configurable: true },
-                  { name: 'Interest Rate', value: '0% APR', configurable: true }
-                ]}
-              />
-
-              <RuleCategory
-                title="Processing"
-                rules={[
-                  { name: 'Retry Attempts', value: '3 times over 5 days', configurable: true },
-                  { name: 'Payment Window', value: '02:00-04:00 UTC', configurable: true },
-                  { name: 'Late Fee', value: '£15 per failure', configurable: true },
-                  { name: 'Reminders', value: '3 days before due', configurable: true }
-                ]}
-              />
-            </div>
-          </ConversationBlock>
-
-          <ConversationBlock
-            title="Technical Requirements"
-            isActive={activeSection === 'requirements'}
-            onToggle={() => setActiveSection(activeSection === 'requirements' ? null : 'requirements')}
-          >
-            <p className="text-gray-700 leading-relaxed mb-6">
-              Here's what you need to implement this solution:
-            </p>
-
-            <div className="space-y-4">
-              <RequirementSection
-                title="Infrastructure"
-                items={[
-                  'High-availability servers (99.9% uptime)',
-                  'Load balancers for traffic distribution',
-                  'Redis for caching and session management',
-                  'PostgreSQL with replication',
-                  'Message queue (RabbitMQ/Kafka)'
-                ]}
-              />
-
-              <RequirementSection
-                title="Security"
-                items={[
-                  'PCI DSS Level 1 compliance',
-                  'TLS 1.2+ for all communications',
-                  'Token vault encryption at rest',
-                  'GDPR compliance for customer data',
-                  'Regular security audits'
-                ]}
-              />
-
-              <RequirementSection
-                title="Integrations"
-                items={[
-                  'CyberSource REST API v2',
-                  'Amadeus SOAP/REST APIs',
-                  '3DS2 authentication server',
-                  'Email/SMS notification services',
-                  'Fraud detection service'
-                ]}
-              />
-            </div>
-
-            <div className="bg-amber-50 border border-amber-200 rounded-lg p-5 mt-6">
-              <h4 className="font-semibold text-amber-900 mb-3">⚠️ Critical Considerations</h4>
-              <ul className="space-y-2 text-sm text-amber-800">
-                <li>• <strong>Idempotency:</strong> All MIT transactions must be idempotent to prevent duplicate charges</li>
-                <li>• <strong>Retry Logic:</strong> Implement exponential backoff for failed payments</li>
-                <li>• <strong>Token Lifecycle:</strong> Handle token expiry and Account Updater responses</li>
-                <li>• <strong>State Management:</strong> Use distributed locks to prevent race conditions</li>
-                <li>• <strong>Failure Scenarios:</strong> Plan for gateway downtime, timeouts, and network issues</li>
-              </ul>
-            </div>
-          </ConversationBlock>
-
-          <ConversationBlock
-            title="Testing Checklist"
-            isActive={activeSection === 'testing'}
-            onToggle={() => setActiveSection(activeSection === 'testing' ? null : 'testing')}
-          >
-            <p className="text-gray-700 leading-relaxed mb-6">
-              Ensure you test these scenarios before going live:
-            </p>
-
-            <div className="space-y-2">
-              {[
-                'End-to-end CIT flow with 3DS2 authentication',
-                'MIT execution with stored tokens',
-                'Failed payment retry logic',
-                'Token expiry and refresh handling',
-                'Cancellation and refund workflows',
-                'Edge cases (partial payments, amendments)',
-                'Load testing for peak booking periods',
-                'Security testing (OWASP Top 10)',
-                'PCI DSS compliance validation',
-                'Disaster recovery procedures'
-              ].map((item, idx) => (
-                <ChecklistItem key={idx} text={item} />
-              ))}
-            </div>
-          </ConversationBlock>
-
+          <SystemComponentDetail
+            title="Amadeus GDS"
+            color="teal"
+            icon="✈️"
+            description="Global Distribution System for reservations"
+            responsibilities={[
+              'Create PNR with instalment payment flag',
+              'Track payment schedule against booking',
+              'Validate payment timeline vs departure date',
+              'Manage ticket issuance timing',
+              'Handle booking amendments with instalment impact',
+              'Queue management for payment follow-ups',
+              'Cancellation and refund coordination'
+            ]}
+            technicalDetails={[
+              'Amadeus SOAP/REST APIs',
+              'PNR remarks for instalment tracking',
+              'Queue category management',
+              'Cryptic command integration',
+              'Real-time availability checks'
+            ]}
+          />
         </div>
 
-        {/* Footer */}
-        <div className="mt-16 pt-8 border-t border-gray-200">
-          <div className="text-center text-sm text-gray-500">
-            <p>For questions or support, contact your technical team.</p>
+        {/* CIT vs MIT Comparison */}
+        <div className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-6">CIT vs MIT: Key Differences</h2>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <ComparisonCard
+              title="CIT (Customer-Initiated Transaction)"
+              badge="Initial Payment"
+              color="green"
+              items={[
+                { label: 'Trigger', value: 'Customer action on payment page' },
+                { label: 'Authentication', value: 'SCA Required (3DS2)' },
+                { label: 'Customer Message', value: '"Future payments will be debited automatically"' },
+                { label: 'Flow', value: 'Payment Page → NPP → XPP → CyberSource → Card Network' },
+                { label: 'Purpose', value: 'Initial deposit + create network token' },
+                { label: 'Consent', value: 'Explicit MIT agreement required' }
+              ]}
+            />
+
+            <ComparisonCard
+              title="MIT (Merchant-Initiated Transaction)"
+              badge="Recurring Payment"
+              color="blue"
+              items={[
+                { label: 'Trigger', value: 'NPP scheduler on due date' },
+                { label: 'Authentication', value: 'No SCA Required' },
+                { label: 'Customer Message', value: 'Email: "Payment processed successfully"' },
+                { label: 'Flow', value: 'NPP Scheduler → XPP → CyberSource → Card Network' },
+                { label: 'Purpose', value: 'Monthly instalment collection' },
+                { label: 'Consent', value: 'Uses existing MIT agreement from CIT' }
+              ]}
+            />
           </div>
+        </div>
+
+        {/* Technical Implementation Notes */}
+        <div className="bg-amber-50 border border-amber-200 rounded-lg p-6">
+          <h3 className="text-lg font-semibold text-amber-900 mb-4">Critical Implementation Notes</h3>
+          <ul className="space-y-2 text-sm text-amber-800">
+            <li>• <strong>Idempotency:</strong> All payment requests must include unique transaction IDs to prevent duplicate charges</li>
+            <li>• <strong>Token Security:</strong> Network tokens stored in encrypted vault, never in application database</li>
+            <li>• <strong>State Management:</strong> Use distributed locks (Redis) when processing instalments to avoid race conditions</li>
+            <li>• <strong>Retry Logic:</strong> Exponential backoff with maximum 3 attempts over 5 days</li>
+            <li>• <strong>Reconciliation:</strong> Daily reconciliation between NPP, XPP, and CyberSource transaction logs</li>
+            <li>• <strong>Monitoring:</strong> Real-time alerts for failed MITs, token expiry, and system errors</li>
+          </ul>
         </div>
 
       </div>
@@ -437,237 +303,415 @@ CREATE TABLE instalments (
   );
 }
 
-// Conversation Block Component
-function ConversationBlock({
-  title,
-  children,
-  isActive,
-  onToggle
-}: {
-  title: string;
-  children: React.ReactNode;
-  isActive: boolean;
-  onToggle: () => void;
-}) {
+// CIT Flow Diagram Component
+function CITFlowDiagram() {
   return (
-    <div className="group">
-      <button
-        onClick={onToggle}
-        className="w-full text-left"
-      >
-        <div className="flex items-start gap-3 group-hover:opacity-80 transition">
-          <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center mt-1">
-            {isActive ? (
-              <ChevronDown className="w-5 h-5 text-gray-600" />
-            ) : (
-              <ChevronRight className="w-5 h-5 text-gray-600" />
-            )}
+    <div className="space-y-6">
+      <div className="text-center mb-6">
+        <h3 className="text-xl font-semibold text-green-700 mb-2">Initial Payment Flow (CIT)</h3>
+        <p className="text-sm text-gray-600">Customer initiates first payment with Strong Customer Authentication</p>
+      </div>
+
+      <div className="space-y-4">
+        {/* Step 1: Customer on Payment Page */}
+        <FlowStep
+          number="1"
+          system="Payment Page"
+          color="blue"
+          title="Customer Selects Instalment Plan"
+          details={[
+            'Customer views booking total: £480',
+            'NPP calculates available plans: 3, 6, or 12 months',
+            'Customer selects 6-month plan',
+            'Display: Deposit £120 today, then £60/month × 5',
+            'Message shown: "Your card will be charged £60 on the 15th of each month for 5 months"'
+          ]}
+          dataFlow="POST /npp/api/calculate-plans → Returns: [{months: 3, deposit: 160}, {months: 6, deposit: 120}, ...]"
+        />
+
+        {/* Step 2: Business Rules Check */}
+        <FlowStep
+          number="2"
+          system="NPP - Business Rules Engine"
+          color="purple"
+          title="Eligibility Check & Plan Generation"
+          details={[
+            'Check booking amount: £480 ✓ (Min £500 ✗ - adjust rules or show error)',
+            'Check departure date: 45 days ahead ✓',
+            'Check customer location: UK ✓',
+            'Check card type: Visa ✓',
+            'Generate instalment schedule with due dates',
+            'Create instalment plan record in database'
+          ]}
+          dataFlow="Internal rules engine → Plan ID: INS-2024-001"
+        />
+
+        {/* Step 3: Customer Enters Payment Details */}
+        <FlowStep
+          number="3"
+          system="Payment Page"
+          color="blue"
+          title="Payment Method Collection"
+          details={[
+            'Customer enters card details: 4242 4242 4242 4242',
+            'Accept MIT agreement checkbox',
+            'Terms: "I authorize Test Airlines to charge my card according to the instalment schedule"',
+            'Click "Pay Deposit" button',
+            'Initiate 3DS2 authentication flow'
+          ]}
+          dataFlow="Card data tokenized by CyberSource SDK (browser-side)"
+        />
+
+        {/* Step 4: 3DS2 Authentication */}
+        <FlowStep
+          number="4"
+          system="CyberSource - 3DS2"
+          color="orange"
+          title="Strong Customer Authentication"
+          details={[
+            'Customer redirected to bank 3DS2 page',
+            'Enter OTP or biometric authentication',
+            '3DS2 authentication successful',
+            'Authentication result returned to payment page',
+            'Network token created by CyberSource'
+          ]}
+          dataFlow="3DS2 auth → Token: tok_visa_xxxx1234"
+        />
+
+        {/* Step 5: CIT Authorization */}
+        <FlowStep
+          number="5"
+          system="NPP → XPP → CyberSource"
+          color="purple"
+          title="Process CIT Authorization"
+          details={[
+            'NPP sends payment request to XPP',
+            'XPP routes to CyberSource with CIT parameters',
+            'CyberSource processes authorization (£120)',
+            'CyberSource creates network token for future MITs',
+            'Authorization approved',
+            'Token stored in NPP Token Vault'
+          ]}
+          dataFlow="POST /xpp/api/authorize → Transaction ID: TXN-CIT-001 → Status: APPROVED"
+        />
+
+        {/* Step 6: Capture & Booking */}
+        <FlowStep
+          number="6"
+          system="NPP + Amadeus"
+          color="purple"
+          title="Capture Payment & Create Booking"
+          details={[
+            'Capture £120 from authorization',
+            'Update instalment plan status: ACTIVE',
+            'Create PNR in Amadeus with instalment flag',
+            'Schedule next MIT for 30 days later',
+            'Send confirmation email to customer',
+            'Display booking reference: ABC123'
+          ]}
+          dataFlow="PNR: ABC123 | Instalment Plan: INS-2024-001 | Next MIT: 2024-02-15"
+        />
+      </div>
+    </div>
+  );
+}
+
+// MIT Flow Diagram Component
+function MITFlowDiagram() {
+  return (
+    <div className="space-y-6">
+      <div className="text-center mb-6">
+        <h3 className="text-xl font-semibold text-blue-700 mb-2">Recurring Payment Flow (MIT)</h3>
+        <p className="text-sm text-gray-600">Automated monthly payment without customer interaction</p>
+      </div>
+
+      <div className="space-y-4">
+        {/* Step 1: Scheduler Trigger */}
+        <FlowStep
+          number="1"
+          system="NPP - MIT Scheduler"
+          color="purple"
+          title="Identify Due Instalments"
+          details={[
+            'Cron job runs daily at 02:00 UTC',
+            'Query database for instalments due today',
+            'Find plan INS-2024-001: £60 due on 2024-02-15',
+            'Verify booking still active in Amadeus',
+            'Retrieve stored network token from vault',
+            'Prepare MIT payment request'
+          ]}
+          dataFlow="SELECT * FROM instalments WHERE due_date = CURRENT_DATE AND status = 'PENDING'"
+        />
+
+        {/* Step 2: Pre-notification */}
+        <FlowStep
+          number="2"
+          system="NPP - Notifications"
+          color="purple"
+          title="Customer Pre-Notification"
+          details={[
+            'Send reminder email 3 days before: "Upcoming payment on Feb 15"',
+            'SMS notification (if enabled): "£60 will be charged in 3 days"',
+            'Allow customer to update payment method if needed',
+            'Check for sufficient funds (optional pre-auth check)'
+          ]}
+          dataFlow="Email sent via SendGrid | SMS via Twilio"
+        />
+
+        {/* Step 3: MIT Execution */}
+        <FlowStep
+          number="3"
+          system="NPP → XPP → CyberSource"
+          color="indigo"
+          title="Execute MIT Transaction"
+          details={[
+            'NPP sends MIT request to XPP',
+            'XPP adds routing logic and idempotency key',
+            'XPP forwards to CyberSource with MIT parameters',
+            'commerceIndicator: "recurring"',
+            'initiator: "merchant"',
+            'reason: "instalment"',
+            'previousTransactionId: TXN-CIT-001 (original CIT)'
+          ]}
+          dataFlow="POST /xpp/api/charge → MIT Transaction ID: TXN-MIT-002"
+        />
+
+        {/* Step 4: Authorization */}
+        <FlowStep
+          number="4"
+          system="CyberSource → Card Network"
+          color="orange"
+          title="Process MIT Authorization"
+          details={[
+            'CyberSource sends MIT auth to Visa network',
+            'No 3DS2 required (MIT exemption)',
+            'Card issuer approves transaction',
+            'Authorization code received: 123456',
+            'Webhook sent to XPP: Payment successful'
+          ]}
+          dataFlow="Authorization successful | Amount: £60.00 | Auth Code: 123456"
+        />
+
+        {/* Step 5: Success Handling */}
+        <FlowStep
+          number="5"
+          system="NPP - Payment Processing"
+          color="purple"
+          title="Update Records & Notify"
+          details={[
+            'Update instalment record: status = PAID',
+            'Update plan: payments_completed = 2/6',
+            'Capture funds (if not auto-captured)',
+            'Update PNR in Amadeus with payment',
+            'Send success email: "Payment processed: £60"',
+            'Schedule next MIT for March 15'
+          ]}
+          dataFlow="Instalment 2/6 completed | Next MIT scheduled: 2024-03-15"
+        />
+
+        {/* Step 6: Failure Handling (if applicable) */}
+        <FlowStep
+          number="6"
+          system="NPP - Retry Logic"
+          color="red"
+          title="Handle Failed Payment (If Occurs)"
+          details={[
+            'If MIT fails: Log failure reason',
+            'Schedule retry #1 in 24 hours',
+            'Send failed payment email to customer',
+            'After 3 failed attempts: Escalate to manual review',
+            'Cancel booking if payment not received after 5 days',
+            'Process refund for previously paid instalments'
+          ]}
+          dataFlow="Retry attempt 1/3 | Next retry: 2024-02-16 02:00"
+        />
+      </div>
+    </div>
+  );
+}
+
+// Flow Step Component
+function FlowStep({
+  number,
+  system,
+  color,
+  title,
+  details,
+  dataFlow
+}: {
+  number: string;
+  system: string;
+  color: string;
+  title: string;
+  details: string[];
+  dataFlow: string;
+}) {
+  const colorClasses = {
+    blue: 'bg-blue-50 border-blue-200',
+    purple: 'bg-purple-50 border-purple-200',
+    indigo: 'bg-indigo-50 border-indigo-200',
+    orange: 'bg-orange-50 border-orange-200',
+    green: 'bg-green-50 border-green-200',
+    red: 'bg-red-50 border-red-200',
+    teal: 'bg-teal-50 border-teal-200',
+  }[color];
+
+  return (
+    <div className={`${colorClasses} border-2 rounded-xl p-5`}>
+      <div className="flex items-start gap-4">
+        <div className={`flex-shrink-0 w-10 h-10 rounded-full bg-${color}-200 flex items-center justify-center font-bold text-${color}-900`}>
+          {number}
+        </div>
+        <div className="flex-1">
+          <div className="mb-2">
+            <span className={`px-2 py-1 bg-${color}-200 text-${color}-900 text-xs rounded-full font-semibold`}>
+              {system}
+            </span>
           </div>
-          <div className="flex-1 pt-1">
-            <h2 className="text-xl font-semibold text-gray-900 mb-1">{title}</h2>
+          <h4 className="font-semibold text-gray-900 mb-3">{title}</h4>
+          <ul className="space-y-1.5 mb-3">
+            {details.map((detail, idx) => (
+              <li key={idx} className="text-sm text-gray-700 flex items-start gap-2">
+                <span className="text-gray-400 mt-1">•</span>
+                <span>{detail}</span>
+              </li>
+            ))}
+          </ul>
+          <div className="bg-white/60 rounded p-3 border border-gray-200">
+            <div className="text-xs font-mono text-gray-600">{dataFlow}</div>
           </div>
         </div>
-      </button>
+      </div>
+    </div>
+  );
+}
 
-      {isActive && (
-        <div className="ml-11 mt-4 text-gray-700">
-          {children}
+// System Component Detail Component
+function SystemComponentDetail({
+  title,
+  color,
+  icon,
+  description,
+  responsibilities,
+  technicalDetails,
+  businessRules,
+  apiExamples
+}: {
+  title: string;
+  color: string;
+  icon: string;
+  description: string;
+  responsibilities: string[];
+  technicalDetails: string[];
+  businessRules?: string[];
+  apiExamples?: Array<{ type: string; code: string }>;
+}) {
+  const colorClasses = {
+    blue: 'border-blue-300',
+    purple: 'border-purple-300',
+    indigo: 'border-indigo-300',
+    orange: 'border-orange-300',
+    teal: 'border-teal-300',
+  }[color];
+
+  return (
+    <div className={`border-l-4 ${colorClasses} bg-white rounded-r-xl p-6 shadow-sm`}>
+      <div className="flex items-center gap-3 mb-4">
+        <span className="text-3xl">{icon}</span>
+        <div>
+          <h3 className="text-xl font-semibold text-gray-900">{title}</h3>
+          <p className="text-sm text-gray-600">{description}</p>
+        </div>
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-6">
+        <div>
+          <h4 className="font-semibold text-gray-900 mb-2">Responsibilities</h4>
+          <ul className="space-y-1.5">
+            {responsibilities.map((item, idx) => (
+              <li key={idx} className="text-sm text-gray-700 flex items-start gap-2">
+                <span className="text-blue-500 mt-1">▸</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h4 className="font-semibold text-gray-900 mb-2">Technical Details</h4>
+          <ul className="space-y-1.5">
+            {technicalDetails.map((item, idx) => (
+              <li key={idx} className="text-sm text-gray-700 flex items-start gap-2">
+                <span className="text-purple-500 mt-1">▸</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      {businessRules && (
+        <div className="mt-4 bg-gray-50 rounded-lg p-4">
+          <h4 className="font-semibold text-gray-900 mb-2">Business Rules</h4>
+          <div className="grid md:grid-cols-2 gap-2">
+            {businessRules.map((rule, idx) => (
+              <div key={idx} className="text-sm text-gray-700">
+                • {rule}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {apiExamples && (
+        <div className="mt-4 space-y-3">
+          {apiExamples.map((example, idx) => (
+            <div key={idx}>
+              <h4 className="font-semibold text-gray-900 mb-2 text-sm">{example.type}</h4>
+              <pre className="bg-gray-50 rounded p-3 overflow-x-auto text-xs font-mono text-gray-700 border border-gray-200">
+                {example.code}
+              </pre>
+            </div>
+          ))}
         </div>
       )}
     </div>
   );
 }
 
-// Feature Pill Component
-function FeaturePill({ icon, label }: { icon: string; label: string }) {
-  return (
-    <div className="bg-white border border-gray-200 rounded-full px-3 py-2 text-center text-sm">
-      <span className="mr-1">{icon}</span>
-      <span className="text-gray-700">{label}</span>
-    </div>
-  );
-}
-
-// System Card Component
-function SystemCard({
-  emoji,
+// Comparison Card Component
+function ComparisonCard({
   title,
-  description,
-  details
-}: {
-  emoji: string;
-  title: string;
-  description: string;
-  details: string[];
-}) {
-  return (
-    <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
-      <div className="flex items-center gap-3 mb-2">
-        <span className="text-2xl">{emoji}</span>
-        <div>
-          <h4 className="font-semibold text-gray-900">{title}</h4>
-          <p className="text-sm text-gray-600">{description}</p>
-        </div>
-      </div>
-      <ul className="ml-11 space-y-1 text-sm text-gray-700">
-        {details.map((detail, idx) => (
-          <li key={idx}>• {detail}</li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
-// Flow Phase Component
-function FlowPhase({
-  phase,
-  steps
-}: {
-  phase: string;
-  steps: Array<{ num: number; title: string; desc: string }>;
-}) {
-  return (
-    <div>
-      <h4 className="font-semibold text-gray-900 mb-3">{phase}</h4>
-      <div className="space-y-2">
-        {steps.map((step) => (
-          <div key={step.num} className="flex gap-3 pl-2">
-            <div className="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-xs font-semibold">
-              {step.num}
-            </div>
-            <div className="flex-1 pb-3 border-b border-gray-100 last:border-0">
-              <div className="font-medium text-gray-900 text-sm">{step.title}</div>
-              <div className="text-sm text-gray-600 mt-0.5">{step.desc}</div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-// Comparison Table Component
-function ComparisonTable({
-  leftTitle,
-  leftBadge,
-  leftItems,
-  rightTitle,
-  rightBadge,
-  rightItems
-}: {
-  leftTitle: string;
-  leftBadge: string;
-  leftItems: Array<{ label: string; value: string }>;
-  rightTitle: string;
-  rightBadge: string;
-  rightItems: Array<{ label: string; value: string }>;
-}) {
-  return (
-    <div className="grid md:grid-cols-2 gap-4">
-      <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-        <div className="flex items-center justify-between mb-4">
-          <h4 className="font-semibold text-gray-900">{leftTitle}</h4>
-          <span className="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full">{leftBadge}</span>
-        </div>
-        <div className="space-y-2">
-          {leftItems.map((item, idx) => (
-            <div key={idx} className="text-sm">
-              <div className="text-gray-600">{item.label}</div>
-              <div className="font-medium text-gray-900">{item.value}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-        <div className="flex items-center justify-between mb-4">
-          <h4 className="font-semibold text-gray-900">{rightTitle}</h4>
-          <span className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full">{rightBadge}</span>
-        </div>
-        <div className="space-y-2">
-          {rightItems.map((item, idx) => (
-            <div key={idx} className="text-sm">
-              <div className="text-gray-600">{item.label}</div>
-              <div className="font-medium text-gray-900">{item.value}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// Engine Component Card
-function EngineComponent({
-  title,
-  description,
+  badge,
+  color,
   items
 }: {
   title: string;
-  description: string;
-  items: string[];
+  badge: string;
+  color: string;
+  items: Array<{ label: string; value: string }>;
 }) {
-  return (
-    <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
-      <h4 className="font-semibold text-gray-900 mb-1">{title}</h4>
-      <p className="text-sm text-gray-600 mb-3">{description}</p>
-      <ul className="space-y-1 text-sm text-gray-700">
-        {items.map((item, idx) => (
-          <li key={idx}>• {item}</li>
-        ))}
-      </ul>
-    </div>
-  );
-}
+  const colorClasses = {
+    green: 'bg-green-50 border-green-200',
+    blue: 'bg-blue-50 border-blue-200',
+  }[color];
 
-// Rule Category Component
-function RuleCategory({
-  title,
-  rules
-}: {
-  title: string;
-  rules: Array<{ name: string; value: string; configurable: boolean }>;
-}) {
   return (
-    <div className="bg-gray-50 rounded-lg p-4">
-      <h4 className="font-semibold text-gray-900 mb-3">{title}</h4>
-      <div className="space-y-2">
-        {rules.map((rule, idx) => (
-          <div key={idx} className="flex items-center justify-between text-sm">
-            <span className="text-gray-700">{rule.name}</span>
-            <div className="flex items-center gap-2">
-              <span className="font-medium text-gray-900">{rule.value}</span>
-              {rule.configurable && (
-                <span className="px-2 py-0.5 bg-green-100 text-green-700 text-xs rounded">Config</span>
-              )}
-            </div>
+    <div className={`${colorClasses} border-2 rounded-xl p-5`}>
+      <div className="flex items-center justify-between mb-4">
+        <h3 className="font-semibold text-gray-900">{title}</h3>
+        <span className={`px-3 py-1 bg-${color}-100 text-${color}-700 text-xs rounded-full font-semibold`}>
+          {badge}
+        </span>
+      </div>
+      <div className="space-y-3">
+        {items.map((item, idx) => (
+          <div key={idx} className="border-b border-gray-200 pb-2 last:border-0">
+            <div className="text-xs font-semibold text-gray-600 mb-1">{item.label}</div>
+            <div className="text-sm text-gray-900">{item.value}</div>
           </div>
         ))}
       </div>
-    </div>
-  );
-}
-
-// Requirement Section Component
-function RequirementSection({ title, items }: { title: string; items: string[] }) {
-  return (
-    <div>
-      <h4 className="font-semibold text-gray-900 mb-2">{title}</h4>
-      <ul className="space-y-1 text-sm text-gray-700">
-        {items.map((item, idx) => (
-          <li key={idx}>• {item}</li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
-// Checklist Item Component
-function ChecklistItem({ text }: { text: string }) {
-  return (
-    <div className="flex items-center gap-2 text-sm text-gray-700 py-2 px-3 bg-gray-50 rounded hover:bg-gray-100 transition">
-      <div className="w-4 h-4 rounded border-2 border-gray-300 flex-shrink-0" />
-      <span>{text}</span>
     </div>
   );
 }

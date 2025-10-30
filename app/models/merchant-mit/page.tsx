@@ -85,11 +85,11 @@ export default function MerchantMITPage() {
             <div className="bg-white rounded-2xl border border-gray-200 p-6 relative">
               <Link
                 href="/models/merchant-mit/details"
-                className="absolute top-4 right-4 p-2 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-600 transition-colors group"
+                className="absolute top-4 right-4 flex items-center gap-2 px-3 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white transition-colors shadow-sm text-sm font-medium"
                 title="View Technical Documentation"
               >
-                <BookOpen className="w-5 h-5" />
-                <span className="sr-only">View Technical Documentation</span>
+                <BookOpen className="w-4 h-4" />
+                <span>Technical Docs</span>
               </Link>
               <div className="flex items-center gap-3 mb-4">
                 <div className="badge border-purple-200 bg-purple-50 text-purple-700">
@@ -99,7 +99,7 @@ export default function MerchantMITPage() {
                   Recurring Debits
                 </div>
               </div>
-              <h1 className="text-2xl font-bold text-gray-900 mb-2 pr-12">Initial CIT + Monthly MIT Debits</h1>
+              <h1 className="text-2xl font-bold text-gray-900 mb-2 pr-40">Initial CIT + Monthly MIT Debits</h1>
               <p className="text-gray-600">
                 Strong Customer Authentication for the first payment, then Merchant Initiated Transaction (MIT) debits monthly using stored credentials or network tokens.
               </p>
