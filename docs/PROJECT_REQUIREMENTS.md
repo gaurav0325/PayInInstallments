@@ -3,7 +3,7 @@
 ## Project Brief
 Build a BA Instalments Playground (All Instalment Models) + Next.js Scaffold
 
-You are a senior full‑stack engineer and product designer. Build a working, animated **web application** that demonstrates **all common airline/merchant instalment models** with a **British Airways style checkout**. Each model must have its own interactive page that takes the customer from **instalment selection** all the way to a **final payment confirmation** (simulated). Keep the UI simple and elegant with a **ChatGPT‑like** feel, but use BA/airline design cues.
+You are a senior full‑stack engineer and product designer. Build a working, animated **web application** that demonstrates **all common airline/merchant instalment models** with a **Test Airlines style checkout**. Each model must have its own interactive page that takes the customer from **instalment selection** all the way to a **final payment confirmation** (simulated). Keep the UI simple and elegant with a **ChatGPT‑like** feel, but use BA/airline design cues.
 
 ## Scope Requirements
 

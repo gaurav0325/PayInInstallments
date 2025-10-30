@@ -396,7 +396,7 @@ export default function HybridPage(){
           <h3 className="text-lg font-semibold mb-4 text-blue-900">✈️ Real Airline References</h3>
           <div className="grid gap-4 md:grid-cols-1 lg:grid-cols-2">
             <div className="border border-gray-200 rounded-lg p-4">
-              <div className="font-medium text-gray-900 mb-2">British Airways</div>
+              <div className="font-medium text-gray-900 mb-2">Test Airlines</div>
               <div className="text-sm text-gray-600 mb-3">Smart routing system that selects optimal instalment provider based on customer profile and market conditions</div>
               <a href="#" onClick={() => alert("Feature reference - actual implementation would link to payment page")} className="text-blue-600 hover:text-blue-700 text-sm font-medium inline-flex items-center gap-1">
                         View Feature <span className="text-xs">🔗</span>

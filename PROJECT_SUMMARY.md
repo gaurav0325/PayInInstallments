@@ -2,7 +2,7 @@
 
 ## 🎯 Project Overview
 
-The **BA Instalments Playground** is a comprehensive web application demonstrating all common airline instalment payment models with British Airways style checkout flows. Built with Next.js 14, TypeScript, and Tailwind CSS, it provides interactive demonstrations of 9 different payment models from BNPL to hybrid orchestrators.
+The **BA Instalments Playground** is a comprehensive web application demonstrating all common airline instalment payment models with Test Airlines style checkout flows. Built with Next.js 14, TypeScript, and Tailwind CSS, it provides interactive demonstrations of 9 different payment models from BNPL to hybrid orchestrators.
 
 **Live Application:** http://localhost:3332  
 **Status:** 🟢 Running Successfully  
@@ -308,7 +308,7 @@ describe('BNPL Flow', () => {
 
 **Functional Requirements:**
 - [x] 9 instalment models with complete interactive flows
-- [x] British Airways style design with airline UX patterns
+- [x] Test Airlines style design with airline UX patterns
 - [x] Business rules engine with eligibility checking
 - [x] Payment simulation with realistic delays and outcomes
 - [x] Terms and conditions with model-specific content

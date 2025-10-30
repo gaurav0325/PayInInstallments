@@ -62,7 +62,7 @@ export default function EmbeddedBNPLPage() {
     { label: 'Funding Source', value: 'Multi-provider financing (SeQura, Aplazame, FLOA)' },
     { label: 'Customer Experience', value: 'Embedded - appears as BA service' },
     { label: 'Tokenisation/MIT', value: 'Managed by financing partner' },
-    { label: 'Merchant of Record', value: 'British Airways (via Iberia Cards)' },
+    { label: 'Merchant of Record', value: 'Test Airlines (via Iberia Cards)' },
     { label: '3DS/Fraud Handling', value: 'Financing partner handles all authentication' },
     { label: 'Additional Fees', value: 'Revenue share with financing partners' },
     { label: '3RI Support', value: 'Per financing partner capabilities' }

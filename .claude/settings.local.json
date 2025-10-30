@@ -31,7 +31,8 @@
       "Bash(start https://vercel.com/dashboard)",
       "Bash(git remote set-url:*)",
       "Bash(start https://github.com/gaurav0325/PayInInstallments/settings)",
-      "Bash(git fetch:*)"
+      "Bash(git fetch:*)",
+      "Bash(xargs sed:*)"
     ],
     "deny": [],
     "ask": []

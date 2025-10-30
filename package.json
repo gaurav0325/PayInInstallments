@@ -1,5 +1,5 @@
 {
-  "name": "ba-instalments-playground",
+  "name": "test-airlines-instalments-playground",
   "private": true,
   "scripts": {
     "dev": "next dev -p 3332 -H 0.0.0.0",

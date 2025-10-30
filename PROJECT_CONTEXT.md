@@ -3,7 +3,7 @@
 ## Project Overview
 **Project Name**: BA Instalments Playground
 **Location**: `C:\Gaurav\Gaurav CV et al\AI project\PayInInstalments`
-**Purpose**: Interactive visualization and demonstration platform for British Airways instalment payment models
+**Purpose**: Interactive visualization and demonstration platform for Test Airlines instalment payment models
 **Technology Stack**: Next.js 14, React 18, TypeScript, Tailwind CSS, Framer Motion
 
 ## 📁 Project Structure

@@ -6,7 +6,7 @@
 
 ## 🎯 Project Overview
 
-The BA Instalments Playground is a comprehensive Next.js 14.2.5 application demonstrating 12 different instalment payment models for British Airways. This application serves as a strategic business tool for understanding, comparing, and prototyping various payment installment approaches.
+The BA Instalments Playground is a comprehensive Next.js 14.2.5 application demonstrating 12 different instalment payment models for Test Airlines. This application serves as a strategic business tool for understanding, comparing, and prototyping various payment installment approaches.
 
 ## 🏗️ Technical Architecture
 

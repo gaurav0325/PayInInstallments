@@ -3,7 +3,7 @@
 ## Project Overview
 
 **Name:** PayInInstalments (BA Instalments Playground)  
-**Purpose:** Comprehensive instalment payment models analysis and demonstration tool for British Airways  
+**Purpose:** Comprehensive instalment payment models analysis and demonstration tool for Test Airlines  
 **Technology Stack:** Next.js 14, React 18, TypeScript, Tailwind CSS, Framer Motion  
 **Development Date:** September 2025  
 **Primary Focus:** Airline-specific payment model comparison and analysis
@@ -217,7 +217,7 @@ interface ComparisonData {
 
 ## Key Stakeholder Benefits
 
-### For British Airways
+### For Test Airlines
 - **Strategic payment model comparison**
 - **Risk assessment framework**
 - **Implementation cost analysis**

@@ -126,25 +126,25 @@ export function PictorialSequenceDiagram({ title, steps, actors }: PictorialSequ
 export const COMMON_ACTORS = {
   BASIC_PAYMENT: {
     Customer: { name: 'Customer', icon: '👤', color: 'bg-blue-500' },
-    BA: { name: 'British Airways', icon: '✈️', color: 'bg-red-500' },
+    BA: { name: 'Test Airlines', icon: '✈️', color: 'bg-red-500' },
     Bank: { name: 'Bank', icon: '🏦', color: 'bg-green-500' }
   },
   BNPL_FLOW: {
     Customer: { name: 'Customer', icon: '👤', color: 'bg-blue-500' },
-    BA: { name: 'British Airways', icon: '✈️', color: 'bg-red-500' },
+    BA: { name: 'Test Airlines', icon: '✈️', color: 'bg-red-500' },
     Provider: { name: 'BNPL Provider', icon: '💳', color: 'bg-purple-500' },
     Bank: { name: 'Bank', icon: '🏦', color: 'bg-green-500' }
   },
   ACQUIRER_FLOW: {
     Customer: { name: 'Customer', icon: '👤', color: 'bg-blue-500' },
-    BA: { name: 'British Airways', icon: '✈️', color: 'bg-red-500' },
+    BA: { name: 'Test Airlines', icon: '✈️', color: 'bg-red-500' },
     Amadeus: { name: 'Amadeus', icon: '⚙️', color: 'bg-orange-500' },
     Acquirer: { name: 'Acquirer', icon: '🔄', color: 'bg-indigo-500' },
     Bank: { name: 'Bank', icon: '🏦', color: 'bg-green-500' }
   },
   PSP_FLOW: {
     Customer: { name: 'Customer', icon: '👤', color: 'bg-blue-500' },
-    BA: { name: 'British Airways', icon: '✈️', color: 'bg-red-500' },
+    BA: { name: 'Test Airlines', icon: '✈️', color: 'bg-red-500' },
     PSP: { name: 'PSP', icon: '🛡️', color: 'bg-cyan-500' },
     Bank: { name: 'Bank', icon: '🏦', color: 'bg-green-500' }
   }

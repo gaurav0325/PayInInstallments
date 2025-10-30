@@ -53,7 +53,7 @@ export default function AcquirerPage() {
     { label: 'Funding Source', value: 'Amadeus provides upfront settlement to BA' },
     { label: 'Customer Experience', value: 'Seamless - embedded in checkout flow' },
     { label: 'Tokenisation/MIT', value: 'Single auth token with multiple staged captures' },
-    { label: 'Merchant of Record', value: 'British Airways via Amadeus processing' },
+    { label: 'Merchant of Record', value: 'Test Airlines via Amadeus processing' },
     { label: '3DS/Fraud Handling', value: 'Amadeus handles authentication and fraud screening' },
     { label: 'Additional Fees', value: 'Amadeus processing fees + optional interest to customer' },
     { label: '3RI Support', value: 'Yes - supports 3DS Requestor Initiated transactions' },

@@ -24,11 +24,11 @@ export function NavigationHeader() {
     <nav className="bg-white border-b border-gray-200 sticky top-0 z-40">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          {/* British Airways - Far Left */}
+          {/* Test Airlines - Far Left */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center space-x-2">
               <div className="text-xl font-bold text-gray-900 tracking-tight">
-                British Airways
+                Test Airlines
               </div>
               <div className="text-sm text-gray-500">
                 Instalments
@@ -51,9 +51,18 @@ export function NavigationHeader() {
             </div>
           </div>
 
-          {/* Smart Notes - Top Right */}
-          <div className="flex-shrink-0">
+          {/* Smart Notes and Logout - Top Right */}
+          <div className="flex-shrink-0 flex items-center space-x-3">
             <EnhancedNotesSection isCompact={true} />
+            <button
+              onClick={async () => {
+                await fetch('/api/auth/logout', { method: 'POST' });
+                window.location.href = '/login';
+              }}
+              className="px-3 py-1.5 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
+            >
+              Logout
+            </button>
           </div>
 
           {/* Mobile Menu Button */}

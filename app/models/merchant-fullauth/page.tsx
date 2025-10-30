@@ -52,7 +52,7 @@ export default function MerchantFullAuthPage() {
     { label: 'Funding Source', value: 'BA provides upfront service, collects over time' },
     { label: 'Customer Experience', value: 'Simple - appears as normal payment to customer' },
     { label: 'Tokenisation/MIT', value: 'Optional - uses single authorisation token' },
-    { label: 'Merchant of Record', value: 'British Airways' },
+    { label: 'Merchant of Record', value: 'Test Airlines' },
     { label: '3DS/Fraud Handling', value: 'Initial 3DS authentication, BA fraud monitoring' },
     { label: 'Additional Fees', value: 'Interest/admin fees as per BA policy' },
     { label: '3RI Support', value: 'No - single CIT authorisation only' }

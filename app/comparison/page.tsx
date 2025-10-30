@@ -107,7 +107,7 @@ export default function ComparisonPage() {
           <h3 className="text-lg font-semibold mb-4 text-gray-900">About This Comparison</h3>
           <div className="prose text-gray-700 max-w-none">
             <p className="mb-4">
-              This comprehensive comparison table evaluates all instalment models from British Airways' perspective, 
+              This comprehensive comparison table evaluates all instalment models from Test Airlines' perspective, 
               focusing on strategic business considerations including revenue impact, risk exposure, and operational complexity.
             </p>
             <div className="grid md:grid-cols-2 gap-6 text-sm">

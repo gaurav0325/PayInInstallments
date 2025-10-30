@@ -55,7 +55,7 @@ export default function MerchantMITPage() {
     { label: 'Funding Source', value: 'BA finances customer, collects via MIT debits' },
     { label: 'Customer Experience', value: 'Standard - initial payment + monthly debits' },
     { label: 'Tokenisation/MIT', value: 'Required - network tokens for recurring payments' },
-    { label: 'Merchant of Record', value: 'British Airways' },
+    { label: 'Merchant of Record', value: 'Test Airlines' },
     { label: '3DS/Fraud Handling', value: 'Initial SCA required, MIT exemptions thereafter' },
     { label: 'Additional Fees', value: 'Interest/admin fees as per BA policy' },
     { label: '3RI Support', value: 'Yes - 3DS Requestor Initiated for MIT transactions' }

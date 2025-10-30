@@ -39,7 +39,7 @@ export default function HoldMyFarePage() {
     { label: 'Hold Fee', value: `£${holdOptions.find(h => h.id === holdOption)?.fee || 20}` },
     { label: 'Fee Refundability', value: 'Non-refundable under any circumstances' },
     { label: 'Ticket Issuance', value: 'Only after full balance payment' },
-    { label: 'Risk Owner', value: 'British Airways (blocked seat revenue risk)' },
+    { label: 'Risk Owner', value: 'Test Airlines (blocked seat revenue risk)' },
     { label: 'Financing Model', value: 'No external financing - airline carries risk' },
     { label: 'Balance Payment', value: 'Full payment or instalments (if available)' },
     { label: 'Expiry Handling', value: 'Auto-cancellation with hold fee forfeited' }

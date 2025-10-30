@@ -238,7 +238,7 @@ export function InstalmentsComparisonTable() {
         />
       </div>
       <p className="text-red-700 mb-6 text-lg font-medium">
-        Strategic comparison of instalment models from British Airways' perspective - focussing on revenue impact, risk exposure, and operational considerations.
+        Strategic comparison of instalment models from Test Airlines' perspective - focussing on revenue impact, risk exposure, and operational considerations.
       </p>
       
       {/* Enhanced table with horizontal scroll and frozen columns */}

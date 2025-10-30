@@ -1,7 +1,7 @@
 # BA Instalments Playground - Project Documentation
 
 ## Project Overview
-**Project Name:** British Airways Instalments Playground  
+**Project Name:** Test Airlines Instalments Playground  
 **Port:** 3332 (localhost:3332)  
 **Framework:** Next.js 14 with App Router  
 **Language:** TypeScript  
@@ -211,7 +211,7 @@ Each model has its own page under `/models/{model-name}/` with:
 - **Animation Performance:** Consistent 60fps
 
 ## Project Context
-This is an internal demonstration application for British Airways to explore various instalment payment models. The application serves as a playground for testing different payment flows, user experiences, and integration patterns with various payment providers including BNPL partners, acquirers, and card issuers.
+This is an internal demonstration application for Test Airlines to explore various instalment payment models. The application serves as a playground for testing different payment flows, user experiences, and integration patterns with various payment providers including BNPL partners, acquirers, and card issuers.
 
 ## Recent Changes Log
 - **2025-09-04:** Enhanced Apple UX styling, implemented sound effects

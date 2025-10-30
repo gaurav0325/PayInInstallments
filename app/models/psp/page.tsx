@@ -94,7 +94,7 @@ export default function PSPPage(){
     { label: 'Funding Source', value: 'PSP manages payment collection and settlement', importance: 'medium' as const, type: 'neutral' as const },
     { label: 'Customer Experience', value: 'Embedded - appears as BA service with PSP power', importance: 'high' as const, type: 'positive' as const },
     { label: 'Tokenisation/MIT', value: 'Optional - PSP handles token management', importance: 'low' as const, type: 'neutral' as const },
-    { label: 'Merchant of Record', value: 'British Airways', importance: 'medium' as const, type: 'positive' as const },
+    { label: 'Merchant of Record', value: 'Test Airlines', importance: 'medium' as const, type: 'positive' as const },
     { label: '3DS/Fraud Handling', value: 'PSP handles all authentication and fraud screening', importance: 'medium' as const, type: 'positive' as const },
     { label: 'Additional Fees', value: 'PSP processing fees + potential customer service charges', importance: 'medium' as const, type: 'warning' as const },
     { label: '3RI Support', value: 'Minimal - basic recurring payment support', importance: 'low' as const, type: 'negative' as const }
