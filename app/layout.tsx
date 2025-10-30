@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { ToastContainer } from '@/components/Toasts'
 
 export const metadata = {
-  title: 'BA Installments Playground',
+  title: 'BA Instalments Playground',
   description: 'Demonstration of airline instalment payment models'
 }
 
@@ -22,7 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <span className="font-semibold tracking-wide">British Airways</span>
-              <span className="text-white/80 text-sm hidden sm:inline">Pay in Installments · Simulation</span>
+              <span className="text-white/80 text-sm hidden sm:inline">Pay in Instalments · Simulation</span>
             </div>
             <nav className="hidden md:flex gap-4 text-sm">
               <Link href="/" className="hover:underline px-2 py-1">Home</Link>

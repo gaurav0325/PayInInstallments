@@ -10,7 +10,7 @@ export default function Home() {
   // Merchant-Financed Models
   const merchantModels = [
     {
-      title: 'Merchant-financed (Full Auth) Installments',
+      title: 'Merchant-financed (Full Auth) Instalments',
       href: '/models/merchant-fullauth',
       description: 'Single full authorisation with staged captures via acquirer',
       hoverDescription: 'BA authorises full amount upfront, then captures in instalments. Lower risk but requires acquirer support for staged captures. Interest income stays with BA.',
@@ -19,7 +19,7 @@ export default function Home() {
       highlighted: false
     },
     {
-      title: 'Merchant-financed (MIT) Installments',
+      title: 'Merchant-financed (MIT) Instalments',
       href: '/models/merchant-mit',
       description: 'Initial CIT with SCA + monthly MIT debits using stored credentials',
       hoverDescription: 'Initial payment with SCA, then MIT debits monthly. BA owns customer relationship and payment schedule. Requires network tokenisation and MIT compliance.',
@@ -41,7 +41,7 @@ export default function Home() {
       highlighted: true
     },
     {
-      title: 'Merchant-embedded BNPL Installments',
+      title: 'Merchant-embedded BNPL Instalments',
       href: '/models/embedded-bnpl',
       description: 'Iberia Cards orchestrated BNPL with multiple financing partners',
       hoverDescription: 'Strategic BNPL via Iberia Cards subsidiary. Multi-provider financing (SeQura, Aplazame, FLOA) with revenue share and loyalty integration. Spain market only.',
@@ -76,7 +76,7 @@ export default function Home() {
   // Deposit & Flexible Models
   const depositModels = [
     {
-      title: 'Deposit + Installments',
+      title: 'Deposit + Instalments',
       href: '/models/deposit-instalments',
       description: 'BA Holidays low deposit system with flexible payment timing',
       hoverDescription: 'Low deposit secures booking (£99-£220), customer controls payment schedule. Balance due 4-7 weeks before travel. OpenJaw solution with ATOL protection.',
@@ -153,9 +153,9 @@ export default function Home() {
           <div className="text-center space-y-4">
             <div className="space-y-2">
               <div className="flex items-center justify-center gap-4">
-                <h1 className="text-4xl font-bold text-gray-900 tracking-tight">Installments Playground</h1>
+                <h1 className="text-4xl font-bold text-gray-900 tracking-tight">Instalments Playground</h1>
                 <a 
-                  href="https://britishairways.atlassian.net/wiki/spaces/BCPNP/pages/156183549/Pay+in+Installments"
+                  href="https://britishairways.atlassian.net/wiki/spaces/BCPNP/pages/156183549/Pay+in+Instalments"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center w-10 h-10 bg-blue-100 hover:bg-blue-200 rounded-lg transition-colours group"
@@ -321,7 +321,7 @@ export default function Home() {
               </motion.div>
             </motion.div>
 
-            {/* Installments Comparison Table */}
+            {/* Instalments Comparison Table */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

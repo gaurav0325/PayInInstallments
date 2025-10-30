@@ -1,4 +1,4 @@
-# BA Installments Playground - Complete Project Structure
+# BA Instalments Playground - Complete Project Structure
 
 ## 📁 Directory Structure
 
@@ -304,4 +304,4 @@ npm run cy:run  # Run headless E2E tests
 - **Error handling** without information leakage
 - **Mock data** only - no real payment processing
 
-This structure provides a solid foundation for understanding and extending the BA Installments Playground application.
+This structure provides a solid foundation for understanding and extending the BA Instalments Playground application.

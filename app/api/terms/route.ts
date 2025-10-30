@@ -80,7 +80,7 @@ const termsContent: Record<string, Record<string, string>> = {
   },
   'psp': {
     'default': `
-      <h4>PSP Installments Terms</h4>
+      <h4>PSP Instalments Terms</h4>
       <ul>
         <li>Payment split managed by payment processor</li>
         <li>Network tokenization for secure recurring payments</li>
@@ -94,7 +94,7 @@ const termsContent: Record<string, Record<string, string>> = {
   },
   'merchant': {
     'default': `
-      <h4>BA Installments Terms</h4>
+      <h4>BA Instalments Terms</h4>
       <ul>
         <li>Deposit paid today, balance split across agreed installments</li>
         <li>Payment schedule aligned with travel dates where possible</li>
@@ -108,7 +108,7 @@ const termsContent: Record<string, Record<string, string>> = {
   },
   'merchant-fullauth': {
     'default': `
-      <h4>BA Full Authorisation Installments Terms</h4>
+      <h4>BA Full Authorisation Instalments Terms</h4>
       <ul>
         <li>Full amount authorised upfront on your card</li>
         <li>Payment captured in installments according to schedule</li>
@@ -123,7 +123,7 @@ const termsContent: Record<string, Record<string, string>> = {
   },
   'merchant-mit': {
     'default': `
-      <h4>BA MIT Installments Terms</h4>
+      <h4>BA MIT Instalments Terms</h4>
       <ul>
         <li>Initial payment requires 3D Secure authentication</li>
         <li>Subsequent payments processed as Merchant Initiated Transactions</li>
@@ -138,7 +138,7 @@ const termsContent: Record<string, Record<string, string>> = {
   },
   'deposit-instalments': {
     'default': `
-      <h4>Deposit Installments Terms</h4>
+      <h4>Deposit Instalments Terms</h4>
       <ul>
         <li>Initial deposit secures your booking today</li>
         <li>Remaining balance split into installments</li>
@@ -153,7 +153,7 @@ const termsContent: Record<string, Record<string, string>> = {
   },
   'acquirer': {
     'default': `
-      <h4>Acquirer Installments Terms</h4>
+      <h4>Acquirer Instalments Terms</h4>
       <ul>
         <li>Installment plan managed by payment acquirer</li>
         <li>BA receives full payment upfront from acquirer</li>
@@ -166,7 +166,7 @@ const termsContent: Record<string, Record<string, string>> = {
   },
   'issuer-pre': {
     'default': `
-      <h4>Bank Installments Terms (Pre-purchase)</h4>
+      <h4>Bank Instalments Terms (Pre-purchase)</h4>
       <ul>
         <li>Installment conversion offered by your card issuing bank</li>
         <li>BA receives full payment immediately</li>
@@ -179,7 +179,7 @@ const termsContent: Record<string, Record<string, string>> = {
   },
   'issuer-post': {
     'default': `
-      <h4>Bank Installments Terms (Post-purchase)</h4>
+      <h4>Bank Instalments Terms (Post-purchase)</h4>
       <ul>
         <li>Transaction completed as standard card payment</li>
         <li>Bank installment conversion available after checkout</li>
@@ -219,7 +219,7 @@ const termsContent: Record<string, Record<string, string>> = {
   },
   'hybrid': {
     'default': `
-      <h4>Smart Installments Terms</h4>
+      <h4>Smart Instalments Terms</h4>
       <ul>
         <li>Terms depend on the installment model selected by our system</li>
         <li>Routing based on eligibility, market, and optimal customer terms</li>

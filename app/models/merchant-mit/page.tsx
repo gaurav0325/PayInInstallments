@@ -69,7 +69,7 @@ export default function MerchantMITPage() {
     },
     {
       id: 'instalments',
-      name: 'BA Installments (MIT)',
+      name: 'BA Instalments (MIT)',
       description: 'Initial payment with Strong Customer Authentication + monthly debits'
     }
   ]
@@ -116,7 +116,7 @@ export default function MerchantMITPage() {
                 <h2 className="text-xl font-semibold mb-4">Select your instalment plan</h2>
                 <div className="bg-purple-50 border border-purple-200 rounded-xl p-4 mb-6">
                   <div className="text-sm text-purple-800">
-                    <div className="font-medium mb-2">How MIT Installments Work</div>
+                    <div className="font-medium mb-2">How MIT Instalments Work</div>
                     <ul className="space-y-1 text-purple-700">
                       <li>• First payment (£{plan ? (amount/plan.months).toFixed(2) : 'XX'}) with Strong Customer Authentication</li>
                       <li>• Your card is securely tokenised for future payments</li>

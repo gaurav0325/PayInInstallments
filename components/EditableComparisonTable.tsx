@@ -142,7 +142,7 @@ export function EditableComparisonTable() {
     },
     {
       id: '7',
-      model: 'Deposit + Installments',
+      model: 'Deposit + Instalments',
       baGetsMoney: 'Deposit upfront + instalment schedule',
       risk: 'Medium - BA bears remaining payment risk',
       complexity: 'Medium - Custom payment scheduling',

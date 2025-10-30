@@ -1,8 +1,8 @@
-# BA Installments Playground - Final Project Status
+# BA Instalments Playground - Final Project Status
 
 ## 🎯 Project Overview
 
-The **BA Installments Playground** is a comprehensive web application demonstrating all common airline instalment payment models with British Airways style checkout flows. Built with Next.js 14, TypeScript, and Tailwind CSS, it provides interactive demonstrations of 9 different payment models from BNPL to hybrid orchestrators.
+The **BA Instalments Playground** is a comprehensive web application demonstrating all common airline instalment payment models with British Airways style checkout flows. Built with Next.js 14, TypeScript, and Tailwind CSS, it provides interactive demonstrations of 9 different payment models from BNPL to hybrid orchestrators.
 
 **Live Application:** http://localhost:3332  
 **Status:** 🟢 Running Successfully  
@@ -70,31 +70,31 @@ The **BA Installments Playground** is a comprehensive web application demonstrat
    - **Credit assessment**: Real-time provider decisioning simulation
    - **Customer experience**: Provider redirect with progress tracking
 
-2. **PSP-Driven Installments** ✅ Enhanced
+2. **PSP-Driven Instalments** ✅ Enhanced
    - **Providers**: CyberSource, Adyen schedulers
    - **Integration**: Embedded modal with MIT consent workflow
    - **Markets**: EU/UK coverage with network tokenization
    - **Technical**: 3D Secure simulation with realistic delays
 
-3. **Merchant-Financed Installments** ✅ Enhanced
+3. **Merchant-Financed Instalments** ✅ Enhanced
    - **Provider**: BA Holidays owns all customer risk
    - **Features**: Travel-aligned payment scheduling
    - **Risk management**: €2000 maximum, sophisticated credit assessment
    - **Customer relationship**: Full BA control over terms and data
 
-4. **Acquirer-Driven Installments** ✅ Enhanced
+4. **Acquirer-Driven Instalments** ✅ Enhanced
    - **Provider**: Amadeus merchant acquirer services
    - **Settlement**: Upfront or scheduled per agreement
    - **Limits**: €5000 maximum per transaction
    - **Integration**: Light redirect with acquirer widget simulation
 
-5. **Issuer Installments (Pre-purchase)** ✅ Enhanced
+5. **Issuer Instalments (Pre-purchase)** ✅ Enhanced
    - **Providers**: BBVA, Santander, CaixaBank
    - **Trigger**: BIN detection for Spanish bank cards
    - **Market**: Spain-specific with regulatory compliance
    - **Experience**: Bank modal with real-time decisioning
 
-6. **Issuer Installments (Post-purchase)** ✅ Enhanced
+6. **Issuer Instalments (Post-purchase)** ✅ Enhanced
    - **Information-only**: Banner directing to bank portals
    - **No integration required**: BA receives full payment immediately
    - **Conversion tracking**: Bank handles customer conversion
@@ -346,7 +346,7 @@ The enhanced application provides:
 
 ## 🎉 Project Enhancement Success
 
-The BA Installments Playground has been successfully enhanced from a comprehensive demonstration to a **business-intelligence-powered application** that provides:
+The BA Instalments Playground has been successfully enhanced from a comprehensive demonstration to a **business-intelligence-powered application** that provides:
 
 1. **Real provider data and constraints** for informed decision-making
 2. **Professional comparison tools** for strategic evaluation  
@@ -379,4 +379,4 @@ The BA Installments Playground has been successfully enhanced from a comprehensi
 - Server logs and performance metrics
 - Implementation timeline and technical decisions
 
-This enhanced BA Installments Playground now serves as both a comprehensive demonstration and a strategic business intelligence tool for understanding the airline instalment payments landscape with real provider data and constraints.
+This enhanced BA Instalments Playground now serves as both a comprehensive demonstration and a strategic business intelligence tool for understanding the airline instalment payments landscape with real provider data and constraints.

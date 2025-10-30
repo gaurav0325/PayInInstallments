@@ -1,8 +1,8 @@
-# BA Installments Playground - Component Library
+# BA Instalments Playground - Component Library
 
 ## 🧩 Component Overview
 
-The BA Installments Playground uses a modular component architecture with reusable components that maintain consistency across all 9 payment models. Each component is built with TypeScript, Tailwind CSS, and follows BA design patterns.
+The BA Instalments Playground uses a modular component architecture with reusable components that maintain consistency across all 9 payment models. Each component is built with TypeScript, Tailwind CSS, and follows BA design patterns.
 
 ---
 
@@ -613,4 +613,4 @@ test('PlanPicker calls onSelect when plan chosen', () => {
 3. **Callback memoization:** Use useCallback for expensive handlers
 4. **Bundle size:** Import only what you need
 
-This component library documentation provides a complete reference for understanding, using, and extending the BA Installments Playground components.
+This component library documentation provides a complete reference for understanding, using, and extending the BA Instalments Playground components.

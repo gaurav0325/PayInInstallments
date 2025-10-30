@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { InstallmentsComparisonTable } from '@/components/InstallmentsComparisonTable'
+import { InstalmentsComparisonTable } from '@/components/InstalmentsComparisonTable'
 
 export default function ComparisonPage() {
   const [exportType, setExportType] = useState<'word' | 'pdf' | null>(null)
@@ -98,7 +98,7 @@ export default function ComparisonPage() {
 
       {/* Main Content with full comparison table */}
       <div className="max-w-7xl mx-auto px-4 py-8">
-        <InstallmentsComparisonTable />
+        <InstalmentsComparisonTable />
       </div>
 
       {/* Additional information section */}

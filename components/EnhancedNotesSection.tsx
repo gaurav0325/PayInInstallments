@@ -152,14 +152,14 @@ export function EnhancedNotesSection({ isCompact = true, modelContext }: Enhance
     
     exportText += `${'='.repeat(60)}\n`
     exportText += `Export completed on ${new Date().toLocaleString()}\n`
-    exportText += `BA Installments Playground - Payment Models Analysis Tool`
+    exportText += `BA Instalments Playground - Payment Models Analysis Tool`
 
     // Create and download text export
     const blob = new Blob([exportText], { type: 'text/plain' })
     const url = URL.createObjectURL(blob)
     const a = document.createElement('a')
     a.href = url
-    a.download = `BA-Installments-Notes-${new Date().toISOString().split('T')[0]}.txt`
+    a.download = `BA-Instalments-Notes-${new Date().toISOString().split('T')[0]}.txt`
     a.click()
     URL.revokeObjectURL(url)
     

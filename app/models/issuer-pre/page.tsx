@@ -326,7 +326,7 @@ export default function IssuerPrePage(){
           <div className="card p-6 bg-white max-w-md w-full mx-4">
             <div className="flex items-center gap-2 mb-4">
               <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center text-white text-xs font-bold">BANK</div>
-              <div className="text-lg font-semibold">Your Bank Installments</div>
+              <div className="text-lg font-semibold">Your Bank Instalments</div>
             </div>
             <div className="text-sm text-gray-600 mb-4">
               Your bank offers instalments for this €{amount} purchase.

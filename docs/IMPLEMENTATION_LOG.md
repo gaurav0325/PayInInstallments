@@ -1,4 +1,4 @@
-# BA Installments Playground - Implementation Log
+# BA Instalments Playground - Implementation Log
 
 ## 📅 Development Timeline
 
@@ -193,21 +193,21 @@
    - Credit assessment flow
    - Real-time rule evaluation
 
-2. **PSP Installments (`/models/psp`)**  
+2. **PSP Instalments (`/models/psp`)**  
    - Embedded modal flow
    - 3D Secure simulation
    - MIT consent display
    - Network tokenization explanation
    - Schedule preview
 
-3. **Merchant Installments (`/models/merchant`)**
+3. **Merchant Instalments (`/models/merchant`)**
    - Deposit percentage selection (20%/30%/50%)
    - Travel-aligned scheduling
    - MIT consent workflow
    - Payment timeline display
    - BA-managed customer relationship
 
-4. **Acquirer Installments (`/models/acquirer`)**
+4. **Acquirer Instalments (`/models/acquirer`)**
    - Light redirect simulation
    - Acquirer widget mockup
    - Upfront settlement explanation
@@ -476,4 +476,4 @@
 - **Test Coverage:** BNPL flow fully covered
 - **Accessibility Score:** AA compliant
 
-This implementation log serves as a complete record of the BA Installments Playground development process, providing context for future maintenance, enhancements, and similar projects.
+This implementation log serves as a complete record of the BA Instalments Playground development process, providing context for future maintenance, enhancements, and similar projects.

@@ -22,9 +22,14 @@
       "Bash(gh auth status:*)",
       "Bash(vercel --version:*)",
       "Bash(vercel whoami)",
-      "Bash(start https://vercel.com/new/import?repository-url=https://github.com/gaurav0325/PayInInstallments)",
+      "Bash(start https://vercel.com/new/import?repository-url=https://github.com/gaurav0325/PayInInstalments)",
       "Bash(find:*)",
-      "Bash(git mv:*)"
+      "Bash(git mv:*)",
+      "Bash(git push:*)",
+      "Read(//c/**)",
+      "Bash(start https://github.com/gaurav0325/PayInInstalments/settings)",
+      "Bash(start https://vercel.com/dashboard)",
+      "Bash(git remote set-url:*)"
     ],
     "deny": [],
     "ask": []

@@ -1,13 +1,13 @@
-# BA Installments Playground - Original Requirements
+# BA Instalments Playground - Original Requirements
 
 ## Project Brief
-Build a BA Installments Playground (All Instalment Models) + Next.js Scaffold
+Build a BA Instalments Playground (All Instalment Models) + Next.js Scaffold
 
 You are a senior full‑stack engineer and product designer. Build a working, animated **web application** that demonstrates **all common airline/merchant instalment models** with a **British Airways style checkout**. Each model must have its own interactive page that takes the customer from **instalment selection** all the way to a **final payment confirmation** (simulated). Keep the UI simple and elegant with a **ChatGPT‑like** feel, but use BA/airline design cues.
 
 ## Scope Requirements
 
-Create a multi‑page demo app called **BA Installments Playground**. Include these instalment model pages:
+Create a multi‑page demo app called **BA Instalments Playground**. Include these instalment model pages:
 
 ### 1. BNPL / Partner‑Financed at Checkout (Iberia‑style)
 - Provider redirect flow (Klarna-style)
@@ -15,25 +15,25 @@ Create a multi‑page demo app called **BA Installments Playground**. Include th
 - DNI/NIE identity verification
 - Credit assessment simulation
 
-### 2. PSP‑Driven Installments
+### 2. PSP‑Driven Instalments
 - Split billing managed by PSP scheduler
 - Embedded modal flow
 - Network tokenization for MIT
 - 3D Secure simulation
 
-### 3. Merchant‑Financed Installments
+### 3. Merchant‑Financed Instalments
 - Deposit and recurring charges owned by merchant
 - Travel-date aligned scheduling
 - MIT consent flows
 - BA manages full customer relationship
 
-### 4. Acquirer‑Driven Installments
+### 4. Acquirer‑Driven Instalments
 - Acquirer product manages splits
 - Light redirect to acquirer widget
 - Upfront settlement to merchant
 - Acquirer handles risk and disputes
 
-### 5. Issuer / Network Installments
+### 5. Issuer / Network Instalments
 #### Pre‑purchase issuer/network instalments
 - BIN detection triggers bank modal
 - Real-time bank decisioning
@@ -67,7 +67,7 @@ Create a multi‑page demo app called **BA Installments Playground**. Include th
 
 ### Optional Features
 - **Loyalty + Money** integration
-- **Voucher + Installments** combination
+- **Voucher + Instalments** combination
 
 ## Technical Requirements
 
@@ -87,7 +87,7 @@ Create a multi‑page demo app called **BA Installments Playground**. Include th
 - **Each model page:**
   - Flight summary header (origin, destination, dates, fare, traveller)
   - Payment method selector with **Pay in instalments** highlighted
-  - The model‑specific **Installments flow** (interactive)
+  - The model‑specific **Instalments flow** (interactive)
   - **Terms and Conditions** panel (expand/collapse)
   - **Business rules and eligibility** section
   - **Key attributes** table

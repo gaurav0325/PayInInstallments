@@ -1,8 +1,8 @@
-# BA Installments Playground - API Documentation
+# BA Instalments Playground - API Documentation
 
 ## 🔗 API Overview
 
-The BA Installments Playground includes a complete API simulation layer built with Next.js API routes. All endpoints return realistic responses with proper error handling, but **no real payments are processed**.
+The BA Instalments Playground includes a complete API simulation layer built with Next.js API routes. All endpoints return realistic responses with proper error handling, but **no real payments are processed**.
 
 **Base URL:** `http://localhost:3332/api`
 
@@ -590,4 +590,4 @@ const processPayment = async (pan: string, amount: number) => {
 };
 ```
 
-This API documentation provides complete reference for integrating with the BA Installments Playground simulation layer.
+This API documentation provides complete reference for integrating with the BA Instalments Playground simulation layer.

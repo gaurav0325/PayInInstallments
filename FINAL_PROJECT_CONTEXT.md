@@ -1,4 +1,4 @@
-# BA Installments Playground - Complete Project Context
+# BA Instalments Playground - Complete Project Context
 
 **Project Status:** ✅ FULLY COMPLETED WITH LATEST CORRECTIONS  
 **Date:** 2025-01-08  
@@ -6,7 +6,7 @@
 
 ## 🎯 Project Overview
 
-The BA Installments Playground is a comprehensive Next.js 14.2.5 application demonstrating 12 different instalment payment models for British Airways. This application serves as a strategic business tool for understanding, comparing, and prototyping various payment installment approaches.
+The BA Instalments Playground is a comprehensive Next.js 14.2.5 application demonstrating 12 different instalment payment models for British Airways. This application serves as a strategic business tool for understanding, comparing, and prototyping various payment installment approaches.
 
 ## 🏗️ Technical Architecture
 
@@ -20,7 +20,7 @@ The BA Installments Playground is a comprehensive Next.js 14.2.5 application dem
 
 ### **Project Structure**
 ```
-PayInInstallments/
+PayInInstalments/
 ├── app/                              # Next.js App Router
 │   ├── page.tsx                     # Homepage with model categories
 │   ├── layout.tsx                   # Root layout
@@ -88,7 +88,7 @@ PayInInstallments/
 - **Acquirer-driven:** Amadeus instalment engine with business rules
 
 ### **4. Deposit & Flexible Models** *(Updated with correction)*
-- **Deposit + Installments:** BA Holidays flexible deposit system  
+- **Deposit + Instalments:** BA Holidays flexible deposit system  
 - **Deferred Payment:** Pay later with zero upfront charge
 - **Hold My Fare, Pay Later:** *(MOVED HERE - previously misplaced)* Reserve fare with hold fee
 
@@ -204,7 +204,7 @@ npm run typecheck    # TypeScript validation
 - **Analysis:** Missing 6 models created inconsistency between sections
 - **Solution:** Added all missing models with comprehensive attributes:
   - Acquirer Driven
-  - Deposit + Installments 
+  - Deposit + Instalments 
   - Deferred Payment
   - Issuer Pre-purchase
   - Issuer Post-purchase
