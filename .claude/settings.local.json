@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(do echo \"Processing: $file\")",
+      "Bash(rd:*)",
+      "Bash(npm run lint)",
+      "Bash(npm run build:*)",
+      "Bash(do)",
+      "Bash(echo \"Processing: $file\")",
+      "Bash(sed:*)",
+      "Bash(npx next:*)",
+      "Bash(next dev:*)",
+      "Bash(npm run dev:*)",
+      "Bash(ngrok:*)",
+      "Bash(curl:*)",
+      "Bash(where:*)",
+      "Bash(vercel --prod:*)",
+      "Bash(vercel login:*)",
+      "Bash(git init:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
