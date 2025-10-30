@@ -29,7 +29,9 @@
       "Read(//c/**)",
       "Bash(start https://github.com/gaurav0325/PayInInstalments/settings)",
       "Bash(start https://vercel.com/dashboard)",
-      "Bash(git remote set-url:*)"
+      "Bash(git remote set-url:*)",
+      "Bash(start https://github.com/gaurav0325/PayInInstallments/settings)",
+      "Bash(git fetch:*)"
     ],
     "deny": [],
     "ask": []
