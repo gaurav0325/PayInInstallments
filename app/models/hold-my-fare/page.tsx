@@ -283,7 +283,7 @@ export default function HoldMyFarePage() {
                     className="bg-blue-600 text-white py-3 rounded-xl font-medium hover:bg-blue-700"
                     onClick={() => alert('Redirecting to instalment options...')}
                   >
-                    Pay in Instalments
+                    Pay in Installments
                   </button>
                 </div>
               </div>

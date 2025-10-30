@@ -66,7 +66,7 @@ export default function MerchantFullAuthPage() {
     },
     {
       id: 'instalments',
-      name: 'BA Instalments (Full Auth)',
+      name: 'BA Installments (Full Auth)',
       description: 'Single authorisation with staged captures'
     }
   ]

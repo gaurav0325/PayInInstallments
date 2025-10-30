@@ -1,12 +1,12 @@
 #!/bin/bash
 
-mkdir -p BA-PayInInstalments-Options/frontend/src/frontend/public
+mkdir -p BA-PayInInstallments-Options/frontend/src/frontend/public
 
-cat > BA-PayInInstalments-Options/server.js << 'EOF'
+cat > BA-PayInInstallments-Options/server.js << 'EOF'
 /* [Insert full server.js code here from previous messages] */
 EOF
 
-cat > BA-PayInInstalments-Options/package.json << 'EOF'
+cat > BA-PayInInstallments-Options/package.json << 'EOF'
 {
   "name": "ba-pay-in-instalments",
   "version": "1.0.0",
@@ -21,10 +21,10 @@ cat > BA-PayInInstalments-Options/package.json << 'EOF'
 }
 EOF
 
-cat > BA-PayInInstalments-Options/render.yaml << 'EOF'
+cat > BA-PayInInstallments-Options/render.yaml << 'EOF'
 services:
   - type: web
-    name: BA-PayInInstalments-Options
+    name: BA-PayInInstallments-Options
     env: node
     plan: free
     buildCommand: npm install && npm run build-frontend
@@ -46,7 +46,7 @@ services:
         value: https://ba-payininstalments-options.onrender.com
 EOF
 
-cat > BA-PayInInstalments-Options/Dockerfile << 'EOF'
+cat > BA-PayInInstallments-Options/Dockerfile << 'EOF'
 FROM node:18-alpine
 WORKDIR /app
 COPY package*.json ./
@@ -56,10 +56,10 @@ EXPOSE 3000
 CMD ["node", "server.js"]
 EOF
 
-mkdir -p BA-PayInInstalments-Options/frontend/src
-mkdir -p BA-PayInInstalments-Options/frontend/public
+mkdir -p BA-PayInInstallments-Options/frontend/src
+mkdir -p BA-PayInInstallments-Options/frontend/public
 
-cat > BA-PayInInstalments-Options/frontend/package.json << 'EOF'
+cat > BA-PayInInstallments-Options/frontend/package.json << 'EOF'
 {
   "name": "frontend",
   "version": "1.0.0",
@@ -76,7 +76,7 @@ cat > BA-PayInInstalments-Options/frontend/package.json << 'EOF'
 }
 EOF
 
-cat > BA-PayInInstalments-Options/frontend/src/App.js << 'EOF'
+cat > BA-PayInInstallments-Options/frontend/src/App.js << 'EOF'
 import React, { useEffect, useState } from 'react';
 import Checkout from './Checkout';
 import Admin from './Admin';
@@ -103,7 +103,7 @@ export default function App() {
 
 EOF
 
-cat > BA-PayInInstalments-Options/frontend/src/Checkout.js << 'EOF'
+cat > BA-PayInInstallments-Options/frontend/src/Checkout.js << 'EOF'
 import React, { useEffect, useState } from 'react';
 
 export default function Checkout() {
@@ -183,7 +183,7 @@ export default function Checkout() {
           cursor: 'pointer',
         }}
       >
-        Pay in Instalments
+        Pay in Installments
       </button>
 
       {workflowId && <p><strong>Workflow ID:</strong> {workflowId}</p>}
@@ -194,7 +194,7 @@ export default function Checkout() {
 
 EOF
 
-cat > BA-PayInInstalments-Options/frontend/src/Admin.js << 'EOF'
+cat > BA-PayInInstallments-Options/frontend/src/Admin.js << 'EOF'
 import React, { useEffect, useState } from 'react';
 
 export default function Admin() {
@@ -268,7 +268,7 @@ export default function Admin() {
 
 EOF
 
-cat > BA-PayInInstalments-Options/frontend/src/KlarnaWidget.js << 'EOF'
+cat > BA-PayInInstallments-Options/frontend/src/KlarnaWidget.js << 'EOF'
 import React, { useEffect, useRef } from 'react';
 
 export default function KlarnaWidget({ clientToken, onComplete }) {
@@ -311,7 +311,7 @@ export default function KlarnaWidget({ clientToken, onComplete }) {
 
 EOF
 
-cat > BA-PayInInstalments-Options/frontend/public/index.html << 'EOF'
+cat > BA-PayInInstallments-Options/frontend/public/index.html << 'EOF'
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -325,7 +325,7 @@ cat > BA-PayInInstalments-Options/frontend/public/index.html << 'EOF'
 </html>
 EOF
 
-cat > BA-PayInInstalments-Options/frontend/src/index.js << 'EOF'
+cat > BA-PayInInstallments-Options/frontend/src/index.js << 'EOF'
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
@@ -334,4 +334,4 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
 EOF
 
-echo "Setup complete! Navigate to BA-PayInInstalments-Options and run your install/build commands."
+echo "Setup complete! Navigate to BA-PayInInstallments-Options and run your install/build commands."

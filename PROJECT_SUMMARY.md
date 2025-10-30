@@ -1,8 +1,8 @@
-# BA Instalments Playground - Project Summary
+# BA Installments Playground - Project Summary
 
 ## 🎯 Project Overview
 
-The **BA Instalments Playground** is a comprehensive web application demonstrating all common airline instalment payment models with British Airways style checkout flows. Built with Next.js 14, TypeScript, and Tailwind CSS, it provides interactive demonstrations of 9 different payment models from BNPL to hybrid orchestrators.
+The **BA Installments Playground** is a comprehensive web application demonstrating all common airline instalment payment models with British Airways style checkout flows. Built with Next.js 14, TypeScript, and Tailwind CSS, it provides interactive demonstrations of 9 different payment models from BNPL to hybrid orchestrators.
 
 **Live Application:** http://localhost:3332  
 **Status:** 🟢 Running Successfully  
@@ -28,31 +28,31 @@ The **BA Instalments Playground** is a comprehensive web application demonstrati
    - Credit assessment simulation
    - Klarna-style user experience
 
-2. **PSP-Driven Instalments**
+2. **PSP-Driven Installments**
    - Embedded modal flow
    - 3D Secure simulation
    - MIT consent workflow
    - Network tokenization explanation
 
-3. **Merchant-Financed Instalments**
+3. **Merchant-Financed Installments**
    - BA owns deposit and recurring charges
    - Travel-aligned payment scheduling
    - Prorated refund handling
    - Customer relationship management
 
-4. **Acquirer-Driven Instalments**
+4. **Acquirer-Driven Installments**
    - Light redirect to acquirer widget
    - Upfront settlement to merchant
    - Acquirer risk management
    - Minimum amount validation
 
-5. **Issuer Instalments (Pre-purchase)**
+5. **Issuer Installments (Pre-purchase)**
    - BIN detection triggers bank modal
    - Real-time bank decisioning
    - Eligible card checking
    - Bank-managed SCA compliance
 
-6. **Issuer Instalments (Post-purchase)**
+6. **Issuer Installments (Post-purchase)**
    - Information banner approach
    - Customer-initiated conversion
    - Bank portal integration
@@ -370,7 +370,7 @@ This project successfully delivers a **production-quality demonstration** of air
 4. **Demonstrates technical excellence** in modern web development
 5. **Includes comprehensive documentation** for long-term maintenance
 
-The BA Instalments Playground stands as a complete, well-documented, and immediately usable demonstration of complex payment flows in the airline industry.
+The BA Installments Playground stands as a complete, well-documented, and immediately usable demonstration of complex payment flows in the airline industry.
 
 **Project Status: ✅ COMPLETE & SUCCESSFUL** 🚀
 

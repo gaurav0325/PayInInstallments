@@ -132,7 +132,7 @@ export default function IssuerPostPage(){
                     <div className="flex flex-wrap gap-2">
                       <a href="#" className="inline-flex items-center gap-1 text-xs bg-white border border-gray-200 rounded-lg px-2 py-1 hover:border-blue-300 transition">
                         <span>🏦</span>
-                        <span>HSBC Instalments</span>
+                        <span>HSBC Installments</span>
                       </a>
                       <a href="#" className="inline-flex items-center gap-1 text-xs bg-white border border-gray-200 rounded-lg px-2 py-1 hover:border-blue-300 transition">
                         <span>🏦</span>

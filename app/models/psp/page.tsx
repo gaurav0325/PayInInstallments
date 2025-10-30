@@ -108,7 +108,7 @@ export default function PSPPage(){
     },
     {
       id: 'instalments',
-      name: 'PSP Instalments',
+      name: 'PSP Installments',
       description: 'Split payments managed by payment service provider'
     }
   ]
@@ -123,7 +123,7 @@ export default function PSPPage(){
             <div className="bg-white rounded-2xl border border-gray-200 p-6">
               <div className="flex items-center gap-3 mb-4">
                 <div className="badge border-blue-200 bg-blue-50 text-blue-700">
-                  PSP-Driven Instalments
+                  PSP-Driven Installments
                 </div>
                 <div className="badge border-green-200 bg-green-50 text-green-700">
                   Embedded Modal
@@ -132,7 +132,7 @@ export default function PSPPage(){
                   Automated Scheduling
                 </div>
               </div>
-              <h1 className="text-2xl font-bold text-gray-900 mb-2">Payment Service Provider Instalments</h1>
+              <h1 className="text-2xl font-bold text-gray-900 mb-2">Payment Service Provider Installments</h1>
               <p className="text-gray-600">
                 Embedded instalment solutions powered by leading PSPs. No redirect required - complete the process within BA's checkout experience.
               </p>
@@ -275,7 +275,7 @@ export default function PSPPage(){
               <div className="bg-white rounded-2xl border border-gray-200 p-6">
                 <div className="flex items-center gap-2 text-green-600 mb-4">
                   <span className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center text-sm">✓</span>
-                  <h2 className="text-xl font-semibold">PSP Instalments Configured</h2>
+                  <h2 className="text-xl font-semibold">PSP Installments Configured</h2>
                 </div>
                 <div className="space-y-4 text-sm">
                   <div className="bg-green-50 border border-green-200 rounded-xl p-4">

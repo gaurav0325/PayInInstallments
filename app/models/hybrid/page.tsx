@@ -61,7 +61,7 @@ export default function HybridPage(){
     },
     {
       condition: 'Amount >= €100 AND market in [EU, UK]',
-      result: 'Route to Acquirer Instalments',
+      result: 'Route to Acquirer Installments',
       model: 'acquirer',
       priority: 4,
       passed: customerContext.amount >= 100 && ['EU', 'UK'].includes(customerContext.market)
@@ -75,7 +75,7 @@ export default function HybridPage(){
     },
     {
       condition: 'Default fallback',
-      result: 'Route to PSP Instalments',
+      result: 'Route to PSP Installments',
       model: 'psp',
       priority: 6,
       passed: true
@@ -117,11 +117,11 @@ export default function HybridPage(){
   const getModelName = (model: string) => {
     const names: Record<string, string> = {
       'bnpl': 'BNPL (Partner Financed)',
-      'issuer-pre': 'Issuer Instalments (Pre-purchase)',
+      'issuer-pre': 'Issuer Installments (Pre-purchase)',
       'deposit-balance': 'Deposit + Balance',
-      'acquirer': 'Acquirer Instalments',
+      'acquirer': 'Acquirer Installments',
       'deferred': 'Deferred Payment',
-      'psp': 'PSP Instalments'
+      'psp': 'PSP Installments'
     }
     return names[model] || model
   }

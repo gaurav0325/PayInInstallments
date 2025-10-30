@@ -66,7 +66,7 @@ const comparisonData: ComparisonData[] = [
     marketSuitability: 'Spain only - strategic partnership via Iberia Cards subsidiary'
   },
   {
-    model: 'Deposit + Instalments (BA Holidays)',
+    model: 'Deposit + Installments (BA Holidays)',
     revenueFlow: 'BA receives low deposit immediately, balance payment before service delivery',
     creditRisk: 'Moderate - risk of final payment default, mitigated by ATOL protection',
     implementationEffort: 'Low',
@@ -90,7 +90,7 @@ const comparisonData: ComparisonData[] = [
     marketSuitability: 'Multiple markets - depends on partner coverage and acceptance'
   },
   {
-    model: 'PSP-Driven Instalments',
+    model: 'PSP-Driven Installments',
     revenueFlow: 'BA receives payments according to PSP settlement schedule with processing fees',
     creditRisk: 'Shared - PSP handles payment processing risk, BA retains service delivery risk',
     implementationEffort: 'Low',
@@ -102,7 +102,7 @@ const comparisonData: ComparisonData[] = [
     marketSuitability: 'Global - leverages existing PSP infrastructure (CyberSource/Adyen)'
   },
   {
-    model: 'Issuer Instalments (Bank)',
+    model: 'Issuer Installments (Bank)',
     revenueFlow: 'BA receives full flight value immediately from customer\'s bank',
     creditRisk: 'Zero - customer\'s issuing bank assumes all credit risk',
     implementationEffort: 'Low',
@@ -151,7 +151,7 @@ const getImpactColor = (impact: string) => {
   }
 }
 
-export function InstalmentsComparisonTable() {
+export function InstallmentsComparisonTable() {
   const topScrollRef = useRef<HTMLDivElement>(null)
   const bottomScrollRef = useRef<HTMLDivElement>(null)
   const tableScrollRef = useRef<HTMLDivElement>(null)

@@ -1,8 +1,8 @@
-# PayInInstalments - Complete Project Context
+# PayInInstallments - Complete Project Context
 
 ## Project Overview
 
-**Name:** PayInInstalments (BA Instalments Playground)  
+**Name:** PayInInstallments (BA Installments Playground)  
 **Purpose:** Comprehensive instalment payment models analysis and demonstration tool for British Airways  
 **Technology Stack:** Next.js 14, React 18, TypeScript, Tailwind CSS, Framer Motion  
 **Development Date:** September 2025  
@@ -11,7 +11,7 @@
 ## Project Structure
 
 ```
-PayInInstalments/
+PayInInstallments/
 ├── app/                          # Next.js App Router
 │   ├── layout.tsx               # Root layout
 │   ├── page.tsx                 # Homepage with model categories
@@ -32,7 +32,7 @@ PayInInstalments/
 ├── components/                 # Reusable React components
 │   ├── AttributesTable.tsx    # Key model attributes display
 │   ├── EditableComparisonTable.tsx # Main comparison interface
-│   ├── InstalmentsComparisonTable.tsx # Airline-focused comparison
+│   ├── InstallmentsComparisonTable.tsx # Airline-focused comparison
 │   ├── SequenceDiagram.tsx    # Visual payment flow diagrams
 │   ├── EnhancedNotesSection.tsx # Smart notes with categorization
 │   ├── NavigationHeader.tsx   # Site navigation

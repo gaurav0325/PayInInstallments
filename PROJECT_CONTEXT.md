@@ -1,15 +1,15 @@
-# BA Instalments Playground - Complete Project Context
+# BA Installments Playground - Complete Project Context
 
 ## Project Overview
-**Project Name**: BA Instalments Playground
-**Location**: `C:\Gaurav\Gaurav CV et al\AI project\PayInInstalments`
+**Project Name**: BA Installments Playground
+**Location**: `C:\Gaurav\Gaurav CV et al\AI project\PayInInstallments`
 **Purpose**: Interactive visualization and demonstration platform for British Airways instalment payment models
 **Technology Stack**: Next.js 14, React 18, TypeScript, Tailwind CSS, Framer Motion
 
 ## 📁 Project Structure
 
 ```
-PayInInstalments/
+PayInInstallments/
 ├── app/                          # Next.js 14 App Router structure
 │   ├── api/                      # API routes for payment processing
 │   │   ├── eligibility/
@@ -74,7 +74,7 @@ PayInInstalments/
 **Features Added**:
 - 🎯 Small icon next to "Instalment Models Comparison" heading
 - 📄 Dedicated comparison page at `/comparison`
-- 📊 Full InstalmentsComparisonTable with scrollbars and color coding
+- 📊 Full InstallmentsComparisonTable with scrollbars and color coding
 - 📤 Export functionality for Word and PDF formats
 - 🔙 Back navigation to homepage
 - 📋 Comprehensive legend and evaluation criteria

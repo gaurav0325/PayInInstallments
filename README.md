@@ -1,4 +1,4 @@
-# BA Instalments Playground
+# BA Installments Playground
 
 A comprehensive demonstration of airline instalment payment models with British Airways style checkout flows. This interactive web application showcases all common payment models used in the airline industry, from BNPL to hybrid orchestrators.
 
@@ -6,11 +6,11 @@ A comprehensive demonstration of airline instalment payment models with British 
 
 ### Instalment Models Demonstrated
 1. **BNPL (Partner Financed)** - Spain market with provider redirect
-2. **PSP-Driven Instalments** - Embedded flow with payment processor
-3. **Merchant-Financed Instalments** - BA owns deposit and recurring charges
-4. **Acquirer-Driven Instalments** - Light redirect to acquirer widget
-5. **Issuer Instalments (Pre-purchase)** - Bank modal triggered by BIN detection
-6. **Issuer Instalments (Post-purchase)** - Post-checkout conversion banner
+2. **PSP-Driven Installments** - Embedded flow with payment processor
+3. **Merchant-Financed Installments** - BA owns deposit and recurring charges
+4. **Acquirer-Driven Installments** - Light redirect to acquirer widget
+5. **Issuer Installments (Pre-purchase)** - Bank modal triggered by BIN detection
+6. **Issuer Installments (Post-purchase)** - Post-checkout conversion banner
 7. **Deferred Payment** - Pay later with zero charge today
 8. **Deposit + Balance** - Deposit now, balance before travel
 9. **Hybrid Orchestrator** - Rule-based routing across models

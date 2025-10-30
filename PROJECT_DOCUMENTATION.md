@@ -1,7 +1,7 @@
-# BA Instalments Playground - Project Documentation
+# BA Installments Playground - Project Documentation
 
 ## Project Overview
-**Project Name:** British Airways Instalments Playground  
+**Project Name:** British Airways Installments Playground  
 **Port:** 3332 (localhost:3332)  
 **Framework:** Next.js 14 with App Router  
 **Language:** TypeScript  
@@ -21,7 +21,7 @@
 
 ### Project Structure
 ```
-PayInInstalments/
+PayInInstallments/
 ├── app/                          # Next.js App Router
 │   ├── page.tsx                  # Main homepage with model cards
 │   ├── models/                   # Individual instalment model pages
@@ -47,7 +47,7 @@ PayInInstalments/
 │   ├── TranslateText.tsx         # Multi-language translation
 │   ├── PictorialSequenceDiagram.tsx # Visual sequence diagrams
 │   ├── AddNoteIcon.tsx           # Quick note addition
-│   ├── InstalmentsComparisonTable.tsx # Model comparison
+│   ├── InstallmentsComparisonTable.tsx # Model comparison
 │   └── ...
 ├── utils/                        # Utility functions
 │   ├── soundManager.ts           # Mac-style sound effects
@@ -147,7 +147,7 @@ PayInInstalments/
 
 ### Starting the Application
 ```bash
-cd "C:/Gaurav/Gaurav CV et al/AI project/PayInInstalments"
+cd "C:/Gaurav/Gaurav CV et al/AI project/PayInInstallments"
 npm install
 npm run dev
 # Application available at http://localhost:3332

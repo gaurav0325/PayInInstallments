@@ -10,7 +10,7 @@ import { RulesList } from '@/components/RulesList'
 import { CategorizedAttributesDiagram } from '@/components/CategorizedAttributesDiagram'
 import { PaymentMethodSelector } from '@/components/PaymentMethodSelector'
 
-export default function DepositInstalmentsPage() {
+export default function DepositInstallmentsPage() {
   const amount = 1250 // UK GBP - package holiday
   const isShortHaul = false // Set to true for short-haul European destinations
   const [step, setStep] = useState<1|2|3|4>(1)
@@ -122,7 +122,7 @@ export default function DepositInstalmentsPage() {
             <div className="bg-white rounded-2xl border border-gray-200 p-6">
               <div className="flex items-center gap-3 mb-4">
                 <div className="badge border-orange-200 bg-orange-50 text-orange-700">
-                  Low deposit + Instalments
+                  Low deposit + Installments
                 </div>
                 <div className="badge border-blue-200 bg-blue-50 text-blue-700">
                   BA Holidays
@@ -131,7 +131,7 @@ export default function DepositInstalmentsPage() {
                   Internal Reference
                 </div>
               </div>
-              <h1 className="text-2xl font-bold text-gray-900 mb-2">Low deposit + Instalments</h1>
+              <h1 className="text-2xl font-bold text-gray-900 mb-2">Low deposit + Installments</h1>
               <p className="text-gray-600">
                 Secure your package holiday with a low deposit. Pay the balance when convenient, but at least {balanceWeeks} weeks before departure. 
                 OpenJaw solution with ATOL protection and flexible payment timing.
@@ -472,7 +472,7 @@ export default function DepositInstalmentsPage() {
             />
             
             {/* Smart Notes Section */}
-            <EnhancedNotesSection modelContext="Low deposit + Instalments" />
+            <EnhancedNotesSection modelContext="Low deposit + Installments" />
           </div>
 
           {/* Right Sidebar - Package holiday details */}
@@ -525,7 +525,7 @@ export default function DepositInstalmentsPage() {
               <CategorizedAttributesDiagram 
                 attributes={attributes} 
                 title="Key Attributes"
-                modelName="Deposit + Instalments"
+                modelName="Deposit + Installments"
               />
             </div>
           </div>

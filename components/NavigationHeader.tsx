@@ -31,7 +31,7 @@ export function NavigationHeader() {
                 British Airways
               </div>
               <div className="text-sm text-gray-500">
-                Instalments
+                Installments
               </div>
             </Link>
           </div>

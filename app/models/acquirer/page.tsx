@@ -83,7 +83,7 @@ export default function AcquirerPage() {
             <div className="bg-white rounded-2xl border border-gray-200 p-6">
               <div className="flex items-center gap-3 mb-4">
                 <div className="badge border-green-200 bg-green-50 text-green-700">
-                  Acquirer-Driven Instalments
+                  Acquirer-Driven Installments
                 </div>
                 <div className="badge border-purple-200 bg-purple-50 text-purple-700">
                   Amadeus Engine
