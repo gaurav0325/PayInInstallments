@@ -1,6 +1,7 @@
 'use client'
 
 import React from 'react'
+import Link from 'next/link'
 import { EnhancedNotesSection } from "@/components/EnhancedNotesSection"
 import { SequenceDiagram } from '@/components/SequenceDiagram'
 import { useState } from 'react'
@@ -12,6 +13,7 @@ import { TermsPanel } from '@/components/TermsPanel'
 import { RulesList } from '@/components/RulesList'
 import { CategorizedAttributesDiagram } from '@/components/CategorizedAttributesDiagram'
 import { PaymentMethodSelector } from '@/components/PaymentMethodSelector'
+import { BookOpen } from 'lucide-react'
 
 export default function MerchantMITPage() {
   const amount = 480 // UK GBP
@@ -80,7 +82,15 @@ export default function MerchantMITPage() {
         <div className="grid gap-8 lg:grid-cols-[1fr_320px]">
           <div className="space-y-6">
             {/* Header */}
-            <div className="bg-white rounded-2xl border border-gray-200 p-6">
+            <div className="bg-white rounded-2xl border border-gray-200 p-6 relative">
+              <Link
+                href="/models/merchant-mit/details"
+                className="absolute top-4 right-4 p-2 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-600 transition-colors group"
+                title="View Technical Documentation"
+              >
+                <BookOpen className="w-5 h-5" />
+                <span className="sr-only">View Technical Documentation</span>
+              </Link>
               <div className="flex items-center gap-3 mb-4">
                 <div className="badge border-purple-200 bg-purple-50 text-purple-700">
                   Merchant-Financed (MIT)
@@ -89,7 +99,7 @@ export default function MerchantMITPage() {
                   Recurring Debits
                 </div>
               </div>
-              <h1 className="text-2xl font-bold text-gray-900 mb-2">Initial CIT + Monthly MIT Debits</h1>
+              <h1 className="text-2xl font-bold text-gray-900 mb-2 pr-12">Initial CIT + Monthly MIT Debits</h1>
               <p className="text-gray-600">
                 Strong Customer Authentication for the first payment, then Merchant Initiated Transaction (MIT) debits monthly using stored credentials or network tokens.
               </p>
