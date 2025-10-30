@@ -13,7 +13,7 @@ export default function Home() {
       title: 'Merchant-financed (Full Auth) Instalments',
       href: '/models/merchant-fullauth',
       description: 'Single full authorisation with staged captures via acquirer',
-      hoverDescription: 'BA authorises full amount upfront, then captures in instalments. Lower risk but requires acquirer support for staged captures. Interest income stays with BA.',
+      hoverDescription: 'Test Airlines authorises full amount upfront, then captures in instalments. Lower risk but requires acquirer support for staged captures. Interest income stays with Test Airlines.',
       badge: 'Full Auth',
       category: 'merchant',
       highlighted: false
@@ -22,7 +22,7 @@ export default function Home() {
       title: 'Merchant-financed (MIT) Instalments',
       href: '/models/merchant-mit',
       description: 'Initial CIT with SCA + monthly MIT debits using stored credentials',
-      hoverDescription: 'Initial payment with SCA, then MIT debits monthly. BA owns customer relationship and payment schedule. Requires network tokenisation and MIT compliance.',
+      hoverDescription: 'Initial payment with SCA, then MIT debits monthly. Test Airlines owns customer relationship and payment schedule. Requires network tokenisation and MIT compliance.',
       badge: 'MIT Flow',
       category: 'merchant',
       highlighted: false
@@ -35,7 +35,7 @@ export default function Home() {
       title: 'BNPL (partner financed)',
       href: '/models/bnpl',
       description: 'PayPal Pay in 3/4, Klarna, Clearpay - third-party providers finance payments',
-      hoverDescription: 'PayPal Pay in 3/4, Klarna, Clearpay, and other BNPL providers finance the payment upfront. BA gets paid immediately minus commission. Provider bears all credit risk and manages customer relationship.',
+      hoverDescription: 'PayPal Pay in 3/4, Klarna, Clearpay, and other BNPL providers finance the payment upfront. Test Airlines gets paid immediately minus commission. Provider bears all credit risk and manages customer relationship.',
       badge: 'PayPal Pay in 3/4',
       category: 'partner',
       highlighted: true
@@ -53,7 +53,7 @@ export default function Home() {
       title: 'PSP-driven instalments',
       href: '/models/psp',
       description: 'Payment Service Provider manages instalment scheduling',
-      hoverDescription: 'CyberSource/Adyen splits payments across multiple charges. BA gets paid according to schedule. PSP handles tokenisation and recurring charges.',
+      hoverDescription: 'CyberSource/Adyen splits payments across multiple charges. Test Airlines gets paid according to schedule. PSP handles tokenisation and recurring charges.',
       badge: 'Embedded modal',
       category: 'partner',
       highlighted: false
@@ -78,9 +78,9 @@ export default function Home() {
     {
       title: 'Deposit + Instalments',
       href: '/models/deposit-instalments',
-      description: 'BA Holidays low deposit system with flexible payment timing',
+      description: 'Test Airlines Holidays low deposit system with flexible payment timing',
       hoverDescription: 'Low deposit secures booking (£99-£220), customer controls payment schedule. Balance due 4-7 weeks before travel. OpenJaw solution with ATOL protection.',
-      badge: 'BA Holidays',
+      badge: 'Test Airlines Holidays',
       category: 'deposit',
       highlighted: true
     },
@@ -88,7 +88,7 @@ export default function Home() {
       title: 'Deferred payment',
       href: '/models/deferred',
       description: 'Pay later with zero charge today and future settlement',
-      hoverDescription: 'Authorization now, charge later (14/30/60 days). BA bears risk of future payment failure. Requires robust reminder systems.',
+      hoverDescription: 'Authorization now, charge later (14/30/60 days). Test Airlines bears risk of future payment failure. Requires robust reminder systems.',
       badge: 'Pay later',
       category: 'deposit',
       highlighted: false
@@ -110,7 +110,7 @@ export default function Home() {
       title: 'Issuer instalments (pre-purchase)',
       href: '/models/issuer-pre',
       description: 'Bank modal triggered by eligible BIN detection',
-      hoverDescription: 'Customer\'s bank offers instalments during checkout. BA gets paid immediately by bank. Simple integration but limited control.',
+      hoverDescription: 'Customer\'s bank offers instalments during checkout. Test Airlines gets paid immediately by bank. Simple integration but limited control.',
       badge: 'Bank modal',
       category: 'bank',
       highlighted: false
@@ -119,7 +119,7 @@ export default function Home() {
       title: 'Issuer instalments (post-purchase)',
       href: '/models/issuer-post',
       description: 'Informational banner promoting bank instalment conversion',
-      hoverDescription: 'Banner directing customers to bank portal for instalment conversion. BA receives full payment immediately. No integration required.',
+      hoverDescription: 'Banner directing customers to bank portal for instalment conversion. Test Airlines receives full payment immediately. No integration required.',
       badge: 'Informational',
       category: 'bank',
       highlighted: false
@@ -199,10 +199,10 @@ export default function Home() {
                   <div className="w-3 h-3 bg-red-600 rounded-full"></div>
                   <h2 className="text-2xl font-bold text-red-900">Merchant-Financed Models</h2>
                   <div className="px-2 py-1 bg-red-600 text-white text-xs font-semibold rounded-full">
-                    BA CONTROLLED
+                    Test Airlines CONTROLLED
                   </div>
                 </div>
-                <p className="text-red-700 mb-6 font-medium">BA owns and manages the instalment payment schedule - maximum control and revenue retention</p>
+                <p className="text-red-700 mb-6 font-medium">Test Airlines owns and manages the instalment payment schedule - maximum control and revenue retention</p>
                 <div className="grid gap-4 sm:grid-cols-2">
                   {merchantModels.map(({ title, href, description, hoverDescription, badge, highlighted, category }) => (
                     <ModelCard key={href} title={title} href={href} description={description} hoverDescription={hoverDescription} badge={badge} highlighted={highlighted} category={category} />
@@ -290,7 +290,7 @@ export default function Home() {
                     ZERO INTEGRATION
                   </div>
                 </div>
-                <p className="text-orange-700 mb-6 font-medium">Customer's bank provides instalment conversion options - minimal effort with immediate payment to BA</p>
+                <p className="text-orange-700 mb-6 font-medium">Customer's bank provides instalment conversion options - minimal effort with immediate payment to Test Airlines</p>
                 <div className="grid gap-4 sm:grid-cols-2">
                   {bankModels.map(({ title, href, description, hoverDescription, badge, highlighted, category }) => (
                     <ModelCard key={href} title={title} href={href} description={description} hoverDescription={hoverDescription} badge={badge} highlighted={highlighted} category={category} />

@@ -166,7 +166,7 @@ SIMULATE_DELAYS=true
 
 ### Tailwind Configuration
 The `tailwind.config.ts` includes:
-- **BA brand colours** (red, orange, yellow)
+- **Test Airlines brand colours** (red, orange, yellow)
 - **Custom border radius** for modern design
 - **Card shadow** utilities
 - **Component-specific** utility classes
@@ -218,9 +218,9 @@ Each model implements specific eligibility rules:
 ## 🎨 Design System
 
 ### Colors
-- **BA Red (#D7192D)** - Primary actions, brand elements
-- **BA Orange (#EF8314)** - Secondary actions, highlights  
-- **BA Yellow (#FACD08)** - Warnings, accent elements
+- **Test Airlines Red (#D7192D)** - Primary actions, brand elements
+- **Test Airlines Orange (#EF8314)** - Secondary actions, highlights  
+- **Test Airlines Yellow (#FACD08)** - Warnings, accent elements
 - **Gray scale** - Text hierarchy, backgrounds
 
 ### Typography

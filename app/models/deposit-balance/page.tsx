@@ -32,7 +32,7 @@ export default function DepositBalancePage(){
   ]
 
   const attributes = [
-    { label: 'Who funds', value: 'Merchant (BA) with customer deposit' },
+    { label: 'Who funds', value: 'Merchant (Test Airlines) with customer deposit' },
     { label: 'Credit risk', value: 'Reduced risk due to deposit, balance risk remains' },
     { label: 'Underwriting', value: 'Basic checks, deposit reduces exposure' },
     { label: 'Customer cost', value: 'No additional fees typically' },
@@ -40,7 +40,7 @@ export default function DepositBalancePage(){
     { label: 'Integration type', value: 'Embedded in checkout flow' },
     { label: 'Data captured', value: 'Card details, travel dates, email' },
     { label: 'SCA pattern', value: 'CIT for deposit, MIT for balance' },
-    { label: 'Settlement to BA', value: 'Deposit now, balance on due date' },
+    { label: 'Settlement to Test Airlines', value: 'Deposit now, balance on due date' },
     { label: 'Refund handling', value: 'Prorated based on payments made' },
     { label: 'Chargeback liability', value: 'Standard merchant rules apply' },
     { label: 'Markets supported', value: 'Global for leisure travel bookings' },
@@ -222,16 +222,16 @@ export default function DepositBalancePage(){
         {/* Sequence Diagram */}
         <SequenceDiagram
           title="Deposit + Balance Payment Flow Sequence"
-          actors={['Customer', 'BA', 'Acquirer', 'Bank']}
+          actors={['Customer', 'Test Airlines', 'Acquirer', 'Bank']}
           steps={[
             {
               from: 'Customer',
-              to: 'BA',
+              to: 'Test Airlines',
               message: 'Select deposit + balance payment option',
               type: 'request'
             },
             {
-              from: 'BA',
+              from: 'Test Airlines',
               to: 'Customer',
               message: 'Display deposit percentage options',
               note: `Choose from ${[20, 30, 50].join('%, ')}% deposit options`,
@@ -239,19 +239,19 @@ export default function DepositBalancePage(){
             },
             {
               from: 'Customer',
-              to: 'BA',
+              to: 'Test Airlines',
               message: `Choose ${depositPercent}% deposit plan`,
               type: 'request'
             },
             {
               from: 'Customer',
-              to: 'BA',
+              to: 'Test Airlines',
               message: 'Submit card details for deposit payment',
               note: `Pay €${schedule.deposit.toFixed(2)} deposit now`,
               type: 'request'
             },
             {
-              from: 'BA',
+              from: 'Test Airlines',
               to: 'Acquirer',
               message: 'Process deposit payment',
               note: `Charge €${schedule.deposit.toFixed(2)} immediately`,
@@ -271,26 +271,26 @@ export default function DepositBalancePage(){
             },
             {
               from: 'Acquirer',
-              to: 'BA',
+              to: 'Test Airlines',
               message: 'Deposit payment confirmation',
               type: 'response'
             },
             {
-              from: 'BA',
+              from: 'Test Airlines',
               to: 'Customer',
               message: 'Booking confirmed - Deposit received',
               note: 'Store card details securely for balance payment',
               type: 'response'
             },
             {
-              from: 'BA',
+              from: 'Test Airlines',
               to: 'Customer',
               message: 'Send balance payment reminders',
               note: 'Email reminders before travel date',
               type: 'process'
             },
             {
-              from: 'BA',
+              from: 'Test Airlines',
               to: 'Acquirer',
               message: `Charge balance before service (€${schedule.balance.toFixed(2)})`,
               note: `Due ${balanceDueDate.toLocaleDateString()} - 7 days before travel`,
@@ -310,7 +310,7 @@ export default function DepositBalancePage(){
             },
             {
               from: 'Acquirer',
-              to: 'BA',
+              to: 'Test Airlines',
               message: 'Balance payment settlement complete',
               type: 'response'
             }

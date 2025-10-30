@@ -64,11 +64,11 @@ export function checkEligibility(
 
     case 'merchant':
       if (!customer?.email) {
-        requiredFields.push('email for BA Holidays account management')
+        requiredFields.push('email for Test Airlines Holidays account management')
       }
       if (basket.total > 2000) {
         eligible = false
-        reasons.push('BA Holidays instalment maximum €2000 for risk management')
+        reasons.push('Test Airlines Holidays instalment maximum €2000 for risk management')
       }
       break
 

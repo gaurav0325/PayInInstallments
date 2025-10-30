@@ -1,4 +1,4 @@
-# BA Instalments Playground - Complete Project Context
+# Test Airlines Instalments Playground - Complete Project Context
 
 **Project Status:** ✅ FULLY COMPLETED WITH LATEST CORRECTIONS  
 **Date:** 2025-01-08  
@@ -6,7 +6,7 @@
 
 ## 🎯 Project Overview
 
-The BA Instalments Playground is a comprehensive Next.js 14.2.5 application demonstrating 12 different instalment payment models for Test Airlines. This application serves as a strategic business tool for understanding, comparing, and prototyping various payment installment approaches.
+The Test Airlines Instalments Playground is a comprehensive Next.js 14.2.5 application demonstrating 12 different instalment payment models for Test Airlines. This application serves as a strategic business tool for understanding, comparing, and prototyping various payment installment approaches.
 
 ## 🏗️ Technical Architecture
 
@@ -88,7 +88,7 @@ PayInInstalments/
 - **Acquirer-driven:** Amadeus instalment engine with business rules
 
 ### **4. Deposit & Flexible Models** *(Updated with correction)*
-- **Deposit + Instalments:** BA Holidays flexible deposit system  
+- **Deposit + Instalments:** Test Airlines Holidays flexible deposit system  
 - **Deferred Payment:** Pay later with zero upfront charge
 - **Hold My Fare, Pay Later:** *(MOVED HERE - previously misplaced)* Reserve fare with hold fee
 
@@ -165,16 +165,16 @@ npm run typecheck    # TypeScript validation
 ## 📊 Business Logic & Rules
 
 ### **Model Categorization Logic**
-- **Risk Assessment:** Who bears financial risk (BA, Partner, Bank, Shared)
+- **Risk Assessment:** Who bears financial risk (Test Airlines, Partner, Bank, Shared)
 - **Complexity:** Implementation difficulty (Low/Medium/High/Very High)
-- **BA Revenue Impact:** When and how BA receives payment
+- **Test Airlines Revenue Impact:** When and how Test Airlines receives payment
 - **Customer Experience:** User journey quality and branding
 - **Technical Requirements:** 3DS, MIT, tokenization needs
 
 ### **Comparison Framework**
 14 standardized aspects across all models:
 1. **Model Type:** Core payment model category
-2. **BA Gets Money:** Payment timing and source
+2. **Test Airlines Gets Money:** Payment timing and source
 3. **Risk:** Financial risk allocation
 4. **Complexity:** Implementation difficulty
 5. **Flexibility:** Customization capabilities
@@ -193,7 +193,7 @@ npm run typecheck    # TypeScript validation
 ### **Issue Resolution (2025-01-08)**
 ✅ **"Hold My Fare, Pay Later" Category Correction**
 - **Issue:** Model was incorrectly placed in "Smart Routing Models"
-- **Analysis:** Based on attributes (BA bears risk, no external financing), this is clearly a merchant-financed model
+- **Analysis:** Based on attributes (Test Airlines bears risk, no external financing), this is clearly a merchant-financed model
 - **Solution:** Moved to "Deposit & Flexible Models" category where it logically belongs
 - **Files Updated:** 
   - `app/page.tsx` - Updated model categorization
@@ -287,7 +287,7 @@ All requested features implemented:
 - Technical architecture review  
 - Production deployment
 - Feature extension and customization
-- Integration with real BA systems
+- Integration with real Test Airlines systems
 
 ---
 

@@ -37,7 +37,7 @@ export default function IssuerPrePage(){
     { label: 'Integration type', value: 'Bank modal triggered by BIN detection' },
     { label: 'Data captured', value: 'Minimal - instalment preference only' },
     { label: 'SCA pattern', value: 'Bank handles all SCA requirements' },
-    { label: 'Settlement to BA', value: 'Full amount settled immediately' },
+    { label: 'Settlement to Test Airlines', value: 'Full amount settled immediately' },
     { label: 'Refund handling', value: 'Standard merchant refunds, bank adjusts' },
     { label: 'Chargeback liability', value: 'Standard merchant chargeback rules' },
     { label: 'Markets supported', value: 'Per issuer coverage and regulatory approval' },
@@ -121,7 +121,7 @@ export default function IssuerPrePage(){
             <div className="bg-green-50 border border-green-200 rounded-xl p-4">
               <div className="text-sm text-green-800">
                 <div className="font-medium mb-2">Bank instalments activated</div>
-                <div>Your bank will convert this payment to instalments according to your selected terms. The full amount is paid to BA immediately.</div>
+                <div>Your bank will convert this payment to instalments according to your selected terms. The full amount is paid to Test Airlines immediately.</div>
               </div>
             </div>
             <div className="flex justify-end mt-4">
@@ -148,7 +148,7 @@ export default function IssuerPrePage(){
                   <div className="bg-green-50 border border-green-200 rounded-xl p-3">
                     <div className="font-medium text-green-800">What happens next</div>
                     <ul className="text-green-700 mt-1 space-y-1">
-                      <li>• BA receives full payment immediately</li>
+                      <li>• Test Airlines receives full payment immediately</li>
                       <li>• Your bank manages instalment billing</li>
                       <li>• Check your bank app for instalment details</li>
                       <li>• Standard refund process applies</li>
@@ -207,37 +207,37 @@ export default function IssuerPrePage(){
         {/* Sequence Diagram */}
         <SequenceDiagram
           title="Issuer Pre-Purchase BIN Detection Flow Sequence"
-          actors={['Customer', 'BA', 'Bank', 'Acquirer']}
+          actors={['Customer', 'Test Airlines', 'Bank', 'Acquirer']}
           steps={[
             {
               from: 'Customer',
-              to: 'BA',
+              to: 'Test Airlines',
               message: 'Select card payment option',
               type: 'request' as const
             },
             {
               from: 'Customer',
-              to: 'BA',
+              to: 'Test Airlines',
               message: 'Enter card details (PAN)',
               note: 'Customer types card number',
               type: 'request' as const
             },
             {
-              from: 'BA',
-              to: 'BA',
+              from: 'Test Airlines',
+              to: 'Test Airlines',
               message: 'Extract BIN from card number',
               note: `Analyze first 6 digits: ${cardBIN || 'BIN detection'}`,
               type: 'process'
             },
             {
-              from: 'BA',
-              to: 'BA',
+              from: 'Test Airlines',
+              to: 'Test Airlines',
               message: 'Check BIN against eligible ranges',
               note: 'Lookup configured bank partnerships',
               type: 'process'
             },
             {
-              from: 'BA',
+              from: 'Test Airlines',
               to: 'Bank',
               message: 'Query instalment availability',
               note: 'Real-time eligibility check with issuer',
@@ -245,14 +245,14 @@ export default function IssuerPrePage(){
             },
             {
               from: 'Bank',
-              to: 'BA',
+              to: 'Test Airlines',
               message: instalmentEligible ? 'Instalment options available' : 'No instalment options',
               note: instalmentEligible ? 'Return available plans and terms' : 'Card not eligible for instalments',
               type: 'response' as const
             },
             ...(instalmentEligible ? [
               {
-                from: 'BA',
+                from: 'Test Airlines',
                 to: 'Customer',
                 message: 'Display bank modal with instalment options',
                 note: 'Show bank-branded interface with terms',
@@ -280,13 +280,13 @@ export default function IssuerPrePage(){
               {
                 from: 'Bank',
                 to: 'Acquirer',
-                message: `Process full payment to BA (€${amount.toFixed(2)})`,
-                note: 'Bank pays BA immediately, manages customer instalments',
+                message: `Process full payment to Test Airlines (€${amount.toFixed(2)})`,
+                note: 'Bank pays Test Airlines immediately, manages customer instalments',
                 type: 'request' as const
               },
               {
                 from: 'Acquirer',
-                to: 'BA',
+                to: 'Test Airlines',
                 message: 'Payment settlement complete',
                 type: 'response' as const
               },
@@ -299,7 +299,7 @@ export default function IssuerPrePage(){
               }
             ] : [
               {
-                from: 'BA',
+                from: 'Test Airlines',
                 to: 'Customer',
                 message: 'Continue with standard payment',
                 note: 'No instalment options available for this card',

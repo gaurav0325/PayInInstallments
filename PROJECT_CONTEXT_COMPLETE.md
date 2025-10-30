@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-**Name:** PayInInstalments (BA Instalments Playground)  
+**Name:** PayInInstalments (Test Airlines Instalments Playground)  
 **Purpose:** Comprehensive instalment payment models analysis and demonstration tool for Test Airlines  
 **Technology Stack:** Next.js 14, React 18, TypeScript, Tailwind CSS, Framer Motion  
 **Development Date:** September 2025  
@@ -19,7 +19,7 @@ PayInInstalments/
 │       ├── merchant-fullauth/   # Full Authorization model
 │       ├── merchant-mit/        # MIT (Merchant Initiated Transaction) model
 │       ├── acquirer/           # Amadeus Acquirer-driven model
-│       ├── deposit-instalments/ # BA Holidays deposit model
+│       ├── deposit-instalments/ # Test Airlines Holidays deposit model
 │       ├── embedded-bnpl/      # Iberia Cards embedded BNPL
 │       ├── bnpl/               # Partner BNPL (redirect)
 │       ├── psp/                # PSP-driven instalments
@@ -47,7 +47,7 @@ PayInInstalments/
 ## Key Features Implemented
 
 ### 1. Instalment Model Categories
-- **Merchant-Financed Models** (BA controlled, maximum revenue retention)
+- **Merchant-Financed Models** (Test Airlines controlled, maximum revenue retention)
 - **Partner-Financed Models** (Risk transfer, immediate payment)
 - **Acquirer-Driven Models** (Amadeus integration, automated processing)
 - **Deposit & Flexible Models** (Customer-friendly, booking conversion)
@@ -131,7 +131,7 @@ interface ComparisonData {
 ### Partner Integrations
 - **Amadeus:** Instalment Engine for LATAM markets
 - **Iberia Cards:** Multi-provider BNPL orchestration
-- **OpenJaw:** BA Holidays deposit system
+- **OpenJaw:** Test Airlines Holidays deposit system
 - **SeQura, Aplazame, FLOA:** Spanish market financing
 
 ## Security & Compliance

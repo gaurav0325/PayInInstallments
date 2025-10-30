@@ -84,15 +84,15 @@ export default function PSPPage(){
   ]
 
   const attributes = [
-    { label: 'BA Gets Money', value: 'According to PSP settlement schedule', importance: 'high' as const, type: 'positive' as const },
-    { label: 'Risk Owner', value: 'Shared - PSP manages processing, BA bears service risk', importance: 'high' as const, type: 'warning' as const },
+    { label: 'Test Airlines Gets Money', value: 'According to PSP settlement schedule', importance: 'high' as const, type: 'positive' as const },
+    { label: 'Risk Owner', value: 'Shared - PSP manages processing, Test Airlines bears service risk', importance: 'high' as const, type: 'warning' as const },
     { label: 'Complexity', value: 'Low - embedded PSP integration', importance: 'high' as const, type: 'positive' as const },
     { label: 'Flexibility', value: 'Low - limited to PSP capabilities', importance: 'medium' as const, type: 'negative' as const },
-    { label: 'Refund Trigger', value: 'Coordinated between PSP and BA', importance: 'medium' as const, type: 'neutral' as const },
+    { label: 'Refund Trigger', value: 'Coordinated between PSP and Test Airlines', importance: 'medium' as const, type: 'neutral' as const },
     { label: 'Ledger Adjustments', value: 'Automated via PSP system', importance: 'medium' as const, type: 'positive' as const },
     { label: 'Instalment Engine', value: 'PSP embedded system (CyberSource/Adyen/Stripe)', importance: 'high' as const, type: 'positive' as const },
     { label: 'Funding Source', value: 'PSP manages payment collection and settlement', importance: 'medium' as const, type: 'neutral' as const },
-    { label: 'Customer Experience', value: 'Embedded - appears as BA service with PSP power', importance: 'high' as const, type: 'positive' as const },
+    { label: 'Customer Experience', value: 'Embedded - appears as Test Airlines service with PSP power', importance: 'high' as const, type: 'positive' as const },
     { label: 'Tokenisation/MIT', value: 'Optional - PSP handles token management', importance: 'low' as const, type: 'neutral' as const },
     { label: 'Merchant of Record', value: 'Test Airlines', importance: 'medium' as const, type: 'positive' as const },
     { label: '3DS/Fraud Handling', value: 'PSP handles all authentication and fraud screening', importance: 'medium' as const, type: 'positive' as const },
@@ -134,7 +134,7 @@ export default function PSPPage(){
               </div>
               <h1 className="text-2xl font-bold text-gray-900 mb-2">Payment Service Provider Instalments</h1>
               <p className="text-gray-600">
-                Embedded instalment solutions powered by leading PSPs. No redirect required - complete the process within BA's checkout experience.
+                Embedded instalment solutions powered by leading PSPs. No redirect required - complete the process within Test Airlines's checkout experience.
               </p>
             </div>
 
@@ -161,7 +161,7 @@ export default function PSPPage(){
                   <div className="text-sm text-blue-800">
                     <div className="font-medium mb-2">Embedded PSP Experience</div>
                     <ul className="space-y-1 text-blue-700">
-                      <li>• No redirect - complete payment within BA checkout</li>
+                      <li>• No redirect - complete payment within Test Airlines checkout</li>
                       <li>• PSP handles payment splitting and scheduling automatically</li>
                       <li>• Built-in fraud protection and 3DS authentication</li>
                       <li>• Network tokenisation for secure recurring charges</li>
@@ -297,7 +297,7 @@ export default function PSPPage(){
                     <ul className="text-blue-700 space-y-1">
                       <li>• {currentPSP.name} handles all payment scheduling automatically</li>
                       <li>• Network tokens created for secure recurring charges</li>
-                      <li>• BA receives payments according to PSP settlement schedule</li>
+                      <li>• Test Airlines receives payments according to PSP settlement schedule</li>
                       <li>• Built-in fraud monitoring and 3DS authentication</li>
                       <li>• Email notifications sent before each charge</li>
                     </ul>
@@ -356,16 +356,16 @@ export default function PSPPage(){
             {/* Sequence Diagram */}
             <SequenceDiagram
               title="PSP Instalment Processing Flow Sequence"
-              actors={['Customer', 'BA', 'PSP', 'Bank']}
+              actors={['Customer', 'Test Airlines', 'PSP', 'Bank']}
               steps={[
                 {
                   from: 'Customer',
-                  to: 'BA',
+                  to: 'Test Airlines',
                   message: 'Select PSP instalment option',
                   type: 'request'
                 },
                 {
-                  from: 'BA',
+                  from: 'Test Airlines',
                   to: 'Customer',
                   message: 'Display PSP provider options',
                   note: 'Show available PSPs (CyberSource, Adyen, Stripe)',
@@ -373,12 +373,12 @@ export default function PSPPage(){
                 },
                 {
                   from: 'Customer',
-                  to: 'BA',
+                  to: 'Test Airlines',
                   message: `Choose PSP (${currentPSP.name})`,
                   type: 'request'
                 },
                 {
-                  from: 'BA',
+                  from: 'Test Airlines',
                   to: 'PSP',
                   message: 'Initialize embedded modal/widget',
                   note: 'Open PSP instalment setup interface',
@@ -414,13 +414,13 @@ export default function PSPPage(){
                 },
                 {
                   from: 'PSP',
-                  to: 'BA',
+                  to: 'Test Airlines',
                   message: 'First payment confirmation & schedule setup',
                   note: 'Automated payment schedule activated',
                   type: 'response'
                 },
                 {
-                  from: 'BA',
+                  from: 'Test Airlines',
                   to: 'Customer',
                   message: 'Booking confirmation',
                   type: 'response'
@@ -440,7 +440,7 @@ export default function PSPPage(){
                 },
                 {
                   from: 'PSP',
-                  to: 'BA',
+                  to: 'Test Airlines',
                   message: 'Settlement according to agreed schedule',
                   note: 'PSP handles payment collection and merchant settlement',
                   type: 'response'

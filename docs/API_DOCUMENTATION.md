@@ -1,8 +1,8 @@
-# BA Instalments Playground - API Documentation
+# Test Airlines Instalments Playground - API Documentation
 
 ## 🔗 API Overview
 
-The BA Instalments Playground includes a complete API simulation layer built with Next.js API routes. All endpoints return realistic responses with proper error handling, but **no real payments are processed**.
+The Test Airlines Instalments Playground includes a complete API simulation layer built with Next.js API routes. All endpoints return realistic responses with proper error handling, but **no real payments are processed**.
 
 **Base URL:** `http://localhost:3332/api`
 
@@ -411,7 +411,7 @@ curl "http://localhost:3332/api/terms?model=bnpl&market=ES"
 #### Available Terms
 - **bnpl** - ES specific, default fallback
 - **psp** - Default terms
-- **merchant** - BA instalment terms
+- **merchant** - Test Airlines instalment terms
 - **acquirer** - Acquirer-specific terms
 - **issuer-pre** - Bank instalment terms
 - **issuer-post** - Post-purchase conversion
@@ -590,4 +590,4 @@ const processPayment = async (pan: string, amount: number) => {
 };
 ```
 
-This API documentation provides complete reference for integrating with the BA Instalments Playground simulation layer.
+This API documentation provides complete reference for integrating with the Test Airlines Instalments Playground simulation layer.

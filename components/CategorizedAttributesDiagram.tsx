@@ -37,12 +37,12 @@ export function CategorizedAttributesDiagram({ attributes, title = "Key Attribut
     return 'operational' // default category
   }
 
-  // Color code attributes based on pros/cons for BA
+  // Color code attributes based on pros/cons for Test Airlines
   const getBAColorScheme = (category: string, attr: Attribute) => {
     const label = attr.label.toLowerCase()
     const value = attr.value.toLowerCase()
     
-    // Define what's good (pros) vs bad (cons) for BA
+    // Define what's good (pros) vs bad (cons) for Test Airlines
     const prosForBA = [
       'upfront', 'immediate', 'full amount', 'ba gets', 'no risk', 'standard', 'minimal',
       'no complexity', 'low effort', 'maintains control', 'instant settlement'
@@ -196,7 +196,7 @@ export function CategorizedAttributesDiagram({ attributes, title = "Key Attribut
                       fill="transparent"
                     />
                     
-                    {/* Child box with BA color coding - larger for readability */}
+                    {/* Child box with Test Airlines color coding - larger for readability */}
                     <rect
                       x={childX}
                       y={childY}

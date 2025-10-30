@@ -1,13 +1,13 @@
-# BA Instalments Playground - Original Requirements
+# Test Airlines Instalments Playground - Original Requirements
 
 ## Project Brief
-Build a BA Instalments Playground (All Instalment Models) + Next.js Scaffold
+Build a Test Airlines Instalments Playground (All Instalment Models) + Next.js Scaffold
 
-You are a senior full‑stack engineer and product designer. Build a working, animated **web application** that demonstrates **all common airline/merchant instalment models** with a **Test Airlines style checkout**. Each model must have its own interactive page that takes the customer from **instalment selection** all the way to a **final payment confirmation** (simulated). Keep the UI simple and elegant with a **ChatGPT‑like** feel, but use BA/airline design cues.
+You are a senior full‑stack engineer and product designer. Build a working, animated **web application** that demonstrates **all common airline/merchant instalment models** with a **Test Airlines style checkout**. Each model must have its own interactive page that takes the customer from **instalment selection** all the way to a **final payment confirmation** (simulated). Keep the UI simple and elegant with a **ChatGPT‑like** feel, but use Test Airlines/airline design cues.
 
 ## Scope Requirements
 
-Create a multi‑page demo app called **BA Instalments Playground**. Include these instalment model pages:
+Create a multi‑page demo app called **Test Airlines Instalments Playground**. Include these instalment model pages:
 
 ### 1. BNPL / Partner‑Financed at Checkout (Iberia‑style)
 - Provider redirect flow (Klarna-style)
@@ -25,7 +25,7 @@ Create a multi‑page demo app called **BA Instalments Playground**. Include the
 - Deposit and recurring charges owned by merchant
 - Travel-date aligned scheduling
 - MIT consent flows
-- BA manages full customer relationship
+- Test Airlines manages full customer relationship
 
 ### 4. Acquirer‑Driven Instalments
 - Acquirer product manages splits
@@ -73,7 +73,7 @@ Create a multi‑page demo app called **BA Instalments Playground**. Include the
 
 ### Tech Stack
 - **Frontend:** Next.js 14 App Router, React 18, TypeScript
-- **Styling:** Tailwind CSS with BA brand colors
+- **Styling:** Tailwind CSS with Test Airlines brand colors
 - **Components:** shadcn/ui for inputs and modals
 - **Animation:** Framer Motion for transitions and micro‑interactions
 - **State:** XState per model, or a reducer fallback
@@ -237,9 +237,9 @@ Each model must implement specific eligibility rules:
 ## User Experience Requirements
 
 ### Design System
-- **BA Red (#D7192D)** - Primary actions
-- **BA Orange (#EF8314)** - Secondary actions  
-- **BA Yellow (#FACD08)** - Warnings/accents
+- **Test Airlines Red (#D7192D)** - Primary actions
+- **Test Airlines Orange (#EF8314)** - Secondary actions  
+- **Test Airlines Yellow (#FACD08)** - Warnings/accents
 - **Clean typography** with proper hierarchy
 - **Rounded corners** and **soft shadows**
 - **Generous whitespace**
@@ -303,7 +303,7 @@ Each model must implement specific eligibility rules:
 
 ### Technical Requirements
 ✅ Next.js 14 with TypeScript
-✅ Tailwind CSS with BA branding
+✅ Tailwind CSS with Test Airlines branding
 ✅ Component-based architecture
 ✅ API routes for backend simulation
 ✅ E2E testing with Cypress

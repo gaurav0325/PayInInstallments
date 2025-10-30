@@ -29,7 +29,7 @@ export default function DeferredPage(){
   ]
 
   const attributes = [
-    { label: 'Who funds', value: 'Merchant (BA) extends credit temporarily' },
+    { label: 'Who funds', value: 'Merchant (Test Airlines) extends credit temporarily' },
     { label: 'Credit risk', value: 'Full merchant risk with basic screening' },
     { label: 'Underwriting', value: 'Fraud checks and payment method validation' },
     { label: 'Customer cost', value: 'Typically free if paid on time' },
@@ -37,7 +37,7 @@ export default function DeferredPage(){
     { label: 'Integration type', value: 'Embedded in checkout flow' },
     { label: 'Data captured', value: 'Card details, email for notifications' },
     { label: 'SCA pattern', value: 'Authorize now, charge later (CIT)' },
-    { label: 'Settlement to BA', value: 'BA receives payment on due date' },
+    { label: 'Settlement to Test Airlines', value: 'Test Airlines receives payment on due date' },
     { label: 'Refund handling', value: 'Standard refund process applies' },
     { label: 'Chargeback liability', value: 'Standard merchant chargeback rules' },
     { label: 'Markets supported', value: 'Global, subject to regulatory limits' },
@@ -219,16 +219,16 @@ export default function DeferredPage(){
         {/* Sequence Diagram */}
         <SequenceDiagram
           title="Deferred Payment Flow Sequence"
-          actors={['Customer', 'BA', 'Acquirer', 'Bank']}
+          actors={['Customer', 'Test Airlines', 'Acquirer', 'Bank']}
           steps={[
             {
               from: 'Customer',
-              to: 'BA',
+              to: 'Test Airlines',
               message: 'Select deferred payment option',
               type: 'request'
             },
             {
-              from: 'BA',
+              from: 'Test Airlines',
               to: 'Customer',
               message: 'Display deferred payment terms',
               note: `Choose from ${[14, 30, 60].join(', ')} day deferral options`,
@@ -236,12 +236,12 @@ export default function DeferredPage(){
             },
             {
               from: 'Customer',
-              to: 'BA',
+              to: 'Test Airlines',
               message: `Choose ${deferDays}-day deferral period`,
               type: 'request'
             },
             {
-              from: 'BA',
+              from: 'Test Airlines',
               to: 'Acquirer',
               message: 'Submit card details for authorisation',
               note: 'Zero amount authorisation to validate payment method',
@@ -261,26 +261,26 @@ export default function DeferredPage(){
             },
             {
               from: 'Acquirer',
-              to: 'BA',
+              to: 'Test Airlines',
               message: 'Authorization confirmation',
               type: 'response'
             },
             {
-              from: 'BA',
+              from: 'Test Airlines',
               to: 'Customer',
               message: 'Booking confirmed - Payment deferred',
               note: `Payment due in ${deferDays} days`,
               type: 'response'
             },
             {
-              from: 'BA',
+              from: 'Test Airlines',
               to: 'Customer',
               message: 'Send payment reminders',
               note: 'Email reminders sent 7, 3, and 1 days before due date',
               type: 'process'
             },
             {
-              from: 'BA',
+              from: 'Test Airlines',
               to: 'Acquirer',
               message: `Charge full amount on due date (€${amount.toFixed(2)})`,
               note: 'Automated charge processing on scheduled date',
@@ -300,7 +300,7 @@ export default function DeferredPage(){
             },
             {
               from: 'Acquirer',
-              to: 'BA',
+              to: 'Test Airlines',
               message: 'Payment settlement complete',
               type: 'response'
             }

@@ -1,8 +1,8 @@
-# BA Instalments Playground - Project Summary
+# Test Airlines Instalments Playground - Project Summary
 
 ## 🎯 Project Overview
 
-The **BA Instalments Playground** is a comprehensive web application demonstrating all common airline instalment payment models with Test Airlines style checkout flows. Built with Next.js 14, TypeScript, and Tailwind CSS, it provides interactive demonstrations of 9 different payment models from BNPL to hybrid orchestrators.
+The **Test Airlines Instalments Playground** is a comprehensive web application demonstrating all common airline instalment payment models with Test Airlines style checkout flows. Built with Next.js 14, TypeScript, and Tailwind CSS, it provides interactive demonstrations of 9 different payment models from BNPL to hybrid orchestrators.
 
 **Live Application:** http://localhost:3332  
 **Status:** 🟢 Running Successfully  
@@ -14,7 +14,7 @@ The **BA Instalments Playground** is a comprehensive web application demonstrati
 
 ### 🏗️ Technical Implementation
 - **Next.js 14** with App Router and TypeScript
-- **Tailwind CSS** with BA brand colors and design system
+- **Tailwind CSS** with Test Airlines brand colors and design system
 - **Component-based architecture** with 11 reusable components
 - **API simulation layer** with 7 backend endpoints
 - **Cypress E2E testing** with comprehensive BNPL flow tests
@@ -35,7 +35,7 @@ The **BA Instalments Playground** is a comprehensive web application demonstrati
    - Network tokenization explanation
 
 3. **Merchant-Financed Instalments**
-   - BA owns deposit and recurring charges
+   - Test Airlines owns deposit and recurring charges
    - Travel-aligned payment scheduling
    - Prorated refund handling
    - Customer relationship management
@@ -128,7 +128,7 @@ ba-instalments-playground/
 │   ├── package.json                  # Dependencies and scripts
 │   ├── next.config.mjs               # Next.js configuration  
 │   ├── tsconfig.json                 # TypeScript configuration
-│   ├── tailwind.config.ts            # Tailwind + BA brand colors
+│   ├── tailwind.config.ts            # Tailwind + Test Airlines brand colors
 │   ├── cypress.config.ts             # E2E testing setup
 │   └── .env.example                  # Environment variables
 │
@@ -136,7 +136,7 @@ ba-instalments-playground/
 │   ├── app/                          # Next.js 14 App Router
 │   │   ├── layout.tsx               # Root layout with navigation
 │   │   ├── page.tsx                 # Home page with model overview
-│   │   ├── globals.css              # Global styles with BA branding
+│   │   ├── globals.css              # Global styles with Test Airlines branding
 │   │   ├── models/[9 models]        # Individual payment model pages
 │   │   └── api/[7 endpoints]        # Backend simulation APIs
 │   │
@@ -191,7 +191,7 @@ GET /api/terms?model=psp&market=ES 200 in 2462ms
 ## 🎨 Design & UX Highlights
 
 ### Visual Design
-- **BA Brand Colors:** Red (#D7192D), Orange (#EF8314), Yellow (#FACD08)
+- **Test Airlines Brand Colors:** Red (#D7192D), Orange (#EF8314), Yellow (#FACD08)
 - **Clean Typography:** Proper hierarchy with generous whitespace
 - **Card-Based Layout:** Consistent elevation and rounded corners
 - **Responsive Design:** Mobile-first with desktop enhancements
@@ -316,7 +316,7 @@ describe('BNPL Flow', () => {
 
 **Technical Requirements:**
 - [x] Next.js 14 with App Router and TypeScript
-- [x] Tailwind CSS with BA brand colors
+- [x] Tailwind CSS with Test Airlines brand colors
 - [x] Component-based architecture with reusable patterns
 - [x] API routes for realistic backend simulation
 - [x] Cypress E2E testing with comprehensive coverage
@@ -370,7 +370,7 @@ This project successfully delivers a **production-quality demonstration** of air
 4. **Demonstrates technical excellence** in modern web development
 5. **Includes comprehensive documentation** for long-term maintenance
 
-The BA Instalments Playground stands as a complete, well-documented, and immediately usable demonstration of complex payment flows in the airline industry.
+The Test Airlines Instalments Playground stands as a complete, well-documented, and immediately usable demonstration of complex payment flows in the airline industry.
 
 **Project Status: ✅ COMPLETE & SUCCESSFUL** 🚀
 

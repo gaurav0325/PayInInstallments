@@ -52,15 +52,15 @@ export default function EmbeddedBNPLPage() {
   ]
 
   const attributes = [
-    { label: 'BA Gets Money', value: 'Upfront from financing partner (minus fees)' },
+    { label: 'Test Airlines Gets Money', value: 'Upfront from financing partner (minus fees)' },
     { label: 'Risk Owner', value: 'Financing partner (SeQura, Aplazame, FLOA)' },
     { label: 'Complexity', value: 'Medium - requires multi-provider orchestration' },
     { label: 'Flexibility', value: 'High - multiple providers and terms available' },
     { label: 'Refund Trigger', value: 'Financing partner manages refunds and adjustments' },
-    { label: 'Ledger Adjustments', value: 'Simple - BA receives net amount upfront' },
+    { label: 'Ledger Adjustments', value: 'Simple - Test Airlines receives net amount upfront' },
     { label: 'Instalment Engine', value: 'Iberia Cards subsidiary orchestration' },
     { label: 'Funding Source', value: 'Multi-provider financing (SeQura, Aplazame, FLOA)' },
-    { label: 'Customer Experience', value: 'Embedded - appears as BA service' },
+    { label: 'Customer Experience', value: 'Embedded - appears as Test Airlines service' },
     { label: 'Tokenisation/MIT', value: 'Managed by financing partner' },
     { label: 'Merchant of Record', value: 'Test Airlines (via Iberia Cards)' },
     { label: '3DS/Fraud Handling', value: 'Financing partner handles all authentication' },
@@ -246,8 +246,8 @@ export default function EmbeddedBNPLPage() {
                     <div className="font-medium text-blue-800 mb-2">Gestión vía Iberia Cards</div>
                     <ul className="text-blue-700 space-y-1">
                       <li>• Puntos de fidelización aplicados a tu cuenta</li>
-                      <li>• Gestión integrada desde tu perfil de BA</li>
-                      <li>• Soporte al cliente vía canales de BA</li>
+                      <li>• Gestión integrada desde tu perfil de Test Airlines</li>
+                      <li>• Soporte al cliente vía canales de Test Airlines</li>
                       <li>• Notificaciones por email y app</li>
                     </ul>
                   </div>
@@ -289,16 +289,16 @@ export default function EmbeddedBNPLPage() {
             {/* Sequence Diagram */}
             <SequenceDiagram
               title="Flujo de pagos (Secuencia)"
-              actors={['Customer', 'BA', 'Iberia Cards', 'Provider', 'Bank']}
+              actors={['Customer', 'Test Airlines', 'Iberia Cards', 'Provider', 'Bank']}
               steps={[
                 {
                   from: 'Customer',
-                  to: 'BA',
+                  to: 'Test Airlines',
                   message: 'Seleccionar pago a plazos',
                   type: 'request'
                 },
                 {
-                  from: 'BA',
+                  from: 'Test Airlines',
                   to: 'Iberia Cards',
                   message: 'Orchestrate BNPL options',
                   note: 'Multi-provider orchestration via Iberia Cards',
@@ -321,7 +321,7 @@ export default function EmbeddedBNPLPage() {
                   from: 'Iberia Cards',
                   to: 'Provider',
                   message: 'Redirect to SeQura/Aplazame/FLOA',
-                  note: 'Embedded experience maintains BA branding',
+                  note: 'Embedded experience maintains Test Airlines branding',
                   type: 'request'
                 },
                 {
@@ -345,13 +345,13 @@ export default function EmbeddedBNPLPage() {
                 },
                 {
                   from: 'Iberia Cards',
-                  to: 'BA',
+                  to: 'Test Airlines',
                   message: 'Settlement (full amount minus fees)',
-                  note: 'BA receives net payment upfront',
+                  note: 'Test Airlines receives net payment upfront',
                   type: 'response'
                 },
                 {
-                  from: 'BA',
+                  from: 'Test Airlines',
                   to: 'Customer',
                   message: 'Booking confirmation',
                   type: 'response'

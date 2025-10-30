@@ -19,8 +19,8 @@ interface ComparisonData {
 const comparisonData: ComparisonData[] = [
   {
     model: 'Merchant-Financed (Full Auth)',
-    revenueFlow: 'BA receives full flight value via staged captures over instalment period',
-    creditRisk: 'BA bears full credit risk - passenger default directly impacts airline revenue',
+    revenueFlow: 'Test Airlines receives full flight value via staged captures over instalment period',
+    creditRisk: 'Test Airlines bears full credit risk - passenger default directly impacts airline revenue',
     implementationEffort: 'Medium',
     baControl: 'High',
     customerExperience: 'Simple',
@@ -31,8 +31,8 @@ const comparisonData: ComparisonData[] = [
   },
   {
     model: 'Merchant-Financed (MIT)',
-    revenueFlow: 'BA receives first instalment immediately, then monthly recurring payments',
-    creditRisk: 'High risk - BA responsible for all payment failures and chargebacks',
+    revenueFlow: 'Test Airlines receives first instalment immediately, then monthly recurring payments',
+    creditRisk: 'High risk - Test Airlines responsible for all payment failures and chargebacks',
     implementationEffort: 'High',
     baControl: 'High',
     customerExperience: 'Standard',
@@ -43,8 +43,8 @@ const comparisonData: ComparisonData[] = [
   },
   {
     model: 'Amadeus Acquirer-Driven',
-    revenueFlow: 'BA receives upfront settlement from Amadeus, reducing cash flow risk',
-    creditRisk: 'Minimal - Amadeus bears processing risk, BA only bears service delivery risk',
+    revenueFlow: 'Test Airlines receives upfront settlement from Amadeus, reducing cash flow risk',
+    creditRisk: 'Minimal - Amadeus bears processing risk, Test Airlines only bears service delivery risk',
     implementationEffort: 'Medium',
     baControl: 'Medium',
     customerExperience: 'Simple',
@@ -55,7 +55,7 @@ const comparisonData: ComparisonData[] = [
   },
   {
     model: 'Merchant-Embedded BNPL (Iberia)',
-    revenueFlow: 'BA receives immediate payment minus financing partner fees and revenue share',
+    revenueFlow: 'Test Airlines receives immediate payment minus financing partner fees and revenue share',
     creditRisk: 'Zero - financing partners (SeQura, Aplazame, FLOA) assume all credit risk',
     implementationEffort: 'Medium',
     baControl: 'Medium',
@@ -66,8 +66,8 @@ const comparisonData: ComparisonData[] = [
     marketSuitability: 'Spain only - strategic partnership via Iberia Cards subsidiary'
   },
   {
-    model: 'Deposit + Instalments (BA Holidays)',
-    revenueFlow: 'BA receives low deposit immediately, balance payment before service delivery',
+    model: 'Deposit + Instalments (Test Airlines Holidays)',
+    revenueFlow: 'Test Airlines receives low deposit immediately, balance payment before service delivery',
     creditRisk: 'Moderate - risk of final payment default, mitigated by ATOL protection',
     implementationEffort: 'Low',
     baControl: 'High',
@@ -79,7 +79,7 @@ const comparisonData: ComparisonData[] = [
   },
   {
     model: 'BNPL Partner (Redirect)',
-    revenueFlow: 'BA receives immediate payment minus high partner fees (3-8% of transaction)',
+    revenueFlow: 'Test Airlines receives immediate payment minus high partner fees (3-8% of transaction)',
     creditRisk: 'Zero - BNPL partners assume all credit and fraud risk',
     implementationEffort: 'Low',
     baControl: 'Low',
@@ -91,8 +91,8 @@ const comparisonData: ComparisonData[] = [
   },
   {
     model: 'PSP-Driven Instalments',
-    revenueFlow: 'BA receives payments according to PSP settlement schedule with processing fees',
-    creditRisk: 'Shared - PSP handles payment processing risk, BA retains service delivery risk',
+    revenueFlow: 'Test Airlines receives payments according to PSP settlement schedule with processing fees',
+    creditRisk: 'Shared - PSP handles payment processing risk, Test Airlines retains service delivery risk',
     implementationEffort: 'Low',
     baControl: 'Low',
     customerExperience: 'Simple',
@@ -103,7 +103,7 @@ const comparisonData: ComparisonData[] = [
   },
   {
     model: 'Issuer Instalments (Bank)',
-    revenueFlow: 'BA receives full flight value immediately from customer\'s bank',
+    revenueFlow: 'Test Airlines receives full flight value immediately from customer\'s bank',
     creditRisk: 'Zero - customer\'s issuing bank assumes all credit risk',
     implementationEffort: 'Low',
     baControl: 'Low',
@@ -336,7 +336,7 @@ export function InstalmentsComparisonTable() {
           <ul className="space-y-1">
             <li><span className="inline-block w-3 h-3 bg-green-100 rounded mr-1"></span><strong>Low Risk:</strong> Partner bears credit risk</li>
             <li><span className="inline-block w-3 h-3 bg-yellow-100 rounded mr-1"></span><strong>Shared:</strong> Risk distributed across parties</li>
-            <li><span className="inline-block w-3 h-3 bg-red-100 rounded mr-1"></span><strong>BA Risk:</strong> Full merchant liability</li>
+            <li><span className="inline-block w-3 h-3 bg-red-100 rounded mr-1"></span><strong>Test Airlines Risk:</strong> Full merchant liability</li>
           </ul>
         </div>
         <div>

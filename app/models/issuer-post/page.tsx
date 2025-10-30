@@ -33,7 +33,7 @@ export default function IssuerPostPage(){
     { label: 'Integration type', value: 'Informational banner, external bank portal' },
     { label: 'Data captured', value: 'None - pure informational flow' },
     { label: 'SCA pattern', value: 'Customer authenticates with bank directly' },
-    { label: 'Settlement to BA', value: 'Already completed at full amount' },
+    { label: 'Settlement to Test Airlines', value: 'Already completed at full amount' },
     { label: 'Refund handling', value: 'Standard refunds, bank handles adjustments' },
     { label: 'Chargeback liability', value: 'Standard merchant rules apply' },
     { label: 'Markets supported', value: 'Depends on bank partnerships and features' },
@@ -184,36 +184,36 @@ export default function IssuerPostPage(){
         {/* Sequence Diagram */}
         <SequenceDiagram
           title="Issuer Post-Purchase Conversion Flow Sequence"
-          actors={['Customer', 'BA', 'Bank Portal']}
+          actors={['Customer', 'Test Airlines', 'Bank Portal']}
           steps={[
             {
               from: 'Customer',
-              to: 'BA',
+              to: 'Test Airlines',
               message: 'Select card payment option',
               type: 'request'
             },
             {
               from: 'Customer',
-              to: 'BA',
+              to: 'Test Airlines',
               message: 'Submit card details and complete payment',
               note: `Full payment of €${amount.toFixed(2)}`,
               type: 'request'
             },
             {
-              from: 'BA',
-              to: 'BA',
+              from: 'Test Airlines',
+              to: 'Test Airlines',
               message: 'Process standard card payment',
               note: 'Normal payment processing - full amount charged',
               type: 'process'
             },
             {
-              from: 'BA',
+              from: 'Test Airlines',
               to: 'Customer',
               message: 'Payment confirmed - Booking complete',
               type: 'response'
             },
             {
-              from: 'BA',
+              from: 'Test Airlines',
               to: 'Customer',
               message: 'Display post-purchase instalment banner',
               note: 'Show informational banner about bank instalment options',
@@ -237,13 +237,13 @@ export default function IssuerPostPage(){
               from: 'Bank Portal',
               to: 'Customer',
               message: 'Display recent transactions',
-              note: 'Show transaction history including BA payment',
+              note: 'Show transaction history including Test Airlines payment',
               type: 'response'
             },
             {
               from: 'Customer',
               to: 'Bank Portal',
-              message: 'Select BA transaction for conversion',
+              message: 'Select Test Airlines transaction for conversion',
               note: 'Choose to convert payment to instalments',
               type: 'request'
             },

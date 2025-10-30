@@ -1,8 +1,8 @@
-# BA Instalments Playground - Component Library
+# Test Airlines Instalments Playground - Component Library
 
 ## 🧩 Component Overview
 
-The BA Instalments Playground uses a modular component architecture with reusable components that maintain consistency across all 9 payment models. Each component is built with TypeScript, Tailwind CSS, and follows BA design patterns.
+The Test Airlines Instalments Playground uses a modular component architecture with reusable components that maintain consistency across all 9 payment models. Each component is built with TypeScript, Tailwind CSS, and follows Test Airlines design patterns.
 
 ---
 
@@ -52,11 +52,11 @@ import { ProgressSteps } from '@/components/ProgressSteps'
 #### Features
 - **4 predefined steps:** Select plan, Details/verification, Payment/3DS, Confirmation
 - **Visual indicators:** Numbered circles with progress highlighting
-- **Current step emphasis:** Active step highlighted in BA red
+- **Current step emphasis:** Active step highlighted in Test Airlines red
 - **Responsive design:** Adapts to mobile screens
 
 #### Styling
-- Active steps: `bg-red-600` (BA red)
+- Active steps: `bg-red-600` (Test Airlines red)
 - Inactive steps: `bg-gray-300`
 - Text emphasis: Current and completed steps darker
 
@@ -463,7 +463,7 @@ showToast('error', 'Payment failed. Please try again.')
 
 ### Color Palette
 ```css
-/* BA Brand Colors */
+/* Test Airlines Brand Colors */
 --ba-red: #D7192D;      /* Primary actions */
 --ba-orange: #EF8314;   /* Secondary actions */
 --ba-yellow: #FACD08;   /* Warnings/accents */
@@ -613,4 +613,4 @@ test('PlanPicker calls onSelect when plan chosen', () => {
 3. **Callback memoization:** Use useCallback for expensive handlers
 4. **Bundle size:** Import only what you need
 
-This component library documentation provides a complete reference for understanding, using, and extending the BA Instalments Playground components.
+This component library documentation provides a complete reference for understanding, using, and extending the Test Airlines Instalments Playground components.

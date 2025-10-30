@@ -121,7 +121,7 @@ export function EnhancedNotesSection({ isCompact = true, modelContext }: Enhance
     const activeNotes = notes.filter(n => !n.isArchived)
     
     // Create readable text export
-    let exportText = `BA INSTALMENTS PLAYGROUND - NOTES SUMMARY\n`
+    let exportText = `Test Airlines INSTALMENTS PLAYGROUND - NOTES SUMMARY\n`
     exportText += `Generated: ${new Date().toLocaleDateString()} at ${new Date().toLocaleTimeString()}\n`
     exportText += `=`.repeat(60) + '\n\n'
     
@@ -152,14 +152,14 @@ export function EnhancedNotesSection({ isCompact = true, modelContext }: Enhance
     
     exportText += `${'='.repeat(60)}\n`
     exportText += `Export completed on ${new Date().toLocaleString()}\n`
-    exportText += `BA Instalments Playground - Payment Models Analysis Tool`
+    exportText += `Test Airlines Instalments Playground - Payment Models Analysis Tool`
 
     // Create and download text export
     const blob = new Blob([exportText], { type: 'text/plain' })
     const url = URL.createObjectURL(blob)
     const a = document.createElement('a')
     a.href = url
-    a.download = `BA-Instalments-Notes-${new Date().toISOString().split('T')[0]}.txt`
+    a.download = `Test Airlines-Instalments-Notes-${new Date().toISOString().split('T')[0]}.txt`
     a.click()
     URL.revokeObjectURL(url)
     

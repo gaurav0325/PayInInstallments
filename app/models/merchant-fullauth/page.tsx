@@ -30,7 +30,7 @@ export default function MerchantFullAuthPage() {
   }
 
   const rules = [
-    { label: 'Booking via eCommerce (New BA.com)', passed: true, required: true },
+    { label: 'Booking via eCommerce (New Test Airlines.com)', passed: true, required: true },
     { label: 'Return flight journey', passed: true, required: true },
     { label: 'UK residence with valid ID', passed: true, required: true },
     { label: 'Minimum purchase £100', passed: amount >= 100, required: true },
@@ -42,19 +42,19 @@ export default function MerchantFullAuthPage() {
   ]
 
   const attributes = [
-    { label: 'BA Gets Money', value: 'According to staged capture schedule' },
-    { label: 'Risk Owner', value: 'BA bears credit and operational risk' },
+    { label: 'Test Airlines Gets Money', value: 'According to staged capture schedule' },
+    { label: 'Risk Owner', value: 'Test Airlines bears credit and operational risk' },
     { label: 'Complexity', value: 'Medium - requires acquirer staged capture support' },
     { label: 'Flexibility', value: 'Low - fixed schedule per acquirer capabilities' },
-    { label: 'Refund Trigger', value: 'BA manages refunds with capture adjustments' },
+    { label: 'Refund Trigger', value: 'Test Airlines manages refunds with capture adjustments' },
     { label: 'Ledger Adjustments', value: 'Complex - revenue recognition per captures' },
-    { label: 'Instalment Engine', value: 'BA system with acquirer integration' },
-    { label: 'Funding Source', value: 'BA provides upfront service, collects over time' },
+    { label: 'Instalment Engine', value: 'Test Airlines system with acquirer integration' },
+    { label: 'Funding Source', value: 'Test Airlines provides upfront service, collects over time' },
     { label: 'Customer Experience', value: 'Simple - appears as normal payment to customer' },
     { label: 'Tokenisation/MIT', value: 'Optional - uses single authorisation token' },
     { label: 'Merchant of Record', value: 'Test Airlines' },
-    { label: '3DS/Fraud Handling', value: 'Initial 3DS authentication, BA fraud monitoring' },
-    { label: 'Additional Fees', value: 'Interest/admin fees as per BA policy' },
+    { label: '3DS/Fraud Handling', value: 'Initial 3DS authentication, Test Airlines fraud monitoring' },
+    { label: 'Additional Fees', value: 'Interest/admin fees as per Test Airlines policy' },
     { label: '3RI Support', value: 'No - single CIT authorisation only' }
   ]
 
@@ -66,7 +66,7 @@ export default function MerchantFullAuthPage() {
     },
     {
       id: 'instalments',
-      name: 'BA Instalments (Full Auth)',
+      name: 'Test Airlines Instalments (Full Auth)',
       description: 'Single authorisation with staged captures'
     }
   ]
@@ -88,7 +88,7 @@ export default function MerchantFullAuthPage() {
               </div>
               <h1 className="text-2xl font-bold text-gray-900 mb-2">Full Authorization with Staged Captures</h1>
               <p className="text-gray-600">
-                BA authorizes the full instalment amount upfront, then uses staged captures to collect payments according to the schedule. Lower risk but requires acquirer support.
+                Test Airlines authorizes the full instalment amount upfront, then uses staged captures to collect payments according to the schedule. Lower risk but requires acquirer support.
               </p>
             </div>
 
@@ -115,9 +115,9 @@ export default function MerchantFullAuthPage() {
                   <div className="text-sm text-blue-800">
                     <div className="font-medium mb-2">How Full Authorization Works</div>
                     <ul className="space-y-1 text-blue-700">
-                      <li>• BA authorizes the full amount (£{amount.toFixed(2)}) on your card today</li>
+                      <li>• Test Airlines authorizes the full amount (£{amount.toFixed(2)}) on your card today</li>
                       <li>• Your available credit is reduced by the full amount immediately</li>
-                      <li>• BA captures payments according to your chosen schedule</li>
+                      <li>• Test Airlines captures payments according to your chosen schedule</li>
                       <li>• You only pay interest on captured amounts, not the full authorisation</li>
                     </ul>
                   </div>
@@ -202,7 +202,7 @@ export default function MerchantFullAuthPage() {
                     <div className="font-medium text-blue-800 mb-2">What happens next</div>
                     <ul className="text-blue-700 space-y-1">
                       <li>• Your card shows £{amount.toFixed(2)} as "pending/authorized"</li>
-                      <li>• BA captures payments monthly according to schedule</li>
+                      <li>• Test Airlines captures payments monthly according to schedule</li>
                       <li>• You receive email notifications before each capture</li>
                       <li>• Available credit restored as authorisation expires</li>
                     </ul>
@@ -252,28 +252,28 @@ export default function MerchantFullAuthPage() {
             {/* Sequence Diagram */}
             <SequenceDiagram
               title="Payment Flow Sequence"
-              actors={['Customer', 'BA', 'Acquirer', 'Bank']}
+              actors={['Customer', 'Test Airlines', 'Acquirer', 'Bank']}
               steps={[
                 {
                   from: 'Customer',
-                  to: 'BA',
+                  to: 'Test Airlines',
                   message: 'Select instalment plan',
                   type: 'request'
                 },
                 {
-                  from: 'BA',
+                  from: 'Test Airlines',
                   to: 'Customer',
                   message: 'Display terms and schedule',
                   type: 'response'
                 },
                 {
                   from: 'Customer',
-                  to: 'BA',
+                  to: 'Test Airlines',
                   message: 'Confirm payment details',
                   type: 'request'
                 },
                 {
-                  from: 'BA',
+                  from: 'Test Airlines',
                   to: 'Acquirer',
                   message: `Authorize full amount (£${amount})`,
                   note: 'Single full authorisation for entire instalment amount',
@@ -293,31 +293,31 @@ export default function MerchantFullAuthPage() {
                 },
                 {
                   from: 'Acquirer',
-                  to: 'BA',
+                  to: 'Test Airlines',
                   message: 'Authorization successful',
                   type: 'response'
                 },
                 {
-                  from: 'BA',
+                  from: 'Test Airlines',
                   to: 'Customer',
                   message: 'Booking confirmed',
                   type: 'response'
                 },
                 {
-                  from: 'BA',
+                  from: 'Test Airlines',
                   to: 'Acquirer',
                   message: `Capture £${plan ? (amount/plan.months).toFixed(2) : 'XX'} (Month 1)`,
                   note: 'Staged capture according to schedule',
                   type: 'request'
                 },
                 {
-                  from: 'BA',
+                  from: 'Test Airlines',
                   to: 'Acquirer',
                   message: `Capture £${plan ? (amount/plan.months).toFixed(2) : 'XX'} (Month 2)`,
                   type: 'request'
                 },
                 {
-                  from: 'BA',
+                  from: 'Test Airlines',
                   to: 'Acquirer',
                   message: `Capture £${plan ? (amount/plan.months).toFixed(2) : 'XX'} (Month N)`,
                   note: 'Continue until full amount captured',

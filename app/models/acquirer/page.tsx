@@ -43,14 +43,14 @@ export default function AcquirerPage() {
   ]
 
   const attributes = [
-    { label: 'BA Gets Money', value: 'Single authorisation + staged captures over time' },
-    { label: 'Risk Owner', value: 'Shared - Amadeus bears processing risk, BA bears service risk' },
+    { label: 'Test Airlines Gets Money', value: 'Single authorisation + staged captures over time' },
+    { label: 'Risk Owner', value: 'Shared - Amadeus bears processing risk, Test Airlines bears service risk' },
     { label: 'Complexity', value: 'Medium - requires Amadeus integration and rule configuration' },
     { label: 'Flexibility', value: 'High - configurable business rules and up to 20 instalments' },
-    { label: 'Refund Trigger', value: 'Coordinated refunds between Amadeus and BA' },
+    { label: 'Refund Trigger', value: 'Coordinated refunds between Amadeus and Test Airlines' },
     { label: 'Ledger Adjustments', value: 'Automated - Amadeus handles capture scheduling' },
     { label: 'Instalment Engine', value: 'Amadeus Instalment Engine with configurable rules' },
-    { label: 'Funding Source', value: 'Amadeus provides upfront settlement to BA' },
+    { label: 'Funding Source', value: 'Amadeus provides upfront settlement to Test Airlines' },
     { label: 'Customer Experience', value: 'Seamless - embedded in checkout flow' },
     { label: 'Tokenisation/MIT', value: 'Single auth token with multiple staged captures' },
     { label: 'Merchant of Record', value: 'Test Airlines via Amadeus processing' },
@@ -207,7 +207,7 @@ export default function AcquirerPage() {
                     <div className="font-medium text-blue-800 mb-2">Gestión Amadeus</div>
                     <ul className="text-blue-700 space-y-1">
                       <li>• Amadeus maneja programación automática de capturas</li>
-                      <li>• BA recibe liquidación según cronograma configurado</li>
+                      <li>• Test Airlines recibe liquidación según cronograma configurado</li>
                       <li>• Reglas de negocio aplicadas por mercado LATAM</li>
                       <li>• Resolución de disputas vía red adquirente</li>
                       <li>• Notificaciones por cada captura procesada</li>
@@ -251,16 +251,16 @@ export default function AcquirerPage() {
             {/* Sequence Diagram */}
             <SequenceDiagram
               title="Flujo de pagos (Secuencia)"
-              actors={['Customer', 'BA', 'Amadeus', 'Bank']}
+              actors={['Customer', 'Test Airlines', 'Amadeus', 'Bank']}
               steps={[
                 {
                   from: 'Customer',
-                  to: 'BA',
+                  to: 'Test Airlines',
                   message: 'Seleccionar plan de cuotas',
                   type: 'request'
                 },
                 {
-                  from: 'BA',
+                  from: 'Test Airlines',
                   to: 'Amadeus',
                   message: 'Configurar motor de cuotas',
                   note: 'Amadeus instalment engine processing',
@@ -294,13 +294,13 @@ export default function AcquirerPage() {
                 },
                 {
                   from: 'Amadeus',
-                  to: 'BA',
+                  to: 'Test Airlines',
                   message: 'Liquidación y configuración activa',
-                  note: 'BA receives upfront settlement',
+                  note: 'Test Airlines receives upfront settlement',
                   type: 'response'
                 },
                 {
-                  from: 'BA',
+                  from: 'Test Airlines',
                   to: 'Customer',
                   message: 'Confirmación de reserva',
                   type: 'response'
@@ -320,9 +320,9 @@ export default function AcquirerPage() {
                 },
                 {
                   from: 'Amadeus',
-                  to: 'BA',
+                  to: 'Test Airlines',
                   message: 'Notificación de pago procesado',
-                  note: 'Settlement notification to BA',
+                  note: 'Settlement notification to Test Airlines',
                   type: 'response'
                 }
               ]}

@@ -114,10 +114,10 @@ export default function ComparisonPage() {
               <div>
                 <h4 className="font-semibold text-gray-900 mb-2">Evaluation Criteria:</h4>
                 <ul className="space-y-1 text-gray-600">
-                  <li>• <strong>Revenue Flow:</strong> How and when BA receives payment</li>
+                  <li>• <strong>Revenue Flow:</strong> How and when Test Airlines receives payment</li>
                   <li>• <strong>Credit Risk:</strong> Who bears the risk of customer default</li>
                   <li>• <strong>Implementation Effort:</strong> Technical complexity and development time</li>
-                  <li>• <strong>BA Control:</strong> Level of control over payment terms and experience</li>
+                  <li>• <strong>Test Airlines Control:</strong> Level of control over payment terms and experience</li>
                   <li>• <strong>Customer Experience:</strong> Complexity from customer perspective</li>
                   <li>• <strong>Market Suitability:</strong> Geographic and regulatory constraints</li>
                 </ul>
@@ -127,7 +127,7 @@ export default function ComparisonPage() {
                 <ul className="space-y-1 text-gray-600">
                   <li className="flex items-center gap-2">
                     <span className="inline-block w-3 h-3 bg-green-100 rounded border border-green-200"></span>
-                    <span><strong>Green:</strong> Low complexity/effort, High control (favorable for BA)</span>
+                    <span><strong>Green:</strong> Low complexity/effort, High control (favorable for Test Airlines)</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <span className="inline-block w-3 h-3 bg-yellow-100 rounded border border-yellow-200"></span>
@@ -135,7 +135,7 @@ export default function ComparisonPage() {
                   </li>
                   <li className="flex items-center gap-2">
                     <span className="inline-block w-3 h-3 bg-red-100 rounded border border-red-200"></span>
-                    <span><strong>Red:</strong> High complexity/effort, Low control (challenging for BA)</span>
+                    <span><strong>Red:</strong> High complexity/effort, Low control (challenging for Test Airlines)</span>
                   </li>
                 </ul>
               </div>

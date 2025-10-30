@@ -34,7 +34,7 @@ export default function DepositInstalmentsPage() {
     cvv: '123'
   }
 
-  // Calculate deposit based on BA Holidays rules (from official documentation)
+  // Calculate deposit based on Test Airlines Holidays rules (from official documentation)
   const calculateDeposit = (total: number) => {
     if (total >= 300 && total < 700) return 99
     if (total >= 700 && total < 1000) return 120
@@ -59,7 +59,7 @@ export default function DepositInstalmentsPage() {
     setDepositAmount(deposit)
     setCustomDepositAmount(deposit) // Initialize custom amount to minimum deposit
     setRemainingAmount(amount - deposit)
-    // Balance due timing: 4 weeks for short-haul, 7 weeks for other holidays (per BA documentation)
+    // Balance due timing: 4 weeks for short-haul, 7 weeks for other holidays (per Test Airlines documentation)
     const weeks = isShortHaul ? 4 : 7
     setBalanceWeeks(weeks)
     const dueDate = new Date()
@@ -79,17 +79,17 @@ export default function DepositInstalmentsPage() {
   ]
 
   const attributes = [
-    { label: 'BA Gets Money', value: 'Flight payment at booking, hotel/car at balance payment' },
-    { label: 'Risk Owner', value: 'BA Holidays bears collection risk on balance' },
+    { label: 'Test Airlines Gets Money', value: 'Flight payment at booking, hotel/car at balance payment' },
+    { label: 'Risk Owner', value: 'Test Airlines Holidays bears collection risk on balance' },
     { label: 'Complexity', value: 'Medium - requires travel date integration & OpenJaw' },
     { label: 'Flexibility', value: 'High - customer controls payment timing' },
-    { label: 'Refund Trigger', value: 'BA Holidays manages cancellations and refunds' },
+    { label: 'Refund Trigger', value: 'Test Airlines Holidays manages cancellations and refunds' },
     { label: 'Ledger Adjustments', value: 'Complex - deferred revenue for hotel/car components' },
-    { label: 'Instalment Engine', value: 'OpenJaw solution with BA Holidays integration' },
-    { label: 'Funding Source', value: 'Customer funds, BA Holidays collection risk' },
+    { label: 'Instalment Engine', value: 'OpenJaw solution with Test Airlines Holidays integration' },
+    { label: 'Funding Source', value: 'Customer funds, Test Airlines Holidays collection risk' },
     { label: 'Customer Experience', value: 'Simple - low deposit, flexible balance timing' },
     { label: 'Tokenisation/MIT', value: 'Optional - mainly for balance collection reminders' },
-    { label: 'Merchant of Record', value: 'BA Holidays' },
+    { label: 'Merchant of Record', value: 'Test Airlines Holidays' },
     { label: '3DS/Fraud Handling', value: 'Standard card authentication for both payments' },
     { label: 'Additional Fees', value: 'No additional fees, deposit generally non-refundable' },
     { label: '3RI Support', value: 'Limited - mainly for payment reminders' }
@@ -125,7 +125,7 @@ export default function DepositInstalmentsPage() {
                   Low deposit + Instalments
                 </div>
                 <div className="badge border-blue-200 bg-blue-50 text-blue-700">
-                  BA Holidays
+                  Test Airlines Holidays
                 </div>
                 <div className="badge border-green-200 bg-green-50 text-green-700">
                   Internal Reference
@@ -145,7 +145,7 @@ export default function DepositInstalmentsPage() {
                 <h2 className="text-xl font-semibold mb-4">Choose your payment option</h2>
                 <div className="bg-orange-50 border border-orange-200 rounded-xl p-4 mb-6">
                   <div className="text-sm text-orange-800">
-                    <div className="font-medium mb-2">BA Holidays Low Deposit Benefits</div>
+                    <div className="font-medium mb-2">Test Airlines Holidays Low Deposit Benefits</div>
                     <ul className="space-y-1 text-orange-700">
                       <li>• Secure your holiday for just £{depositAmount}</li>
                       <li>• Pay balance when convenient (deadline: {balanceWeeks} weeks before travel)</li>
@@ -256,7 +256,7 @@ export default function DepositInstalmentsPage() {
                       <div className="text-xs text-amber-600 mt-1">
                         Deposit: £99 (£300-£699), £120 (£700-£999), £170 (£1000-£2999), £220 (£3000+)
                       </div>
-                      <div>• Flight costs: Paid to BA immediately</div>
+                      <div>• Flight costs: Paid to Test Airlines immediately</div>
                       <div>• Hotel/Car: Held until balance payment</div>
                       <div>• Balance due: {balanceDueDate} ({balanceWeeks} weeks before travel)</div>
                       <div>• Reminders: Email notifications sent regularly</div>
@@ -314,7 +314,7 @@ export default function DepositInstalmentsPage() {
                     <div className="font-medium text-green-800 mb-2">Deposit Payment Successful</div>
                     <div className="text-green-700 space-y-1">
                       <div>Deposit paid: £{getActualDepositAmount()}</div>
-                      <div>Flight costs: Paid to BA</div>
+                      <div>Flight costs: Paid to Test Airlines</div>
                       <div>Booking reference: BAH{Math.random().toString(36).substr(2, 6).toUpperCase()}</div>
                       <div>ATOL protection: Active from confirmation</div>
                     </div>
@@ -335,7 +335,7 @@ export default function DepositInstalmentsPage() {
                       <li>• Deposit is generally non-refundable</li>
                       <li>• Balance must be paid by {balanceDueDate}</li>
                       <li>• Failure to pay balance may result in cancellation</li>
-                      <li>• BA Holidays manages cancellations and refunds</li>
+                      <li>• Test Airlines Holidays manages cancellations and refunds</li>
                     </ul>
                   </div>
                 </div>
@@ -376,16 +376,16 @@ export default function DepositInstalmentsPage() {
             {/* Sequence Diagram */}
             <SequenceDiagram
               title="Payment Flow Sequence"
-              actors={['Customer', 'BA Holidays', 'OpenJaw', 'Acquirer', 'Bank']}
+              actors={['Customer', 'Test Airlines Holidays', 'OpenJaw', 'Acquirer', 'Bank']}
               steps={[
                 {
                   from: 'Customer',
-                  to: 'BA Holidays',
+                  to: 'Test Airlines Holidays',
                   message: 'Select package holiday',
                   type: 'request'
                 },
                 {
-                  from: 'BA Holidays',
+                  from: 'Test Airlines Holidays',
                   to: 'OpenJaw',
                   message: 'Calculate deposit amount',
                   note: 'Deposit calculation based on package value',
@@ -393,24 +393,24 @@ export default function DepositInstalmentsPage() {
                 },
                 {
                   from: 'OpenJaw',
-                  to: 'BA Holidays',
+                  to: 'Test Airlines Holidays',
                   message: `Deposit £${getActualDepositAmount()} for £${amount} package`,
                   type: 'response'
                 },
                 {
-                  from: 'BA Holidays',
+                  from: 'Test Airlines Holidays',
                   to: 'Customer',
                   message: 'Display deposit option',
                   type: 'response'
                 },
                 {
                   from: 'Customer',
-                  to: 'BA Holidays',
+                  to: 'Test Airlines Holidays',
                   message: 'Choose low deposit payment',
                   type: 'request'
                 },
                 {
-                  from: 'BA Holidays',
+                  from: 'Test Airlines Holidays',
                   to: 'Acquirer',
                   message: `Process deposit payment £${getActualDepositAmount()}`,
                   note: 'Low deposit payment to secure booking',
@@ -430,26 +430,26 @@ export default function DepositInstalmentsPage() {
                 },
                 {
                   from: 'Acquirer',
-                  to: 'BA Holidays',
+                  to: 'Test Airlines Holidays',
                   message: 'Deposit payment confirmed',
                   type: 'response'
                 },
                 {
-                  from: 'BA Holidays',
-                  to: 'BA',
+                  from: 'Test Airlines Holidays',
+                  to: 'Test Airlines',
                   message: 'Pay flight costs',
                   note: 'Flight payment made immediately',
                   type: 'process'
                 },
                 {
-                  from: 'BA Holidays',
+                  from: 'Test Airlines Holidays',
                   to: 'Customer',
                   message: `Booking confirmed, balance due ${balanceDueDate}`,
                   note: `Balance due before travel (${balanceWeeks} weeks)`,
                   type: 'response'
                 },
                 {
-                  from: 'BA Holidays',
+                  from: 'Test Airlines Holidays',
                   to: 'Customer',
                   message: `Balance due reminder £${getActualRemainingAmount()}`,
                   note: 'Before travel - balance payment required',
@@ -457,13 +457,13 @@ export default function DepositInstalmentsPage() {
                 },
                 {
                   from: 'Customer',
-                  to: 'BA Holidays',
+                  to: 'Test Airlines Holidays',
                   message: 'Pay balance',
                   type: 'request'
                 },
                 {
-                  from: 'BA Holidays',
-                  to: 'BA',
+                  from: 'Test Airlines Holidays',
+                  to: 'Test Airlines',
                   message: 'Complete hotel/car payments',
                   note: 'Final payments to suppliers',
                   type: 'process'
@@ -537,7 +537,7 @@ export default function DepositInstalmentsPage() {
         <div className="fixed inset-0 bg-black/30 grid place-items-center z-50">
           <div className="bg-white rounded-2xl p-6 max-w-md w-full mx-4">
             <div className="text-lg font-semibold mb-2">Processing Deposit...</div>
-            <div className="text-sm text-gray-600 mb-4">Securing your booking with BA Holidays</div>
+            <div className="text-sm text-gray-600 mb-4">Securing your booking with Test Airlines Holidays</div>
             <div className="w-full bg-gray-200 rounded-full h-2">
               <div className="bg-orange-600 h-2 rounded-full animate-pulse w-2/3"></div>
             </div>

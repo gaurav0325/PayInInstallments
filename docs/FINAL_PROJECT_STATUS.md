@@ -1,8 +1,8 @@
-# BA Instalments Playground - Final Project Status
+# Test Airlines Instalments Playground - Final Project Status
 
 ## 🎯 Project Overview
 
-The **BA Instalments Playground** is a comprehensive web application demonstrating all common airline instalment payment models with Test Airlines style checkout flows. Built with Next.js 14, TypeScript, and Tailwind CSS, it provides interactive demonstrations of 9 different payment models from BNPL to hybrid orchestrators.
+The **Test Airlines Instalments Playground** is a comprehensive web application demonstrating all common airline instalment payment models with Test Airlines style checkout flows. Built with Next.js 14, TypeScript, and Tailwind CSS, it provides interactive demonstrations of 9 different payment models from BNPL to hybrid orchestrators.
 
 **Live Application:** http://localhost:3332  
 **Status:** 🟢 Running Successfully  
@@ -15,7 +15,7 @@ The **BA Instalments Playground** is a comprehensive web application demonstrati
 
 ### 🏗️ Core Technical Implementation
 - **Next.js 14** with App Router and TypeScript
-- **Tailwind CSS** with BA brand colors and design system
+- **Tailwind CSS** with Test Airlines brand colors and design system
 - **Component-based architecture** with 11 reusable components
 - **API simulation layer** with 7 backend endpoints
 - **Cypress E2E testing** with comprehensive BNPL flow tests
@@ -26,7 +26,7 @@ The **BA Instalments Playground** is a comprehensive web application demonstrati
 #### 1. **Comprehensive Model Comparison Table**
 - **Real provider data** extracted from business document
 - **Interactive table** showing all 9 models side-by-side
-- **Key attributes**: BA Gets Money, Risk Owner, Complexity, Flexibility, Funding, CX, MIT Required, 3RI Support
+- **Key attributes**: Test Airlines Gets Money, Risk Owner, Complexity, Flexibility, Funding, CX, MIT Required, 3RI Support
 - **Color-coded badges** for visual clarity (complexity: red/yellow/green)
 - **Detailed definitions** section explaining technical terms
 
@@ -41,13 +41,13 @@ The **BA Instalments Playground** is a comprehensive web application demonstrati
 - **PSP Models**: CyberSource, Adyen (global PSP schedulers)
 - **Acquirer Models**: Amadeus (merchant acquirer partnerships)
 - **Issuer Models**: BBVA, Santander, CaixaBank (Spanish banks)
-- **Merchant Models**: BA Holidays (merchant-financed products)
+- **Merchant Models**: Test Airlines Holidays (merchant-financed products)
 
 #### 4. **Enhanced Business Rules Engine**
 - **Model-specific eligibility criteria** based on real business requirements
 - **Provider-specific minimums/maximums** (€50 BNPL, €60 PSP, €75 bank instalments)
 - **Market restrictions** aligned with provider coverage
-- **Risk management limits** (€2000 BA Holidays, €5000 Amadeus)
+- **Risk management limits** (€2000 Test Airlines Holidays, €5000 Amadeus)
 - **Regulatory compliance** considerations per model
 
 #### 5. **Realistic Test Data**
@@ -57,9 +57,9 @@ The **BA Instalments Playground** is a comprehensive web application demonstrati
 - **Travel-aligned scenarios** for deposit+balance models
 
 #### 6. **Test Airlines Brand Integration**
-- **Removed all "Iberia-BA style"** references throughout application
+- **Removed all "Iberia-Test Airlines style"** references throughout application
 - **Updated to "Test Airlines"** in header, documentation, and descriptions
-- **BA Holidays integration** for merchant-financed models
+- **Test Airlines Holidays integration** for merchant-financed models
 - **Consistent brand voice** across all customer-facing content
 
 ### 💳 Payment Models (All 9 Enhanced)
@@ -77,10 +77,10 @@ The **BA Instalments Playground** is a comprehensive web application demonstrati
    - **Technical**: 3D Secure simulation with realistic delays
 
 3. **Merchant-Financed Instalments** ✅ Enhanced
-   - **Provider**: BA Holidays owns all customer risk
+   - **Provider**: Test Airlines Holidays owns all customer risk
    - **Features**: Travel-aligned payment scheduling
    - **Risk management**: €2000 maximum, sophisticated credit assessment
-   - **Customer relationship**: Full BA control over terms and data
+   - **Customer relationship**: Full Test Airlines control over terms and data
 
 4. **Acquirer-Driven Instalments** ✅ Enhanced
    - **Provider**: Amadeus merchant acquirer services
@@ -96,7 +96,7 @@ The **BA Instalments Playground** is a comprehensive web application demonstrati
 
 6. **Issuer Instalments (Post-purchase)** ✅ Enhanced
    - **Information-only**: Banner directing to bank portals
-   - **No integration required**: BA receives full payment immediately
+   - **No integration required**: Test Airlines receives full payment immediately
    - **Conversion tracking**: Bank handles customer conversion
 
 7. **Deferred Payment** ✅ Enhanced
@@ -210,8 +210,8 @@ Recent server logs show continuous user activity:
 ## 🎨 Enhanced Design & User Experience
 
 ### **Visual Design Improvements**
-- **BA Brand Colors**: Consistent application of #D7192D (red), #EF8314 (orange), #FACD08 (yellow)
-- **Provider Branding**: Subtle integration of provider contexts without overwhelming BA brand
+- **Test Airlines Brand Colors**: Consistent application of #D7192D (red), #EF8314 (orange), #FACD08 (yellow)
+- **Provider Branding**: Subtle integration of provider contexts without overwhelming Test Airlines brand
 - **Enhanced Tooltips**: Professional hover descriptions with smooth animations
 - **Comparison Table**: Clean, scannable layout with color-coded complexity indicators
 
@@ -313,7 +313,7 @@ Recent server logs show continuous user activity:
 - [x] **Hover descriptions** for each model with business context
 - [x] **Enhanced eligibility rules** with provider-specific constraints
 - [x] **Spanish bank integration** for issuer models with realistic BINs
-- [x] **BA Holidays context** for merchant-financed products
+- [x] **Test Airlines Holidays context** for merchant-financed products
 - [x] **Realistic test data** aligned with Spanish market and providers
 
 ---
@@ -346,7 +346,7 @@ The enhanced application provides:
 
 ## 🎉 Project Enhancement Success
 
-The BA Instalments Playground has been successfully enhanced from a comprehensive demonstration to a **business-intelligence-powered application** that provides:
+The Test Airlines Instalments Playground has been successfully enhanced from a comprehensive demonstration to a **business-intelligence-powered application** that provides:
 
 1. **Real provider data and constraints** for informed decision-making
 2. **Professional comparison tools** for strategic evaluation  
@@ -379,4 +379,4 @@ The BA Instalments Playground has been successfully enhanced from a comprehensiv
 - Server logs and performance metrics
 - Implementation timeline and technical decisions
 
-This enhanced BA Instalments Playground now serves as both a comprehensive demonstration and a strategic business intelligence tool for understanding the airline instalment payments landscape with real provider data and constraints.
+This enhanced Test Airlines Instalments Playground now serves as both a comprehensive demonstration and a strategic business intelligence tool for understanding the airline instalment payments landscape with real provider data and constraints.

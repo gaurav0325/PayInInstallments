@@ -1,4 +1,4 @@
-# BA Instalments Playground - Project Documentation
+# Test Airlines Instalments Playground - Project Documentation
 
 ## Project Overview
 **Project Name:** Test Airlines Instalments Playground  
@@ -54,7 +54,7 @@ PayInInstalments/
 │   └── ...
 ├── docs/                         # Documentation
 │   ├── AMADEUS_IMPLEMENTATION.md # Amadeus integration details
-│   ├── BA_HOLIDAYS_EXTENSION.md  # BA Holidays extension
+│   ├── BA_HOLIDAYS_EXTENSION.md  # Test Airlines Holidays extension
 │   ├── IBERIA_CARDS_PROPOSAL.md  # Iberia Cards proposal
 │   └── ...
 └── cypress/                      # E2E testing

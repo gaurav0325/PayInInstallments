@@ -94,21 +94,21 @@ const termsContent: Record<string, Record<string, string>> = {
   },
   'merchant': {
     'default': `
-      <h4>BA Instalments Terms</h4>
+      <h4>Test Airlines Instalments Terms</h4>
       <ul>
         <li>Deposit paid today, balance split across agreed installments</li>
         <li>Payment schedule aligned with travel dates where possible</li>
         <li>MIT consent required for automatic recurring charges</li>
         <li>Final payment due minimum 7 days before travel</li>
         <li>Changes to travel dates may affect payment schedule</li>
-        <li>Standard BA refund and change policies apply</li>
+        <li>Standard Test Airlines refund and change policies apply</li>
         <li>Manage your plan via "My Bookings" section</li>
       </ul>
     `
   },
   'merchant-fullauth': {
     'default': `
-      <h4>BA Full Authorisation Instalments Terms</h4>
+      <h4>Test Airlines Full Authorisation Instalments Terms</h4>
       <ul>
         <li>Full amount authorised upfront on your card</li>
         <li>Payment captured in installments according to schedule</li>
@@ -116,14 +116,14 @@ const termsContent: Record<string, Record<string, string>> = {
         <li>Your available credit limit reduced by full amount</li>
         <li>Scheduled captures processed automatically</li>
         <li>Final payment due minimum 7 days before travel</li>
-        <li>Standard BA refund and change policies apply</li>
+        <li>Standard Test Airlines refund and change policies apply</li>
         <li>Manage your plan via "My Bookings" section</li>
       </ul>
     `
   },
   'merchant-mit': {
     'default': `
-      <h4>BA MIT Instalments Terms</h4>
+      <h4>Test Airlines MIT Instalments Terms</h4>
       <ul>
         <li>Initial payment requires 3D Secure authentication</li>
         <li>Subsequent payments processed as Merchant Initiated Transactions</li>
@@ -132,7 +132,7 @@ const termsContent: Record<string, Record<string, string>> = {
         <li>Payment schedule aligned with travel dates where possible</li>
         <li>Final payment due minimum 7 days before travel</li>
         <li>Can modify payment details via "My Bookings"</li>
-        <li>Standard BA refund and change policies apply</li>
+        <li>Standard Test Airlines refund and change policies apply</li>
       </ul>
     `
   },
@@ -147,7 +147,7 @@ const termsContent: Record<string, Record<string, string>> = {
         <li>Early payment of remaining balance allowed without penalty</li>
         <li>Final payment due minimum 14 days before travel</li>
         <li>Failure to complete payments may result in booking cancellation</li>
-        <li>Standard BA refund policies apply pro-rata to payments made</li>
+        <li>Standard Test Airlines refund policies apply pro-rata to payments made</li>
       </ul>
     `
   },
@@ -156,7 +156,7 @@ const termsContent: Record<string, Record<string, string>> = {
       <h4>Acquirer Instalments Terms</h4>
       <ul>
         <li>Installment plan managed by payment acquirer</li>
-        <li>BA receives full payment upfront from acquirer</li>
+        <li>Test Airlines receives full payment upfront from acquirer</li>
         <li>Customer payment schedule managed by acquirer</li>
         <li>Dispute resolution through acquirer customer service</li>
         <li>Terms and rates set by acquirer product</li>
@@ -169,7 +169,7 @@ const termsContent: Record<string, Record<string, string>> = {
       <h4>Bank Instalments Terms (Pre-purchase)</h4>
       <ul>
         <li>Installment conversion offered by your card issuing bank</li>
-        <li>BA receives full payment immediately</li>
+        <li>Test Airlines receives full payment immediately</li>
         <li>Bank converts payment to installments on your account</li>
         <li>Interest rates and fees per your bank's standard terms</li>
         <li>Manage installments through your bank account/app</li>
@@ -184,7 +184,7 @@ const termsContent: Record<string, Record<string, string>> = {
         <li>Transaction completed as standard card payment</li>
         <li>Bank installment conversion available after checkout</li>
         <li>Customer initiates installment conversion directly with bank</li>
-        <li>BA transaction already completed - no impact on refunds</li>
+        <li>Test Airlines transaction already completed - no impact on refunds</li>
         <li>Installment terms per bank's customer agreement</li>
       </ul>
     `
@@ -198,7 +198,7 @@ const termsContent: Record<string, Record<string, string>> = {
         <li>Email reminders sent before payment due</li>
         <li>Payment failure may result in booking cancellation</li>
         <li>Cancellation fees may apply if payment fails</li>
-        <li>Standard BA booking change and refund policies apply</li>
+        <li>Standard Test Airlines booking change and refund policies apply</li>
         <li>Update payment method anytime before due date</li>
       </ul>
     `
@@ -241,7 +241,7 @@ const termsContent: Record<string, Record<string, string>> = {
         <li>Hold fee does not count towards final ticket price</li>
         <li>Seats blocked without guaranteed revenue (airline risk)</li>
         <li>Auto-cancellation occurs at expiry with fee forfeited</li>
-        <li>Standard BA refund policies apply after ticket issuance</li>
+        <li>Standard Test Airlines refund policies apply after ticket issuance</li>
         <li>Hold duration cannot be extended once selected</li>
         <li>Payment reminders sent 24 hours before expiry</li>
       </ul>

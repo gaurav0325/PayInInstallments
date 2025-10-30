@@ -32,7 +32,7 @@ export default function MerchantMITPage() {
   }
 
   const rules = [
-    { label: 'Booking via eCommerce (New BA.com)', passed: true, required: true },
+    { label: 'Booking via eCommerce (New Test Airlines.com)', passed: true, required: true },
     { label: 'Return flight journey', passed: true, required: true },
     { label: 'UK residence with valid ID', passed: true, required: true },
     { label: 'Minimum purchase £100', passed: amount >= 100, required: true },
@@ -45,19 +45,19 @@ export default function MerchantMITPage() {
   ]
 
   const attributes = [
-    { label: 'BA Gets Money', value: 'First payment today, then monthly MIT debits' },
-    { label: 'Risk Owner', value: 'BA bears full credit risk and payment failure risk' },
+    { label: 'Test Airlines Gets Money', value: 'First payment today, then monthly MIT debits' },
+    { label: 'Risk Owner', value: 'Test Airlines bears full credit risk and payment failure risk' },
     { label: 'Complexity', value: 'High - requires MIT compliance and tokenisation' },
-    { label: 'Flexibility', value: 'High - BA controls schedule and can adjust payments' },
-    { label: 'Refund Trigger', value: 'BA manages all refunds and schedule adjustments' },
+    { label: 'Flexibility', value: 'High - Test Airlines controls schedule and can adjust payments' },
+    { label: 'Refund Trigger', value: 'Test Airlines manages all refunds and schedule adjustments' },
     { label: 'Ledger Adjustments', value: 'Complex - revenue recognition per payment cycle' },
-    { label: 'Instalment Engine', value: 'BA proprietary system with MIT orchestration' },
-    { label: 'Funding Source', value: 'BA finances customer, collects via MIT debits' },
+    { label: 'Instalment Engine', value: 'Test Airlines proprietary system with MIT orchestration' },
+    { label: 'Funding Source', value: 'Test Airlines finances customer, collects via MIT debits' },
     { label: 'Customer Experience', value: 'Standard - initial payment + monthly debits' },
     { label: 'Tokenisation/MIT', value: 'Required - network tokens for recurring payments' },
     { label: 'Merchant of Record', value: 'Test Airlines' },
     { label: '3DS/Fraud Handling', value: 'Initial SCA required, MIT exemptions thereafter' },
-    { label: 'Additional Fees', value: 'Interest/admin fees as per BA policy' },
+    { label: 'Additional Fees', value: 'Interest/admin fees as per Test Airlines policy' },
     { label: '3RI Support', value: 'Yes - 3DS Requestor Initiated for MIT transactions' }
   ]
 
@@ -69,7 +69,7 @@ export default function MerchantMITPage() {
     },
     {
       id: 'instalments',
-      name: 'BA Instalments (MIT)',
+      name: 'Test Airlines Instalments (MIT)',
       description: 'Initial payment with Strong Customer Authentication + monthly debits'
     }
   ]
@@ -168,7 +168,7 @@ export default function MerchantMITPage() {
                       <label className="flex items-start gap-3">
                         <input type="checkbox" defaultChecked className="mt-1" />
                         <span className="text-amber-700">
-                          I consent to BA storing my payment credentials and processing monthly MIT debits according to the agreed schedule. I understand I can cancel or modify this arrangement at any time.
+                          I consent to Test Airlines storing my payment credentials and processing monthly MIT debits according to the agreed schedule. I understand I can cancel or modify this arrangement at any time.
                         </span>
                       </label>
                       <label className="flex items-start gap-3">
@@ -266,28 +266,28 @@ export default function MerchantMITPage() {
             {/* Sequence Diagram */}
             <SequenceDiagram
               title="Payment Flow Sequence"
-              actors={['Customer', 'BA', 'Acquirer', 'Bank']}
+              actors={['Customer', 'Test Airlines', 'Acquirer', 'Bank']}
               steps={[
                 {
                   from: 'Customer',
-                  to: 'BA',
+                  to: 'Test Airlines',
                   message: 'Select instalment plan',
                   type: 'request'
                 },
                 {
-                  from: 'BA',
+                  from: 'Test Airlines',
                   to: 'Customer',
                   message: 'Display MIT consent and terms',
                   type: 'response'
                 },
                 {
                   from: 'Customer',
-                  to: 'BA',
+                  to: 'Test Airlines',
                   message: 'Provide consent for MIT debits',
                   type: 'request'
                 },
                 {
-                  from: 'BA',
+                  from: 'Test Airlines',
                   to: 'Acquirer',
                   message: `Process first payment with SCA (£${plan ? (amount/plan.months).toFixed(2) : 'XX'})`,
                   note: 'Initial CIT payment with Strong Customer Authentication',
@@ -319,19 +319,19 @@ export default function MerchantMITPage() {
                 },
                 {
                   from: 'Acquirer',
-                  to: 'BA',
+                  to: 'Test Airlines',
                   message: 'First payment successful + network token',
                   note: 'Network tokenization for future MIT transactions',
                   type: 'response'
                 },
                 {
-                  from: 'BA',
+                  from: 'Test Airlines',
                   to: 'Customer',
                   message: 'Booking confirmed, MIT schedule active',
                   type: 'response'
                 },
                 {
-                  from: 'BA',
+                  from: 'Test Airlines',
                   to: 'Acquirer',
                   message: `MIT debit (£${plan ? (amount/plan.months).toFixed(2) : 'XX'}) using token`,
                   note: 'Monthly MIT cycle - no SCA required',
@@ -351,7 +351,7 @@ export default function MerchantMITPage() {
                 },
                 {
                   from: 'Acquirer',
-                  to: 'BA',
+                  to: 'Test Airlines',
                   message: 'MIT payment successful',
                   type: 'response'
                 }

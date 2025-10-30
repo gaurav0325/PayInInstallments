@@ -292,16 +292,16 @@ export default function HoldMyFarePage() {
             {/* Sequence Diagram */}
             <SequenceDiagram
               title="Hold My Fare Payment Flow Sequence"
-              actors={['Customer', 'BA', 'Acquirer', 'Bank']}
+              actors={['Customer', 'Test Airlines', 'Acquirer', 'Bank']}
               steps={[
                 {
                   from: 'Customer',
-                  to: 'BA',
+                  to: 'Test Airlines',
                   message: 'Search flights and select "Hold Fare"',
                   type: 'request'
                 },
                 {
-                  from: 'BA',
+                  from: 'Test Airlines',
                   to: 'Customer',
                   message: 'Display hold duration options',
                   note: 'Show 24h, 72h, 7-day hold options with fees',
@@ -309,20 +309,20 @@ export default function HoldMyFarePage() {
                 },
                 {
                   from: 'Customer',
-                  to: 'BA',
+                  to: 'Test Airlines',
                   message: `Choose ${holdOptions.find(h => h.id === holdOption)?.duration} hold`,
                   note: `Hold fee: £${holdOptions.find(h => h.id === holdOption)?.fee}`,
                   type: 'request'
                 },
                 {
-                  from: 'BA',
-                  to: 'BA',
+                  from: 'Test Airlines',
+                  to: 'Test Airlines',
                   message: 'Check eligibility rules',
                   note: 'Verify fare eligibility, route availability, customer standing',
                   type: 'process'
                 },
                 {
-                  from: 'BA',
+                  from: 'Test Airlines',
                   to: 'Customer',
                   message: 'Request hold fee payment',
                   note: 'Non-refundable hold fee to secure fare',
@@ -330,12 +330,12 @@ export default function HoldMyFarePage() {
                 },
                 {
                   from: 'Customer',
-                  to: 'BA',
+                  to: 'Test Airlines',
                   message: 'Submit card details for hold fee',
                   type: 'request'
                 },
                 {
-                  from: 'BA',
+                  from: 'Test Airlines',
                   to: 'Acquirer',
                   message: 'Process hold fee payment',
                   note: `Charge £${holdOptions.find(h => h.id === holdOption)?.fee} hold fee`,
@@ -355,19 +355,19 @@ export default function HoldMyFarePage() {
                 },
                 {
                   from: 'Acquirer',
-                  to: 'BA',
+                  to: 'Test Airlines',
                   message: 'Hold fee payment settled',
                   type: 'response'
                 },
                 {
-                  from: 'BA',
-                  to: 'BA',
+                  from: 'Test Airlines',
+                  to: 'Test Airlines',
                   message: 'Activate fare hold with expiry timer',
                   note: `Hold active until ${new Date(Date.now() + (holdOption === '24h' ? 86400000 : holdOption === '72h' ? 259200000 : 604800000)).toLocaleDateString()}`,
                   type: 'process'
                 },
                 {
-                  from: 'BA',
+                  from: 'Test Airlines',
                   to: 'Customer',
                   message: 'Send hold confirmation with deadline',
                   note: 'Booking reference and payment deadline provided',
@@ -375,13 +375,13 @@ export default function HoldMyFarePage() {
                 },
                 {
                   from: 'Customer',
-                  to: 'BA',
+                  to: 'Test Airlines',
                   message: 'Complete balance payment (before expiry)',
                   note: `Pay remaining £${amount - (holdOptions.find(h => h.id === holdOption)?.fee || 0)}`,
                   type: 'request'
                 },
                 {
-                  from: 'BA',
+                  from: 'Test Airlines',
                   to: 'Acquirer',
                   message: 'Process balance payment',
                   type: 'request'
@@ -400,19 +400,19 @@ export default function HoldMyFarePage() {
                 },
                 {
                   from: 'Acquirer',
-                  to: 'BA',
+                  to: 'Test Airlines',
                   message: 'Balance payment settled',
                   type: 'response'
                 },
                 {
-                  from: 'BA',
-                  to: 'BA',
+                  from: 'Test Airlines',
+                  to: 'Test Airlines',
                   message: 'Process ticket issuance',
                   note: 'Full payment received, issue ticket',
                   type: 'process'
                 },
                 {
-                  from: 'BA',
+                  from: 'Test Airlines',
                   to: 'Customer',
                   message: 'Ticket issued successfully',
                   note: 'Booking complete with confirmation',

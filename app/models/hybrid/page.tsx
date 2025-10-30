@@ -91,7 +91,7 @@ export default function HybridPage(){
     { label: 'Integration type', value: 'Orchestrator decides redirect vs embedded' },
     { label: 'Data captured', value: 'Contextual data for routing decisions' },
     { label: 'SCA pattern', value: 'Per final model requirements' },
-    { label: 'Settlement to BA', value: 'Per selected model settlement terms' },
+    { label: 'Settlement to Test Airlines', value: 'Per selected model settlement terms' },
     { label: 'Refund handling', value: 'Follows selected model refund rules' },
     { label: 'Chargeback liability', value: 'Per selected model chargeback terms' },
     { label: 'Markets supported', value: 'Union of all model market coverage' },
@@ -292,16 +292,16 @@ export default function HybridPage(){
         {/* Sequence Diagram */}
         <SequenceDiagram
           title="Hybrid Smart Routing Flow Sequence"
-          actors={['Customer', 'BA', 'Smart Router', 'Provider', 'Bank']}
+          actors={['Customer', 'Test Airlines', 'Smart Router', 'Provider', 'Bank']}
           steps={[
             {
               from: 'Customer',
-              to: 'BA',
+              to: 'Test Airlines',
               message: 'Select smart instalment option',
               type: 'request'
             },
             {
-              from: 'BA',
+              from: 'Test Airlines',
               to: 'Customer',
               message: 'Display smart routing interface',
               note: 'Show intelligent payment option selection',
@@ -344,13 +344,13 @@ export default function HybridPage(){
             },
             {
               from: 'Smart Router',
-              to: 'BA',
+              to: 'Test Airlines',
               message: 'Return routing decision',
               note: 'Selected provider and terms',
               type: 'response'
             },
             {
-              from: 'BA',
+              from: 'Test Airlines',
               to: 'Customer',
               message: 'Display selected instalment option',
               note: 'Present optimised payment plan',
@@ -358,12 +358,12 @@ export default function HybridPage(){
             },
             {
               from: 'Customer',
-              to: 'BA',
+              to: 'Test Airlines',
               message: 'Accept selected payment plan',
               type: 'request'
             },
             {
-              from: 'BA',
+              from: 'Test Airlines',
               to: 'Provider',
               message: 'Redirect to selected provider',
               note: 'Hand over to chosen payment model',
@@ -384,7 +384,7 @@ export default function HybridPage(){
             },
             {
               from: 'Provider',
-              to: 'BA',
+              to: 'Test Airlines',
               message: 'Settlement and booking confirmation',
               type: 'response'
             }

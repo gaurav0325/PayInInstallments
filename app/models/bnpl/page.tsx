@@ -34,8 +34,8 @@ export default function BNPLPage(){
     { label: 'Integration type', value: 'Redirect to partner checkout flow' },
     { label: 'Data captured', value: 'Partner handles all customer data' },
     { label: 'SCA pattern', value: 'Partner manages SCA requirements' },
-    { label: 'Settlement to BA', value: 'Immediate full payment minus commission' },
-    { label: 'Refund handling', value: 'Coordinated between BA and partner' },
+    { label: 'Settlement to Test Airlines', value: 'Immediate full payment minus commission' },
+    { label: 'Refund handling', value: 'Coordinated between Test Airlines and partner' },
     { label: 'Chargeback liability', value: 'Partner handles chargebacks' },
     { label: 'Markets supported', value: 'UK, EU, US (partner dependent)' },
     { label: 'Dependencies', value: 'Partner availability and credit approval' }
@@ -228,16 +228,16 @@ export default function BNPLPage(){
         {/* Sequence Diagram */}
         <SequenceDiagram
           title="BNPL Partner Integration Flow Sequence"
-          actors={['Customer', 'BA', 'BNPL Partner', 'Bank']}
+          actors={['Customer', 'Test Airlines', 'BNPL Partner', 'Bank']}
           steps={[
             {
               from: 'Customer',
-              to: 'BA',
+              to: 'Test Airlines',
               message: 'Select BNPL payment option',
               type: 'request'
             },
             {
-              from: 'BA',
+              from: 'Test Airlines',
               to: 'Customer',
               message: 'Display BNPL providers',
               note: 'Show Klarna, Clearpay, PayPal options',
@@ -245,12 +245,12 @@ export default function BNPLPage(){
             },
             {
               from: 'Customer',
-              to: 'BA',
+              to: 'Test Airlines',
               message: 'Choose BNPL provider',
               type: 'request'
             },
             {
-              from: 'BA',
+              from: 'Test Airlines',
               to: 'BNPL Partner',
               message: 'Redirect to partner checkout',
               note: 'Pass booking amount and customer details',
@@ -284,7 +284,7 @@ export default function BNPLPage(){
             },
             {
               from: 'BNPL Partner',
-              to: 'BA',
+              to: 'Test Airlines',
               message: `Pay merchant upfront (£${(amount * 0.97).toFixed(2)})`,
               note: 'Full amount minus commission (~3%)',
               type: 'request'
@@ -297,7 +297,7 @@ export default function BNPLPage(){
             },
             {
               from: 'Bank',
-              to: 'BA',
+              to: 'Test Airlines',
               message: 'Settlement complete',
               type: 'response'
             },

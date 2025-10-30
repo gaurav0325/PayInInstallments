@@ -1,7 +1,7 @@
-# BA Instalments Playground - Complete Project Context
+# Test Airlines Instalments Playground - Complete Project Context
 
 ## Project Overview
-**Project Name**: BA Instalments Playground
+**Project Name**: Test Airlines Instalments Playground
 **Location**: `C:\Gaurav\Gaurav CV et al\AI project\PayInInstalments`
 **Purpose**: Interactive visualization and demonstration platform for Test Airlines instalment payment models
 **Technology Stack**: Next.js 14, React 18, TypeScript, Tailwind CSS, Framer Motion
@@ -87,7 +87,7 @@ PayInInstalments/
 - 🎨 Consistent CategorizedAttributesDiagram across all installment models
 - 📏 Enhanced dimensions (600px height, 1200px viewBox)
 - 🔤 Larger fonts (16px titles, 15px content)
-- 🎯 Color-coded attributes (Green=BA pros, Red=cons, Gray=neutral)
+- 🎯 Color-coded attributes (Green=Test Airlines pros, Red=cons, Gray=neutral)
 - 📐 Professional styling (15px corners, 2px strokes)
 - 📊 Better spacing (120px vertical between branches)
 
