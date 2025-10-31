@@ -1,13 +1,14 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, Play, Pause, RotateCcw } from 'lucide-react';
+import { ArrowLeft, Play, Pause, RotateCcw, ChevronRight } from 'lucide-react';
 
 export default function MerchantMITDetailsPage() {
   const [activeFlow, setActiveFlow] = useState<'cit' | 'mit' | null>('cit');
   const [animationStep, setAnimationStep] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [showAnimatedFlow, setShowAnimatedFlow] = useState(true);
 
   return (
     <div className="min-h-screen bg-white">
@@ -47,6 +48,16 @@ export default function MerchantMITDetailsPage() {
             </ul>
           </div>
         </div>
+
+        {/* Animated End-to-End Sequence Flow */}
+        <AnimatedSequenceFlow
+          animationStep={animationStep}
+          setAnimationStep={setAnimationStep}
+          isPlaying={isPlaying}
+          setIsPlaying={setIsPlaying}
+          showAnimatedFlow={showAnimatedFlow}
+          setShowAnimatedFlow={setShowAnimatedFlow}
+        />
 
         {/* Flow Controls */}
         <div className="mb-8 flex items-center gap-4">
@@ -753,6 +764,571 @@ function SystemComponentDetail({
           ))}
         </div>
       )}
+    </div>
+  );
+}
+
+// Animated Sequence Flow Component
+function AnimatedSequenceFlow({
+  animationStep,
+  setAnimationStep,
+  isPlaying,
+  setIsPlaying,
+  showAnimatedFlow,
+  setShowAnimatedFlow
+}: {
+  animationStep: number;
+  setAnimationStep: (step: number) => void;
+  isPlaying: boolean;
+  setIsPlaying: (playing: boolean) => void;
+  showAnimatedFlow: boolean;
+  setShowAnimatedFlow: (show: boolean) => void;
+}) {
+  // Define all animation sequence steps
+  const sequenceSteps = [
+    {
+      step: 1,
+      title: "Customer Arrives at Payment Page",
+      system: "Test Airlines Payment Page",
+      color: "blue",
+      description: "Customer completes booking and reaches checkout",
+      details: [
+        "Booking: London to New York - £480",
+        "Customer clicks 'Proceed to Payment'",
+        "Payment page loads with available payment options"
+      ],
+      customerMessage: null,
+      dataFlow: null
+    },
+    {
+      step: 2,
+      title: "Instalment Engine Calculates Available Plans",
+      system: "NPP Instalment Engine",
+      color: "purple",
+      description: "Business rules engine evaluates eligibility and calculates instalment options",
+      details: [
+        "Check booking amount: £480 ≥ £500 minimum ❌",
+        "Adjusted example: £600 booking amount ✓",
+        "Check departure date: 45 days ahead ✓",
+        "Check customer location: UK ✓",
+        "Calculate deposit: 20% = £120",
+        "Generate plans: 3, 6, 12 months options"
+      ],
+      customerMessage: "Spread the cost with flexible payment plans",
+      dataFlow: "POST /npp/api/calculate-plans → [{months: 3, deposit: 200}, {months: 6, deposit: 120}, {months: 12, deposit: 60}]"
+    },
+    {
+      step: 3,
+      title: "Customer Views Instalment Options",
+      system: "Test Airlines Payment Page",
+      color: "blue",
+      description: "Available instalment plans displayed to customer",
+      details: [
+        "Option 1: Pay in 3 months - £200 deposit, then £200/month × 2",
+        "Option 2: Pay in 6 months - £120 deposit, then £80/month × 5",
+        "Option 3: Pay in 12 months - £60 deposit, then £45/month × 11",
+        "Each option shows: total cost, monthly amount, payment dates",
+        "Terms: 'Card details will be securely saved for future payments'"
+      ],
+      customerMessage: "Choose your payment plan - No interest on 6-month option!",
+      dataFlow: null
+    },
+    {
+      step: 4,
+      title: "Customer Selects 6-Month Plan",
+      system: "Test Airlines Payment Page",
+      color: "blue",
+      description: "Customer chooses preferred instalment plan",
+      details: [
+        "Customer selects: 6-month plan",
+        "Payment schedule displayed:",
+        "  Today: £120 deposit",
+        "  Month 2-6: £80/month on the 15th",
+        "Customer enters card details: 4242 4242 4242 4242",
+        "Customer accepts MIT agreement checkbox"
+      ],
+      customerMessage: "Your card will be charged £80 on the 15th of each month for 5 months starting next month",
+      dataFlow: "Selected plan: {id: 'PLAN-6M', deposit: 120, instalments: 5, amount: 80}"
+    },
+    {
+      step: 5,
+      title: "Card Data Sent to PCI-Proxy for Tokenization",
+      system: "PCI-Proxy",
+      color: "green",
+      description: "Secure tokenization of customer card details",
+      details: [
+        "Raw card data transmitted securely (TLS 1.3)",
+        "PCI-Proxy receives: 4242 4242 4242 4242, exp: 12/26",
+        "Create proprietary token: pci_tok_abc123456",
+        "Request network token from Visa Token Service",
+        "Visa provisions network token: tok_visa_xxxx1234",
+        "Store token mapping in HSM-encrypted vault",
+        "Link tokens to booking reference: PNR-ABC123 (guest customer)"
+      ],
+      customerMessage: "Your payment details are being securely processed...",
+      dataFlow: "POST /pci-proxy/tokenize → {pci_token: 'pci_tok_abc123456', network_token: 'tok_visa_xxxx1234'}"
+    },
+    {
+      step: 6,
+      title: "3DS2 Strong Customer Authentication",
+      system: "CyberSource 3DS2",
+      color: "orange",
+      description: "Customer completes authentication for initial payment",
+      details: [
+        "Customer redirected to bank's 3DS2 page",
+        "Bank sends OTP to customer's phone: 123456",
+        "Customer enters OTP in authentication page",
+        "Bank verifies OTP ✓",
+        "Authentication successful: ECI 05 (fully authenticated)",
+        "Customer returned to payment page"
+      ],
+      customerMessage: "Enter the code sent to your phone ending in ****5678",
+      dataFlow: "3DS2 Auth → {authenticationTransactionId: '3ds-txn-001', eci: '05', cavv: 'base64string'}"
+    },
+    {
+      step: 7,
+      title: "Process Initial Payment (CIT)",
+      system: "NPP → XPP → CyberSource",
+      color: "purple",
+      description: "First instalment payment authorization and capture",
+      details: [
+        "NPP creates instalment plan record: INS-2024-001",
+        "NPP retrieves network token from PCI-Proxy: tok_visa_xxxx1234",
+        "NPP sends CIT request to XPP with 3DS2 auth data",
+        "XPP routes to CyberSource with parameters:",
+        "  commerceIndicator: 'internet'",
+        "  initiator.type: 'customer'",
+        "  credentialStoredOnFile: 'true'",
+        "CyberSource authorizes £120 deposit",
+        "Authorization approved: Auth Code 654321"
+      ],
+      customerMessage: "Processing your deposit payment of £120...",
+      dataFlow: "POST /xpp/api/authorize → {transactionId: 'TXN-CIT-001', status: 'APPROVED', authCode: '654321'}"
+    },
+    {
+      step: 8,
+      title: "Capture Payment & Create Booking",
+      system: "NPP + Amadeus",
+      color: "purple",
+      description: "Finalize payment and create reservation",
+      details: [
+        "Capture £120 from authorization",
+        "Update instalment plan status: ACTIVE",
+        "Schedule next MIT payment: 2024-02-15 (30 days)",
+        "Create PNR in Amadeus: ABC123",
+        "Add remark: 'INSTALMENT PLAN INS-2024-001'",
+        "Issue ticket or hold based on policy",
+        "Send confirmation email to customer"
+      ],
+      customerMessage: "Payment successful! Your booking is confirmed. Reference: ABC123",
+      dataFlow: "PNR: ABC123 | Plan: INS-2024-001 | Next payment: 2024-02-15 | Amount: £80"
+    },
+    {
+      step: 9,
+      title: "30 Days Later: MIT Scheduler Triggers",
+      system: "NPP MIT Scheduler",
+      color: "purple",
+      description: "Automated monthly payment processing begins",
+      details: [
+        "Cron job runs daily at 02:00 UTC",
+        "Query: SELECT * FROM instalments WHERE due_date = '2024-02-15'",
+        "Found: Plan INS-2024-001, £80 due today",
+        "Verify booking status in Amadeus: ACTIVE ✓",
+        "Retrieve tokens from PCI-Proxy using PNR: ABC123",
+        "PCI-Proxy returns: tok_visa_xxxx1234",
+        "Prepare MIT payment request"
+      ],
+      customerMessage: null,
+      dataFlow: "GET /pci-proxy/vault/tokens/PNR-ABC123 → {network_token: 'tok_visa_xxxx1234'}"
+    },
+    {
+      step: 10,
+      title: "Customer Pre-Notification (3 Days Before)",
+      system: "NPP Notifications",
+      color: "purple",
+      description: "Reminder sent to customer before payment",
+      details: [
+        "Send email 3 days before due date",
+        "Subject: 'Upcoming payment for booking ABC123'",
+        "Body: '£80 will be charged on Feb 15'",
+        "Provide link to update payment method if needed",
+        "Optional SMS notification sent",
+        "Allow customer 3 days to update card if needed"
+      ],
+      customerMessage: "Upcoming Payment: £80 will be charged to your card ending in 4242 on Feb 15, 2024. Need to update? Click here.",
+      dataFlow: "Email sent via SendGrid | SMS via Twilio"
+    },
+    {
+      step: 11,
+      title: "Execute MIT Transaction",
+      system: "NPP → XPP → CyberSource",
+      color: "indigo",
+      description: "Automated recurring payment processing",
+      details: [
+        "NPP sends MIT request to XPP with network token",
+        "XPP adds idempotency key: MIT-001-20240215",
+        "XPP routes to CyberSource with MIT parameters:",
+        "  commerceIndicator: 'recurring'",
+        "  initiator.type: 'merchant'",
+        "  merchantInitiatedTransaction.reason: 'instalment'",
+        "  previousTransactionId: 'TXN-CIT-001'",
+        "CyberSource sends to Visa for authorization",
+        "No 3DS2 required (MIT exemption)"
+      ],
+      customerMessage: null,
+      dataFlow: "POST /xpp/api/charge → {transactionId: 'TXN-MIT-002', idempotencyKey: 'MIT-001-20240215'}"
+    },
+    {
+      step: 12,
+      title: "MIT Authorization Successful",
+      system: "CyberSource → Visa",
+      color: "orange",
+      description: "Card network approves recurring payment",
+      details: [
+        "Visa receives MIT authorization request",
+        "Card issuer checks: available balance, fraud rules",
+        "Issuer approves transaction ✓",
+        "Authorization code: 789012",
+        "Amount captured: £80.00",
+        "Webhook sent to XPP: Payment successful",
+        "XPP forwards notification to NPP"
+      ],
+      customerMessage: null,
+      dataFlow: "Auth successful | Amount: £80.00 | Auth Code: 789012 | Status: CAPTURED"
+    },
+    {
+      step: 13,
+      title: "Update Records & Notify Customer",
+      system: "NPP",
+      color: "purple",
+      description: "Record payment and inform customer",
+      details: [
+        "Update instalment record: status = PAID, paid_at = '2024-02-15'",
+        "Update plan: payments_completed = 2/6",
+        "Update Amadeus PNR with payment confirmation",
+        "Schedule next MIT: 2024-03-15",
+        "Send success email to customer",
+        "Update accounting system for revenue recognition"
+      ],
+      customerMessage: "Payment Successful! £80 has been charged to your card ending in 4242. Next payment: Mar 15, 2024 (£80)",
+      dataFlow: "Instalment 2/6 completed | Remaining: 4 × £80 | Next: 2024-03-15"
+    },
+    {
+      step: 14,
+      title: "Payment Failure Scenario (If Occurs)",
+      system: "NPP - Retry Logic",
+      color: "red",
+      description: "Handling declined MIT payment",
+      details: [
+        "MIT authorization declined by issuer",
+        "Decline reason: 'Insufficient funds'",
+        "Log failure: attempt 1/3",
+        "Schedule retry #1: 24 hours later",
+        "Send payment failed email to customer",
+        "Email includes: decline reason, retry schedule",
+        "Provide link to update payment method immediately"
+      ],
+      customerMessage: "Payment Unsuccessful: We were unable to process your payment of £80. We will retry in 24 hours. Update payment method now to avoid disruption.",
+      dataFlow: "Status: DECLINED | Reason: Insufficient funds | Retry scheduled: 2024-02-16 02:00 UTC"
+    },
+    {
+      step: 15,
+      title: "Customer Updates Payment Method",
+      system: "Test Airlines Payment Portal",
+      color: "blue",
+      description: "Customer provides new card details",
+      details: [
+        "Customer clicks 'Update Payment Method' link in email",
+        "Redirected to secure payment portal",
+        "Enter booking reference: ABC123",
+        "Enter new card: 5555 5555 5555 4444",
+        "Submit new payment method",
+        "Card sent to PCI-Proxy for tokenization",
+        "New tokens generated and linked to booking"
+      ],
+      customerMessage: "Update your payment method to continue your instalment plan",
+      dataFlow: "POST /pci-proxy/tokenize → New tokens: {pci_tok_xyz789, tok_mc_yyyy5678}"
+    },
+    {
+      step: 16,
+      title: "Retry MIT with New Payment Method",
+      system: "NPP → XPP → CyberSource",
+      color: "purple",
+      description: "Automated retry with updated card",
+      details: [
+        "NPP retrieves new network token: tok_mc_yyyy5678",
+        "Retry MIT transaction with new token",
+        "Send to CyberSource via XPP",
+        "Authorization successful ✓",
+        "Update instalment plan with new token reference",
+        "Reset retry counter",
+        "Send success confirmation to customer"
+      ],
+      customerMessage: "Payment Successful! Your instalment plan has been updated with the new payment method.",
+      dataFlow: "Retry successful | New auth code: 456789 | Plan updated with new token"
+    },
+    {
+      step: 17,
+      title: "Ongoing MIT Payments Continue",
+      system: "NPP Scheduler",
+      color: "purple",
+      description: "Monthly payments process automatically",
+      details: [
+        "Month 3: £80 charged successfully",
+        "Month 4: £80 charged successfully",
+        "Month 5: £80 charged successfully",
+        "Month 6: £80 charged successfully (final payment)",
+        "All 6 payments completed",
+        "Total paid: £520 (£120 + 5 × £80)",
+        "Instalment plan status: COMPLETED"
+      ],
+      customerMessage: "Final Payment Complete! Your instalment plan is now fully paid. Thank you for choosing Test Airlines.",
+      dataFlow: "Plan INS-2024-001: COMPLETED | Total payments: 6/6 | Total paid: £520"
+    },
+    {
+      step: 18,
+      title: "Plan Completion & Token Cleanup",
+      system: "NPP + PCI-Proxy",
+      color: "green",
+      description: "Finalize instalment plan and clean up stored data",
+      details: [
+        "Mark instalment plan as COMPLETED",
+        "Send completion email to customer",
+        "Update accounting for final revenue recognition",
+        "Close Amadeus PNR or mark as fully paid",
+        "Request token deletion from PCI-Proxy (after 90-day retention)",
+        "Archive plan data for compliance (7 years)",
+        "Generate completion report for finance"
+      ],
+      customerMessage: "Your instalment plan is complete! We look forward to welcoming you on board your flight on Apr 1, 2024.",
+      dataFlow: "DELETE /pci-proxy/vault/tokens/PNR-ABC123 (scheduled after 90 days)"
+    }
+  ];
+
+  // Auto-play effect
+  useEffect(() => {
+    let interval: NodeJS.Timeout | null = null;
+    if (isPlaying && animationStep < sequenceSteps.length - 1) {
+      interval = setInterval(() => {
+        setAnimationStep(prev => prev + 1);
+      }, 4000); // 4 seconds per step
+    } else if (animationStep >= sequenceSteps.length - 1) {
+      setIsPlaying(false);
+    }
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  }, [isPlaying, animationStep, sequenceSteps.length, setAnimationStep, setIsPlaying]);
+
+  const currentStep = sequenceSteps[animationStep];
+
+  const handlePlay = () => {
+    if (animationStep >= sequenceSteps.length - 1) {
+      setAnimationStep(0);
+    }
+    setIsPlaying(true);
+  };
+
+  const handlePause = () => {
+    setIsPlaying(false);
+  };
+
+  const handleReset = () => {
+    setAnimationStep(0);
+    setIsPlaying(false);
+  };
+
+  const handleNext = () => {
+    if (animationStep < sequenceSteps.length - 1) {
+      setAnimationStep(animationStep + 1);
+    }
+  };
+
+  const handlePrevious = () => {
+    if (animationStep > 0) {
+      setAnimationStep(animationStep - 1);
+    }
+  };
+
+  if (!showAnimatedFlow) {
+    return (
+      <div className="mb-12">
+        <button
+          onClick={() => setShowAnimatedFlow(true)}
+          className="text-blue-600 hover:text-blue-700 font-medium text-sm"
+        >
+          Show Animated End-to-End Flow
+        </button>
+      </div>
+    );
+  }
+
+  const systemColors = {
+    blue: { bg: 'bg-blue-50', border: 'border-blue-300', text: 'text-blue-700', badge: 'bg-blue-600' },
+    purple: { bg: 'bg-purple-50', border: 'border-purple-300', text: 'text-purple-700', badge: 'bg-purple-600' },
+    green: { bg: 'bg-green-50', border: 'border-green-300', text: 'text-green-700', badge: 'bg-green-600' },
+    orange: { bg: 'bg-orange-50', border: 'border-orange-300', text: 'text-orange-700', badge: 'bg-orange-600' },
+    indigo: { bg: 'bg-indigo-50', border: 'border-indigo-300', text: 'text-indigo-700', badge: 'bg-indigo-600' },
+    red: { bg: 'bg-red-50', border: 'border-red-300', text: 'text-red-700', badge: 'bg-red-600' }
+  };
+
+  const colors = systemColors[currentStep.color as keyof typeof systemColors];
+
+  return (
+    <div className="mb-12 bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-8 border-2 border-gray-300">
+      <div className="flex items-center justify-between mb-6">
+        <div>
+          <h2 className="text-2xl font-semibold text-gray-900 mb-2">
+            Complete End-to-End Sequence Flow
+          </h2>
+          <p className="text-sm text-gray-600">
+            Animated walkthrough from customer checkout to final payment
+          </p>
+        </div>
+        <button
+          onClick={() => setShowAnimatedFlow(false)}
+          className="text-gray-500 hover:text-gray-700 text-sm"
+        >
+          Hide
+        </button>
+      </div>
+
+      {/* Animation Controls */}
+      <div className="flex items-center gap-3 mb-6 bg-white rounded-lg p-4 shadow-sm">
+        <button
+          onClick={handleReset}
+          className="p-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition"
+          title="Reset to beginning"
+        >
+          <RotateCcw className="w-5 h-5" />
+        </button>
+
+        <button
+          onClick={handlePrevious}
+          disabled={animationStep === 0}
+          className="p-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed"
+          title="Previous step"
+        >
+          <ChevronRight className="w-5 h-5 rotate-180" />
+        </button>
+
+        {isPlaying ? (
+          <button
+            onClick={handlePause}
+            className="p-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition"
+            title="Pause"
+          >
+            <Pause className="w-5 h-5" />
+          </button>
+        ) : (
+          <button
+            onClick={handlePlay}
+            className="p-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition"
+            title="Play"
+          >
+            <Play className="w-5 h-5" />
+          </button>
+        )}
+
+        <button
+          onClick={handleNext}
+          disabled={animationStep === sequenceSteps.length - 1}
+          className="p-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed"
+          title="Next step"
+        >
+          <ChevronRight className="w-5 h-5" />
+        </button>
+
+        <div className="flex-1 ml-4">
+          <div className="text-sm font-medium text-gray-700 mb-1">
+            Step {animationStep + 1} of {sequenceSteps.length}
+          </div>
+          <div className="w-full bg-gray-200 rounded-full h-2">
+            <div
+              className="bg-blue-600 h-2 rounded-full transition-all duration-500"
+              style={{ width: `${((animationStep + 1) / sequenceSteps.length) * 100}%` }}
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Current Step Display */}
+      <div className={`${colors.bg} ${colors.border} border-2 rounded-xl p-6 shadow-lg transition-all duration-500`}>
+        {/* Step Header */}
+        <div className="flex items-start justify-between mb-4">
+          <div>
+            <div className={`inline-block ${colors.badge} text-white px-3 py-1 rounded-full text-xs font-semibold mb-3`}>
+              {currentStep.system}
+            </div>
+            <h3 className="text-2xl font-semibold text-gray-900">
+              {currentStep.title}
+            </h3>
+            <p className="text-sm text-gray-600 mt-1">
+              {currentStep.description}
+            </p>
+          </div>
+          <div className={`${colors.badge} text-white w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold`}>
+            {currentStep.step}
+          </div>
+        </div>
+
+        {/* Customer Message (if present) */}
+        {currentStep.customerMessage && (
+          <div className="bg-yellow-50 border-2 border-yellow-300 rounded-lg p-4 mb-4">
+            <div className="flex items-start gap-3">
+              <div className="text-2xl">💬</div>
+              <div>
+                <div className="font-semibold text-yellow-900 text-sm mb-1">Customer sees:</div>
+                <div className="text-yellow-800 text-sm italic">"{currentStep.customerMessage}"</div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Technical Details */}
+        <div className="bg-white rounded-lg p-4 mb-4">
+          <h4 className="font-semibold text-gray-900 mb-3 text-sm">What's Happening:</h4>
+          <ul className="space-y-2">
+            {currentStep.details.map((detail, idx) => (
+              <li key={idx} className="text-sm text-gray-700 flex items-start gap-2">
+                <span className={`${colors.text} mt-0.5`}>▸</span>
+                <span>{detail}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Data Flow (if present) */}
+        {currentStep.dataFlow && (
+          <div className="bg-gray-800 rounded-lg p-4 font-mono text-xs text-green-400">
+            <div className="text-gray-400 mb-2">Data Flow:</div>
+            <div className="whitespace-pre-wrap break-all">{currentStep.dataFlow}</div>
+          </div>
+        )}
+      </div>
+
+      {/* Step Timeline */}
+      <div className="mt-6 bg-white rounded-lg p-4">
+        <h4 className="font-semibold text-gray-700 mb-3 text-sm">Timeline:</h4>
+        <div className="grid grid-cols-6 gap-2">
+          {sequenceSteps.map((step, idx) => (
+            <button
+              key={idx}
+              onClick={() => setAnimationStep(idx)}
+              className={`p-2 rounded text-xs transition ${
+                idx === animationStep
+                  ? 'bg-blue-600 text-white font-semibold'
+                  : idx < animationStep
+                  ? 'bg-green-100 text-green-700'
+                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+              }`}
+              title={step.title}
+            >
+              {step.step}
+            </button>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
