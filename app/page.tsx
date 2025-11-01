@@ -50,6 +50,15 @@ export default function Home() {
       highlighted: true
     },
     {
+      title: 'FlexPay via Amadeus ConnectAPI',
+      href: '/models/flexpay',
+      description: 'BNPL solution using VCC UATP cards generated in background by Amadeus',
+      hoverDescription: 'Amadeus FlexPay generates Virtual Credit Cards (VCC) using UATP network for instalment payments. Test Airlines receives immediate payment minus commission. FlexPay bears credit risk. Seamless customer experience with no redirection.',
+      badge: 'VCC UATP',
+      category: 'partner',
+      highlighted: true
+    },
+    {
       title: 'PSP-driven instalments',
       href: '/models/psp',
       description: 'Payment Service Provider manages instalment scheduling',
@@ -225,7 +234,7 @@ export default function Home() {
                   </div>
                 </div>
                 <p className="text-purple-700 mb-6 font-medium">Third-party providers manage instalment financing and risk - immediate payment with reduced control</p>
-                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                <div className="grid gap-4 sm:grid-cols-2">
                   {partnerModels.map(({ title, href, description, hoverDescription, badge, highlighted, category }) => (
                     <ModelCard key={href} title={title} href={href} description={description} hoverDescription={hoverDescription} badge={badge} highlighted={highlighted} category={category} />
                   ))}

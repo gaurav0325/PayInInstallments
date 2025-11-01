@@ -246,6 +246,54 @@ const termsContent: Record<string, Record<string, string>> = {
         <li>Payment reminders sent 24 hours before expiry</li>
       </ul>
     `
+  },
+  'flexpay': {
+    'default': `
+      <h4>FlexPay via Amadeus Terms & Conditions</h4>
+      <p><strong>Provider:</strong> FlexPay (via Amadeus XPP Integration)</p>
+      <ul>
+        <li><strong>Payment Method:</strong> Virtual Credit Card (VCC) via UATP network</li>
+        <li><strong>Integration:</strong> Orchestrated through Amadeus XPP (Payment Platform)</li>
+        <li><strong>Instalment Options:</strong> 3, 6, or 12 monthly instalments available</li>
+        <li><strong>Interest/Fees:</strong> Applied to instalment plan as per FlexPay terms</li>
+        <li><strong>First Payment:</strong> Due immediately at booking confirmation</li>
+        <li><strong>Subsequent Payments:</strong> Charged automatically on monthly schedule</li>
+        <li><strong>Credit Assessment:</strong> Real-time credit check performed at FlexPay portal</li>
+        <li><strong>Customer Journey:</strong> Web-redirect to FlexPay login portal for loan application</li>
+        <li><strong>Loan Agreement:</strong> Must be accepted at FlexPay portal before approval</li>
+        <li><strong>VCC Authorization:</strong> FlexPay generates VCC, DAPI submits to UATP for authorization</li>
+        <li><strong>Settlement:</strong> Test Airlines receives immediate full payment via UATP network</li>
+        <li><strong>Credit Risk:</strong> FlexPay bears all credit risk and default liability</li>
+        <li><strong>Data Sharing:</strong> Personal and financial data shared with FlexPay for assessment</li>
+        <li><strong>Payment Validation:</strong> XPP enquires loan status from FlexPay before ticket issuance</li>
+        <li><strong>Refunds:</strong> Initiated by Test Airlines via XPP, FlexPay adjusts instalment plan</li>
+        <li><strong>Late Payments:</strong> Managed by FlexPay, fees per FlexPay loan terms</li>
+        <li><strong>Early Repayment:</strong> Contact FlexPay customer service for early settlement</li>
+        <li><strong>Chargebacks:</strong> FlexPay handles all disputes and chargeback liability</li>
+        <li><strong>Customer Support:</strong> FlexPay portal and customer service for instalment management</li>
+        <li><strong>Ticket Issuance:</strong> Occurs after successful VCC authorization via UATP</li>
+        <li><strong>Payment Notifications:</strong> Sent by FlexPay before each instalment due date</li>
+        <li><strong>UATP Network:</strong> Payments processed via Universal Air Travel Plan network</li>
+        <li><strong>Eligibility:</strong> Subject to FlexPay credit approval and market availability</li>
+        <li><strong>Minimum/Maximum:</strong> £200 minimum, £5000 maximum booking value</li>
+        <li><strong>Travel Date:</strong> Must be within acceptable window for instalment completion</li>
+      </ul>
+    `
+  },
+  'embedded-bnpl': {
+    'default': `
+      <h4>Merchant-embedded BNPL Terms</h4>
+      <ul>
+        <li>Multiple financing partners available (SeQura, Aplazame, FLOA)</li>
+        <li>Provider selected based on customer profile and eligibility</li>
+        <li>Interest-free promotional periods may be available</li>
+        <li>Credit check performed by financing partner</li>
+        <li>Test Airlines receives payment according to partnership agreement</li>
+        <li>Revenue share model with loyalty integration benefits</li>
+        <li>Currently available in Spain market only</li>
+        <li>Standard refund policies coordinated between airline and finance provider</li>
+      </ul>
+    `
   }
 }
 
