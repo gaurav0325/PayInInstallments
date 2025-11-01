@@ -24,6 +24,8 @@ export function EnhancedNotesSection({ isCompact = true, modelContext }: Enhance
   const [isExpanded, setIsExpanded] = useState(!isCompact)
   const [showArchived, setShowArchived] = useState(false)
   const [isExporting, setIsExporting] = useState(false)
+  const [editingNoteId, setEditingNoteId] = useState<string | null>(null)
+  const [editingContent, setEditingContent] = useState('')
 
   const categories = [
     'General',
@@ -111,6 +113,31 @@ export function EnhancedNotesSection({ isCompact = true, modelContext }: Enhance
 
   const deleteNote = (id: string) => {
     setNotes(prev => prev.filter(note => note.id !== id))
+  }
+
+  const startEditing = (note: Note) => {
+    setEditingNoteId(note.id)
+    setEditingContent(note.content)
+  }
+
+  const cancelEditing = () => {
+    setEditingNoteId(null)
+    setEditingContent('')
+  }
+
+  const saveEdit = (id: string) => {
+    if (!editingContent.trim()) return
+
+    const correctedNote = editingContent
+      .replace(/\binstalment\b/gi, 'instalment')
+      .replace(/\bpayement\b/gi, 'payment')
+      .replace(/\bfinacial\b/gi, 'financial')
+
+    setNotes(prev => prev.map(note =>
+      note.id === id ? { ...note, content: correctedNote } : note
+    ))
+    setEditingNoteId(null)
+    setEditingContent('')
   }
 
   const exportNotes = async () => {
@@ -320,23 +347,60 @@ export function EnhancedNotesSection({ isCompact = true, modelContext }: Enhance
                     >
                       <div className="flex justify-between items-start gap-2">
                         <div className="flex-1 min-w-0">
-                          <p className="text-sm text-gray-900 break-words">{note.content}</p>
-                          <div className="flex items-center gap-2 mt-1">
-                            <span className="text-xs text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full">
-                              {note.category}
-                            </span>
-                            {note.modelType && (
-                              <span className="text-xs text-gray-500">
-                                {note.modelType}
-                              </span>
-                            )}
-                            <span className="text-xs text-gray-400">
-                              {note.timestamp.toLocaleDateString()}
-                            </span>
-                          </div>
+                          {editingNoteId === note.id ? (
+                            <div className="space-y-2">
+                              <textarea
+                                value={editingContent}
+                                onChange={(e) => setEditingContent(e.target.value)}
+                                className="w-full px-2 py-1 text-sm border border-blue-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                rows={3}
+                                autoFocus
+                              />
+                              <div className="flex gap-2">
+                                <button
+                                  onClick={() => saveEdit(note.id)}
+                                  className="px-3 py-1 bg-blue-500 text-white text-xs rounded hover:bg-blue-600"
+                                >
+                                  Save
+                                </button>
+                                <button
+                                  onClick={cancelEditing}
+                                  className="px-3 py-1 bg-gray-300 text-gray-700 text-xs rounded hover:bg-gray-400"
+                                >
+                                  Cancel
+                                </button>
+                              </div>
+                            </div>
+                          ) : (
+                            <>
+                              <p className="text-sm text-gray-900 break-words">{note.content}</p>
+                              <div className="flex items-center gap-2 mt-1">
+                                <span className="text-xs text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full">
+                                  {note.category}
+                                </span>
+                                {note.modelType && (
+                                  <span className="text-xs text-gray-500">
+                                    {note.modelType}
+                                  </span>
+                                )}
+                                <span className="text-xs text-gray-400">
+                                  {note.timestamp.toLocaleDateString()}
+                                </span>
+                              </div>
+                            </>
+                          )}
                         </div>
                         <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                          {!note.isArchived ? (
+                          {!note.isArchived && editingNoteId !== note.id && (
+                            <button
+                              onClick={() => startEditing(note)}
+                              className="text-gray-400 hover:text-blue-600 text-xs"
+                              title="Edit"
+                            >
+                              ✏️
+                            </button>
+                          )}
+                          {!note.isArchived && editingNoteId !== note.id ? (
                             <button
                               onClick={() => archiveNote(note.id)}
                               className="text-gray-400 hover:text-yellow-600 text-xs"
@@ -344,7 +408,7 @@ export function EnhancedNotesSection({ isCompact = true, modelContext }: Enhance
                             >
                               📦
                             </button>
-                          ) : (
+                          ) : editingNoteId !== note.id && (
                             <button
                               onClick={() => deleteNote(note.id)}
                               className="text-gray-400 hover:text-red-600 text-xs"
