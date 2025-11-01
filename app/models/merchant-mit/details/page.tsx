@@ -438,14 +438,14 @@ function CITFlowDiagram() {
           title="Card Tokenization & Network Token Provisioning"
           details={[
             'Receive raw card data (PCI-Proxy is PCI DSS Level 1)',
-            'Create proprietary PCI-Proxy token: pci_tok_abc123',
+            'Create proprietary PCI-Proxy token: 4A2B4C2D4E2F4G2H',
             'Request network token from Visa via Token Requestor ID',
-            'Visa provisions network token: tok_visa_xxxx1234',
+            'Visa provisions network token: 4V5S6A7T8K9N0P1Q',
             'Store token mapping in encrypted vault',
             'Return both tokens to NPP',
             'Link tokens to booking reference (for guest) or customer ID'
           ]}
-          dataFlow="PCI-Proxy Token: pci_tok_abc123 | Network Token: tok_visa_xxxx1234"
+          dataFlow="PCI-Proxy Token: 4A2B4C2D4E2F4G2H | Network Token: 4V5S6A7T8K9N0P1Q"
         />
 
         {/* Step 4: 3DS2 Authentication */}
@@ -471,7 +471,7 @@ function CITFlowDiagram() {
           color="purple"
           title="Process CIT Authorization"
           details={[
-            'NPP retrieves network token from PCI-Proxy: tok_visa_xxxx1234',
+            'NPP retrieves network token from PCI-Proxy: 4V5S6A7T8K9N0P1Q',
             'NPP sends payment request to XPP with network token',
             'XPP routes to CyberSource with CIT parameters',
             'CyberSource processes authorization using network token (£120)',
@@ -525,7 +525,7 @@ function MITFlowDiagram() {
             'Find plan INS-2024-001: £60 due on 2024-02-15',
             'Verify booking still active in Amadeus',
             'Retrieve tokens from PCI-Proxy vault using booking reference (PNR: ABC123)',
-            'PCI-Proxy returns: pci_tok_abc123 and tok_visa_xxxx1234',
+            'PCI-Proxy returns: 4A2B4C2D4E2F4G2H and 4V5S6A7T8K9N0P1Q',
             'Prepare MIT payment request with network token'
           ]}
           dataFlow="SELECT * FROM instalments WHERE due_date = CURRENT_DATE AND status = 'PENDING' → GET /pci-proxy/vault/tokens/{booking_ref}"
@@ -553,7 +553,7 @@ function MITFlowDiagram() {
           color="indigo"
           title="Execute MIT Transaction"
           details={[
-            'NPP sends MIT request to XPP with network token: tok_visa_xxxx1234',
+            'NPP sends MIT request to XPP with network token: 4V5S6A7T8K9N0P1Q',
             'XPP adds routing logic and idempotency key',
             'XPP forwards to CyberSource with MIT parameters',
             'commerceIndicator: "recurring"',
@@ -859,14 +859,14 @@ function AnimatedSequenceFlow({
       details: [
         "Raw card data transmitted securely (TLS 1.3)",
         "PCI-Proxy receives: 4242 4242 4242 4242, exp: 12/26",
-        "Create proprietary token: pci_tok_abc123456",
+        "Create proprietary token: 4A2B4C2D4E2F4G2H",
         "Request network token from Visa Token Service",
-        "Visa provisions network token: tok_visa_xxxx1234",
+        "Visa provisions network token: 4V5S6A7T8K9N0P1Q",
         "Store token mapping in HSM-encrypted vault",
         "Link tokens to booking reference: PNR-ABC123 (guest customer)"
       ],
       customerMessage: "Your payment details are being securely processed...",
-      dataFlow: "POST /pci-proxy/tokenize → {pci_token: 'pci_tok_abc123456', network_token: 'tok_visa_xxxx1234'}"
+      dataFlow: "POST /pci-proxy/tokenize → {pci_token: '4A2B4C2D4E2F4G2H', network_token: '4V5S6A7T8K9N0P1Q'}"
     },
     {
       step: 6,
@@ -893,7 +893,7 @@ function AnimatedSequenceFlow({
       description: "First instalment payment authorization and capture",
       details: [
         "NPP creates instalment plan record: INS-2024-001",
-        "NPP retrieves network token from PCI-Proxy: tok_visa_xxxx1234",
+        "NPP retrieves network token from PCI-Proxy: 4V5S6A7T8K9N0P1Q",
         "NPP sends CIT request to XPP with 3DS2 auth data",
         "XPP routes to CyberSource with parameters:",
         "  commerceIndicator: 'internet'",
@@ -935,11 +935,11 @@ function AnimatedSequenceFlow({
         "Found: Plan INS-2024-001, £80 due today",
         "Verify booking status in Amadeus: ACTIVE ✓",
         "Retrieve tokens from PCI-Proxy using PNR: ABC123",
-        "PCI-Proxy returns: tok_visa_xxxx1234",
+        "PCI-Proxy returns: 4V5S6A7T8K9N0P1Q",
         "Prepare MIT payment request"
       ],
       customerMessage: null,
-      dataFlow: "GET /pci-proxy/vault/tokens/PNR-ABC123 → {network_token: 'tok_visa_xxxx1234'}"
+      dataFlow: "GET /pci-proxy/vault/tokens/PNR-ABC123 → {network_token: '4V5S6A7T8K9N0P1Q'}"
     },
     {
       step: 10,
@@ -1047,7 +1047,7 @@ function AnimatedSequenceFlow({
         "New tokens generated and linked to booking"
       ],
       customerMessage: "Update your payment method to continue your instalment plan",
-      dataFlow: "POST /pci-proxy/tokenize → New tokens: {pci_tok_xyz789, tok_mc_yyyy5678}"
+      dataFlow: "POST /pci-proxy/tokenize → New tokens: {5M2N4P6Q8R0S2T4U, 5M6C7D8E9F0G1H2J}"
     },
     {
       step: 16,
@@ -1056,7 +1056,7 @@ function AnimatedSequenceFlow({
       color: "purple",
       description: "Automated retry with updated card",
       details: [
-        "NPP retrieves new network token: tok_mc_yyyy5678",
+        "NPP retrieves new network token: 5M6C7D8E9F0G1H2J",
         "Retry MIT transaction with new token",
         "Send to CyberSource via XPP",
         "Authorization successful ✓",
