@@ -100,7 +100,6 @@ export default function MerchantMITDetailsPage() {
           <SystemComponentDetail
             title="Test Airlines Payment Page"
             color="blue"
-            icon="💳"
             description="Customer-facing payment interface for both guest and account customers"
             responsibilities={[
               'Display available instalment plans based on booking amount',
@@ -124,7 +123,6 @@ export default function MerchantMITDetailsPage() {
           <SystemComponentDetail
             title="PCI-Proxy - Token Service Provider"
             color="green"
-            icon="🔐"
             description="Secure tokenization platform within Test Airlines estate"
             responsibilities={[
               'Tokenize raw card data into PCI-Proxy proprietary tokens',
@@ -159,7 +157,6 @@ export default function MerchantMITDetailsPage() {
           <SystemComponentDetail
             title="NPP (New Payment Platform) - Instalment Engine"
             color="purple"
-            icon="⚙️"
             description="Core instalment management system within Test Airlines"
             responsibilities={[
               'Business Rules Engine: Determine eligible instalment options',
@@ -197,7 +194,6 @@ export default function MerchantMITDetailsPage() {
           <SystemComponentDetail
             title="XPP (Payment Orchestrator)"
             color="indigo"
-            icon="🔄"
             description="Intelligent payment routing and orchestration layer"
             responsibilities={[
               'Route payment requests to appropriate PSP (CyberSource)',
@@ -223,7 +219,6 @@ export default function MerchantMITDetailsPage() {
           <SystemComponentDetail
             title="CyberSource PSP"
             color="orange"
-            icon="🏦"
             description="Payment Service Provider for transaction processing"
             responsibilities={[
               'Process CIT with 3DS2 authentication',
@@ -292,7 +287,6 @@ export default function MerchantMITDetailsPage() {
           <SystemComponentDetail
             title="Amadeus GDS"
             color="teal"
-            icon="✈️"
             description="Global Distribution System for reservations"
             responsibilities={[
               'Create PNR with instalment payment flag',
@@ -679,7 +673,6 @@ function FlowStep({
 function SystemComponentDetail({
   title,
   color,
-  icon,
   description,
   responsibilities,
   technicalDetails,
@@ -688,7 +681,6 @@ function SystemComponentDetail({
 }: {
   title: string;
   color: string;
-  icon: string;
   description: string;
   responsibilities: string[];
   technicalDetails: string[];
@@ -701,12 +693,12 @@ function SystemComponentDetail({
     indigo: 'border-indigo-300',
     orange: 'border-orange-300',
     teal: 'border-teal-300',
+    green: 'border-green-300',
   }[color];
 
   return (
     <div className={`border-l-4 ${colorClasses} bg-white rounded-r-xl p-6 shadow-sm`}>
-      <div className="flex items-center gap-3 mb-4">
-        <span className="text-3xl">{icon}</span>
+      <div className="mb-4">
         <div>
           <h3 className="text-xl font-semibold text-gray-900">{title}</h3>
           <p className="text-sm text-gray-600">{description}</p>
@@ -1275,13 +1267,8 @@ function AnimatedSequenceFlow({
         {/* Customer Message (if present) */}
         {currentStep.customerMessage && (
           <div className="bg-yellow-50 border-2 border-yellow-300 rounded-lg p-4 mb-4">
-            <div className="flex items-start gap-3">
-              <div className="text-2xl">💬</div>
-              <div>
-                <div className="font-semibold text-yellow-900 text-sm mb-1">Customer sees:</div>
-                <div className="text-yellow-800 text-sm italic">"{currentStep.customerMessage}"</div>
-              </div>
-            </div>
+            <div className="font-semibold text-yellow-900 text-sm mb-1">Customer sees:</div>
+            <div className="text-yellow-800 text-sm italic">"{currentStep.customerMessage}"</div>
           </div>
         )}
 
