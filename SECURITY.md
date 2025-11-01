@@ -38,16 +38,31 @@ The application implements comprehensive security headers:
 
 **Required for Production:**
 ```
+# User 1
 AUTH_USERNAME=<your-secure-username>
 AUTH_PASSWORD=<your-secure-password>
+
+# User 2 (optional - supports multiple users)
+AUTH_USERNAME_2=<second-username>
+AUTH_PASSWORD_2=<second-password>
+
+# Secret key
 AUTH_SECRET=<your-secret-key>
 ```
+
+**Multi-User Authentication:**
+- Application supports multiple user accounts
+- Each user has independent credentials
+- All users share the same session authentication
+- Rate limiting applies per IP address (not per user)
+- Add more users by adding AUTH_USERNAME_3, AUTH_PASSWORD_3, etc. in the code
 
 ⚠️ **IMPORTANT:**
 - Never commit `.env.local` file to Git
 - Change default credentials before deployment
-- Use strong, unique passwords
+- Use strong, unique passwords (minimum 12 characters)
 - Rotate credentials regularly
+- Each user should have different credentials
 
 ### Data Protection
 

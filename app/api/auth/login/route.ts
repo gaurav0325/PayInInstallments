@@ -27,10 +27,24 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const validUsername = process.env.AUTH_USERNAME || 'admin';
-    const validPassword = process.env.AUTH_PASSWORD || 'admin123';
+    // Define authorized users
+    const authorizedUsers = [
+      {
+        username: process.env.AUTH_USERNAME || 'admin',
+        password: process.env.AUTH_PASSWORD || 'admin123'
+      },
+      {
+        username: process.env.AUTH_USERNAME_2 || 'gaurav0325',
+        password: process.env.AUTH_PASSWORD_2 || 'London@0325'
+      }
+    ];
 
-    if (username === validUsername && password === validPassword) {
+    // Check if credentials match any authorized user
+    const isAuthenticated = authorizedUsers.some(
+      user => user.username === username && user.password === password
+    );
+
+    if (isAuthenticated) {
       // Reset rate limit on successful login
       resetRateLimit(ip);
 
@@ -41,7 +55,7 @@ export async function POST(request: NextRequest) {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
         sameSite: 'strict',
-        maxAge: 60 * 60 * 24, // 1 day (reduced from 7)
+        maxAge: 60 * 60 * 24, // 1 day
         path: '/',
       });
 
