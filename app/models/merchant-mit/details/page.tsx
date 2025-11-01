@@ -410,7 +410,7 @@ function CITFlowDiagram() {
             'Generate instalment schedule with due dates',
             'Create instalment plan record in database'
           ]}
-          dataFlow="Internal rules engine → Plan ID: INS-2024-001"
+          dataFlow="Internal rules engine → Plan ID: INS-2025-001"
         />
 
         {/* Step 3: Customer Enters Payment Details */}
@@ -496,7 +496,7 @@ function CITFlowDiagram() {
             'Send confirmation email to customer',
             'Display booking reference: ABC123'
           ]}
-          dataFlow="PNR: ABC123 | Instalment Plan: INS-2024-001 | Next MIT: 2024-02-15"
+          dataFlow="PNR: ABC123 | Instalment Plan: INS-2025-001 | Next MIT: 2025-12-01"
         />
       </div>
     </div>
@@ -522,7 +522,7 @@ function MITFlowDiagram() {
           details={[
             'Cron job runs daily at 02:00 UTC',
             'Query database for instalments due today',
-            'Find plan INS-2024-001: £60 due on 2024-02-15',
+            'Find plan INS-2025-001: £60 due on 2025-12-01',
             'Verify booking still active in Amadeus',
             'Retrieve tokens from PCI-Proxy vault using booking reference (PNR: ABC123)',
             'PCI-Proxy returns: 4A2B4C2D4E2F4G2H and 4V5S6A7T8K9N0P1Q',
@@ -538,7 +538,7 @@ function MITFlowDiagram() {
           color="purple"
           title="Customer Pre-Notification"
           details={[
-            'Send reminder email 3 days before: "Upcoming payment on Feb 15"',
+            'Send reminder email 3 days before: "Upcoming payment on Dec 1"',
             'SMS notification (if enabled): "£60 will be charged in 3 days"',
             'Allow customer to update payment method if needed',
             'Check for sufficient funds (optional pre-auth check)'
@@ -593,9 +593,9 @@ function MITFlowDiagram() {
             'Capture funds (if not auto-captured)',
             'Update PNR in Amadeus with payment',
             'Send success email: "Payment processed: £60"',
-            'Schedule next MIT for March 15'
+            'Schedule next MIT for January 1'
           ]}
-          dataFlow="Instalment 2/6 completed | Next MIT scheduled: 2024-03-15"
+          dataFlow="Instalment 2/6 completed | Next MIT scheduled: 2026-01-01"
         />
 
         {/* Step 6: Failure Handling (if applicable) */}
@@ -612,7 +612,7 @@ function MITFlowDiagram() {
             'Cancel booking if payment not received after 5 days',
             'Process refund for previously paid instalments'
           ]}
-          dataFlow="Retry attempt 1/3 | Next retry: 2024-02-16 02:00"
+          dataFlow="Retry attempt 1/3 | Next retry: 2025-12-02 02:00"
         />
       </div>
     </div>
@@ -892,7 +892,7 @@ function AnimatedSequenceFlow({
       color: "purple",
       description: "First instalment payment authorization and capture",
       details: [
-        "NPP creates instalment plan record: INS-2024-001",
+        "NPP creates instalment plan record: INS-2025-001",
         "NPP retrieves network token from PCI-Proxy: 4V5S6A7T8K9N0P1Q",
         "NPP sends CIT request to XPP with 3DS2 auth data",
         "XPP routes to CyberSource with parameters:",
@@ -914,14 +914,14 @@ function AnimatedSequenceFlow({
       details: [
         "Capture £120 from authorization",
         "Update instalment plan status: ACTIVE",
-        "Schedule next MIT payment: 2024-02-15 (30 days)",
+        "Schedule next MIT payment: 2025-12-01 (30 days)",
         "Create PNR in Amadeus: ABC123",
-        "Add remark: 'INSTALMENT PLAN INS-2024-001'",
+        "Add remark: 'INSTALMENT PLAN INS-2025-001'",
         "Issue ticket or hold based on policy",
         "Send confirmation email to customer"
       ],
       customerMessage: "Payment successful! Your booking is confirmed. Reference: ABC123",
-      dataFlow: "PNR: ABC123 | Plan: INS-2024-001 | Next payment: 2024-02-15 | Amount: £80"
+      dataFlow: "PNR: ABC123 | Plan: INS-2025-001 | Next payment: 2025-12-01 | Amount: £80"
     },
     {
       step: 9,
@@ -931,8 +931,8 @@ function AnimatedSequenceFlow({
       description: "Automated monthly payment processing begins",
       details: [
         "Cron job runs daily at 02:00 UTC",
-        "Query: SELECT * FROM instalments WHERE due_date = '2024-02-15'",
-        "Found: Plan INS-2024-001, £80 due today",
+        "Query: SELECT * FROM instalments WHERE due_date = '2025-12-01'",
+        "Found: Plan INS-2025-001, £80 due today",
         "Verify booking status in Amadeus: ACTIVE ✓",
         "Retrieve tokens from PCI-Proxy using PNR: ABC123",
         "PCI-Proxy returns: 4V5S6A7T8K9N0P1Q",
@@ -950,12 +950,12 @@ function AnimatedSequenceFlow({
       details: [
         "Send email 3 days before due date",
         "Subject: 'Upcoming payment for booking ABC123'",
-        "Body: '£80 will be charged on Feb 15'",
+        "Body: '£80 will be charged on Dec 1'",
         "Provide link to update payment method if needed",
         "Optional SMS notification sent",
         "Allow customer 3 days to update card if needed"
       ],
-      customerMessage: "Upcoming Payment: £80 will be charged to your card ending in 4242 on Feb 15, 2024. Need to update? Click here.",
+      customerMessage: "Upcoming Payment: £80 will be charged to your card ending in 4242 on Dec 1, 2025. Need to update? Click here.",
       dataFlow: "Email sent via SendGrid | SMS via Twilio"
     },
     {
@@ -1003,15 +1003,15 @@ function AnimatedSequenceFlow({
       color: "purple",
       description: "Record payment and inform customer",
       details: [
-        "Update instalment record: status = PAID, paid_at = '2024-02-15'",
+        "Update instalment record: status = PAID, paid_at = '2025-12-01'",
         "Update plan: payments_completed = 2/6",
         "Update Amadeus PNR with payment confirmation",
-        "Schedule next MIT: 2024-03-15",
+        "Schedule next MIT: 2026-01-01",
         "Send success email to customer",
         "Update accounting system for revenue recognition"
       ],
-      customerMessage: "Payment Successful! £80 has been charged to your card ending in 4242. Next payment: Mar 15, 2024 (£80)",
-      dataFlow: "Instalment 2/6 completed | Remaining: 4 × £80 | Next: 2024-03-15"
+      customerMessage: "Payment Successful! £80 has been charged to your card ending in 4242. Next payment: Jan 1, 2026 (£80)",
+      dataFlow: "Instalment 2/6 completed | Remaining: 4 × £80 | Next: 2026-01-01"
     },
     {
       step: 14,
@@ -1029,7 +1029,7 @@ function AnimatedSequenceFlow({
         "Provide link to update payment method immediately"
       ],
       customerMessage: "Payment Unsuccessful: We were unable to process your payment of £80. We will retry in 24 hours. Update payment method now to avoid disruption.",
-      dataFlow: "Status: DECLINED | Reason: Insufficient funds | Retry scheduled: 2024-02-16 02:00 UTC"
+      dataFlow: "Status: DECLINED | Reason: Insufficient funds | Retry scheduled: 2025-12-02 02:00 UTC"
     },
     {
       step: 15,
@@ -1083,7 +1083,7 @@ function AnimatedSequenceFlow({
         "Instalment plan status: COMPLETED"
       ],
       customerMessage: "Final Payment Complete! Your instalment plan is now fully paid. Thank you for choosing Test Airlines.",
-      dataFlow: "Plan INS-2024-001: COMPLETED | Total payments: 6/6 | Total paid: £520"
+      dataFlow: "Plan INS-2025-001: COMPLETED | Total payments: 6/6 | Total paid: £520"
     },
     {
       step: 18,
@@ -1100,7 +1100,7 @@ function AnimatedSequenceFlow({
         "Archive plan data for compliance (7 years)",
         "Generate completion report for finance"
       ],
-      customerMessage: "Your instalment plan is complete! We look forward to welcoming you on board your flight on Apr 1, 2024.",
+      customerMessage: "Your instalment plan is complete! We look forward to welcoming you on board your flight on May 1, 2026.",
       dataFlow: "DELETE /pci-proxy/vault/tokens/PNR-ABC123 (scheduled after 90 days)"
     }
   ];
