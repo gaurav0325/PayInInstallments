@@ -1024,7 +1024,7 @@ function AnimatedSequenceFlow({
         "Decline reason: 'Insufficient funds'",
         "Log failure: attempt 1/3",
         "Schedule retry #1: 24 hours later",
-        "Send payment failed email to customer",
+        "Send payment failed email to customer (Using Pay-by-link (PBL))",
         "Email includes: decline reason, retry schedule",
         "Provide link to update payment method immediately"
       ],
